@@ -22,7 +22,7 @@ COPY apps/frontend/ apps/frontend/
 COPY packages/ packages/
 
 # Build from the frontend workspace
-RUN pnpm --filter @repo/frontend build
+RUN pnpm --filter @premium-smile-webpage/frontend build
 
 # ── Runtime stage ────────────────────────────────────────────
 FROM nginx:alpine

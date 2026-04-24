@@ -696,7 +696,7 @@ wheels = [
 ]
 
 [[package]]
-name = "project-template-backend"
+name = "premium-smile-webpage-backend"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
