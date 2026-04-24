@@ -1,107 +1,54 @@
 # Runbook
 
-Operational guide for running and maintaining the system.
+Operational guide for running and maintaining the site.
 
 ## Local Development
 
 ```bash
-# Start everything
-task dev
+# Install deps (first time, or when lockfile changes)
+pnpm install
 
-# Backend only
-task dev:backend
+# Vite dev server with HMR
+task dev                  # http://localhost:5173
 
-# Frontend only
-task dev:frontend
+# Storybook
+task storybook            # http://localhost:6006
 ```
 
-### First-time setup (fresh clone)
+## Checks
 
 ```bash
-# Start Postgres
-task docker:up
-
-# Generate and run initial migration
-cd apps/backend
-task db:revision -- "create_initial_tables"
-task db:migrate
+task check                # lint + types + tests + storybook build
+task lint                 # biome
+task format               # biome --write
+task typecheck            # tsc --noEmit
+task test                 # vitest run
+task test:watch           # vitest
+task build                # production build (tsc + vite)
+task storybook:build      # storybook build
 ```
-
-Services:
-- Frontend: http://localhost:5173
-- Backend API: http://localhost:8000
-- API docs: http://localhost:8000/docs
-- Storybook: `task storybook` -> http://localhost:6006
-
-## Database
-
-```bash
-# Run migrations
-task db:migrate
-
-# Create a new migration
-task db:revision -- "describe_change"
-
-# Reset database (dev only)
-task db:reset
-```
-
-## Testing
-
-```bash
-# All tests
-task test
-
-# Unit only (fast)
-task test:unit
-
-# Integration (needs Docker for Testcontainers)
-task test:integration
-
-# E2E (needs full stack running)
-task test:e2e
-
-# Contract tests
-task test:contract
-```
-
-## Error System
-
-```bash
-# After editing errors.yaml:
-task errors:generate
-task errors:check
-```
-
-## Docker
-
-```bash
-# Build images
-task docker:build
-
-# Start stack
-task docker:up
-
-# Stop stack
-task docker:down
-```
-
-## Health Checks
-
-- Liveness: `GET /health` -> `{"status": "ok"}`
-- Readiness: `GET /ready` -> `{"status": "ready"}` (checks DB)
 
 ## Troubleshooting
 
-### Backend won't start
-- Check `DATABASE_URL` in `.env`
-- Ensure Postgres is running: `docker compose -f infra/compose/docker-compose.yml up db`
-- Run migrations: `task db:migrate`
-
 ### Frontend won't start
-- Run `pnpm install` in `apps/frontend/`
-- Check Node version: must be 22+
+- Run `pnpm install` at the repo root.
+- Check Node version: `node --version` should be 22+.
 
-### Tests fail with "connection refused"
-- Integration tests need Docker running (for Testcontainers)
-- E2E tests need the full stack: `task docker:up`
+### CI failing with `ERR_PNPM_OUTDATED_LOCKFILE` on a Dependabot PR
+The `dependabot-lockfile-sync.yml` workflow should auto-fix. If it doesn't:
+- Check `gh variable list` for `DEPENDABOT_LOCKFILE_SYNC_ENABLED=true`.
+- Check `gh secret list` for `DEPENDABOT_LOCKFILE_SYNC_PAT`.
+- If the PAT expired, rotate and re-set the secret.
+- Manual fallback: close the PR, run `pnpm --filter @premium-smile-webpage/frontend update --latest <pkg>` locally, commit manifest + `pnpm-lock.yaml` atomically, open a replacement PR.
+  (See `CLAUDE.md` Dependabot section.)
+
+### Dependabot PR not auto-merging despite green CI
+- `gh variable list` must show `DEPENDABOT_AUTOMERGE_ENABLED=true`.
+- The `main-protection` ruleset must exist with `frontend-checks` as a required check.
+- See `docs/automerge.md` for the full troubleshooting path.
+
+## Deploy
+
+Deployment target is not yet chosen. Candidates: Cloudflare Pages, Vercel, Netlify,
+GitHub Pages. All of them deploy on `git push` to `main` with their respective GitHub
+integrations. Production build artifact is `apps/frontend/dist/`.

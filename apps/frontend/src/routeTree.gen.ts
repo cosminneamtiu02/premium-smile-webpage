@@ -11,7 +11,7 @@
 import { Route as rootRouteImport } from "./routes/__root"
 import { Route as LangRouteRouteImport } from "./routes/$lang/route"
 import { Route as IndexRouteImport } from "./routes/index"
-import { Route as LangWidgetsIndexRouteImport } from "./routes/$lang/widgets/index"
+import { Route as LangIndexRouteImport } from "./routes/$lang/index"
 
 const LangRouteRoute = LangRouteRouteImport.update({
   id: "/$lang",
@@ -23,34 +23,33 @@ const IndexRoute = IndexRouteImport.update({
   path: "/",
   getParentRoute: () => rootRouteImport,
 } as any)
-const LangWidgetsIndexRoute = LangWidgetsIndexRouteImport.update({
-  id: "/widgets/",
-  path: "/widgets/",
+const LangIndexRoute = LangIndexRouteImport.update({
+  id: "/",
+  path: "/",
   getParentRoute: () => LangRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   "/": typeof IndexRoute
   "/$lang": typeof LangRouteRouteWithChildren
-  "/$lang/widgets/": typeof LangWidgetsIndexRoute
+  "/$lang/": typeof LangIndexRoute
 }
 export interface FileRoutesByTo {
   "/": typeof IndexRoute
-  "/$lang": typeof LangRouteRouteWithChildren
-  "/$lang/widgets": typeof LangWidgetsIndexRoute
+  "/$lang": typeof LangIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   "/": typeof IndexRoute
   "/$lang": typeof LangRouteRouteWithChildren
-  "/$lang/widgets/": typeof LangWidgetsIndexRoute
+  "/$lang/": typeof LangIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: "/" | "/$lang" | "/$lang/widgets/"
+  fullPaths: "/" | "/$lang" | "/$lang/"
   fileRoutesByTo: FileRoutesByTo
-  to: "/" | "/$lang" | "/$lang/widgets"
-  id: "__root__" | "/" | "/$lang" | "/$lang/widgets/"
+  to: "/" | "/$lang"
+  id: "__root__" | "/" | "/$lang" | "/$lang/"
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -74,22 +73,22 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    "/$lang/widgets/": {
-      id: "/$lang/widgets/"
-      path: "/widgets"
-      fullPath: "/$lang/widgets/"
-      preLoaderRoute: typeof LangWidgetsIndexRouteImport
+    "/$lang/": {
+      id: "/$lang/"
+      path: "/"
+      fullPath: "/$lang/"
+      preLoaderRoute: typeof LangIndexRouteImport
       parentRoute: typeof LangRouteRoute
     }
   }
 }
 
 interface LangRouteRouteChildren {
-  LangWidgetsIndexRoute: typeof LangWidgetsIndexRoute
+  LangIndexRoute: typeof LangIndexRoute
 }
 
 const LangRouteRouteChildren: LangRouteRouteChildren = {
-  LangWidgetsIndexRoute: LangWidgetsIndexRoute,
+  LangIndexRoute: LangIndexRoute,
 }
 
 const LangRouteRouteWithChildren = LangRouteRoute._addFileChildren(

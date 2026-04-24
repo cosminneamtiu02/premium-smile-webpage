@@ -16,17 +16,13 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@dinero.js/currencies": "^2.0.0-alpha.15",
-    "@repo/api-client": "workspace:*",
     "@tanstack/react-query": "^5.100.1",
     "@tanstack/react-router": "^1.168.23",
     "@tanstack/router-devtools": "^1.166.13",
     "@tanstack/router-plugin": "^1.167.23",
     "clsx": "^2.1.0",
-    "dinero.js": "^2.0.0-alpha.14",
     "i18next": "^26.0.7",
     "i18next-browser-languagedetector": "^8.0.0",
-    "openapi-fetch": "^0.17.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-i18next": "^17.0.4",
@@ -35,8 +31,6 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.13",
-    "@playwright/test": "^1.52.0",
-    "@repo/error-contracts": "workspace:*",
     "@storybook/react-vite": "^10.3.5",
     "@tailwindcss/vite": "^4.2.4",
     "@testing-library/jest-dom": "^6.6.0",

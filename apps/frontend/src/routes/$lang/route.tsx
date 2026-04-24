@@ -6,7 +6,7 @@ export const Route = createFileRoute("/$lang")({
   beforeLoad: ({ params }) => {
     const lang = params.lang as string;
     if (!SUPPORTED_LANGUAGES.includes(lang as SupportedLanguage)) {
-      throw redirect({ to: "/$lang/widgets", params: { lang: DEFAULT_LANGUAGE } });
+      throw redirect({ to: "/$lang", params: { lang: DEFAULT_LANGUAGE } });
     }
     if (i18n.language !== lang) {
       i18n.changeLanguage(lang);

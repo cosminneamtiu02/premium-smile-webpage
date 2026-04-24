@@ -26,10 +26,10 @@ export default defineConfig({
         "src/app/providers.tsx",
         "src/app/error-boundary.tsx",
         "src/routes/**",
-        "src/shared/types/**",
+        "src/shared/components/ui/**",
         "src/shared/hooks/**",
+        "src/shared/lib/cn.ts",
         "src/shared/lib/logger.ts",
-        "src/features/*/api/**",
       ],
       thresholds: {
         lines: 80,

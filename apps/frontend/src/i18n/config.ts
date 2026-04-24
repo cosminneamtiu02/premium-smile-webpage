@@ -3,17 +3,15 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 
 import enCommon from "./locales/en/common.json";
-import enErrors from "./locales/en/errors.json";
 import roCommon from "./locales/ro/common.json";
-import roErrors from "./locales/ro/errors.json";
 
 export const SUPPORTED_LANGUAGES = ["en", "ro"] as const;
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 export const DEFAULT_LANGUAGE: SupportedLanguage = "en";
 
 const resources = {
-  en: { common: enCommon, errors: enErrors },
-  ro: { common: roCommon, errors: roErrors },
+  en: { common: enCommon },
+  ro: { common: roCommon },
 };
 
 i18n
@@ -24,12 +22,12 @@ i18n
     fallbackLng: DEFAULT_LANGUAGE,
     supportedLngs: SUPPORTED_LANGUAGES,
     defaultNS: "common",
-    ns: ["common", "errors"],
+    ns: ["common"],
     interpolation: {
-      escapeValue: false, // React already escapes
+      escapeValue: false,
     },
     detection: {
-      order: ["localStorage", "navigator"],
+      order: ["navigator", "localStorage"],
       lookupLocalStorage: "app.language",
       caches: ["localStorage"],
     },

@@ -3,29 +3,24 @@
 ## Getting Started
 
 1. Clone the repository
-2. Install prerequisites: Python 3.13, Node 22, pnpm 10, Docker
-3. Run `task dev` to start the full stack
-
-## Development Setup
-
-See [docs/architecture.md](docs/architecture.md) for the system architecture
-and [docs/conventions.md](docs/conventions.md) for coding conventions.
+2. Install prerequisites: Node 22, pnpm 10
+3. `pnpm install`
+4. `task dev` to start the Vite dev server
 
 ## Code Style
 
-- **Python**: Ruff (ALL rules), Pyright strict
-- **TypeScript**: Biome, tsc strict
+- **TypeScript**: Biome (lint + format), tsc strict
 - **Commits**: [Conventional Commits](https://www.conventionalcommits.org/)
 
 ## Pull Request Process
 
 1. Create a feature branch from `main`
-2. Write tests first (TDD)
-3. Run `task check` before pushing
-4. Open a PR against `main`
-5. Ensure CI passes
-6. Squash merge
+2. Run `task check` before pushing (lint, types, tests, storybook build)
+3. Open a PR against `main`
+4. Wait for `frontend-checks` CI + CodeQL to pass
+5. Squash merge via the GitHub UI
 
 ## Architecture
 
-Read [CLAUDE.md](CLAUDE.md) for the complete list of rules and forbidden patterns.
+Read [CLAUDE.md](CLAUDE.md) for the complete list of rules and forbidden patterns,
+and [docs/architecture.md](docs/architecture.md) for the layer diagram.

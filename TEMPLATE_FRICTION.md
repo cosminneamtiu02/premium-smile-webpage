@@ -70,3 +70,23 @@ When multiple Dependabot PRs modify adjacent lines in the same manifest file (e.
 **Template-level fix we shipped:** aggressive `groups:` in [.github/dependabot.yml](.github/dependabot.yml) for every ecosystem where interlocking dependencies touch the same manifest file. Specifically: `sqlalchemy-stack` (sqlalchemy + alembic + asyncpg), `fastapi-stack`, `pydantic`, `pytest`, `tanstack`, `react`, `storybook`, `vitest`, `testing-library`, `tailwind`, `i18next`, `dinero`.
 
 **Takeaway codified:** when you see a fifth Dependabot PR for the same ecosystem, it's almost always doomed to cascade-conflict. Add a group and don't merge siblings individually.
+
+### 2026-04-24 — Template over-specified for presentation-site use case
+
+Project #1 (Premium Smile, a dental-clinic presentation website) needed a pure frontend SPA with no backend, no database, no error-contracts system, no API client. Running `project-bootstrap` destructively stripped:
+
+- `apps/backend/` (FastAPI, SQLAlchemy, Alembic, structlog, pytest, Testcontainers, Schemathesis, import-linter)
+- `packages/api-client/` and `packages/error-contracts/` (both entirely)
+- `infra/compose/`, `infra/docker/`, `infra/terraform/` (no deployment target yet)
+- Widget reference slice (backend + frontend halves)
+- `ErrorMessage`, `ErrorDisplay`, `MoneyDisplay` components + the `errors` i18n namespace
+- Playwright (`@playwright/test`, `tests/e2e/`)
+- 3 of 4 CI jobs + required-check bindings on the ruleset
+- `pip`, `terraform` ecosystems from Dependabot config
+- `python` from CodeQL default setup
+
+What survived: React + Vite + TypeScript, TanStack Router, TanStack Query (scaffolded for future CMS/API), Zustand (empty), Tailwind, shadcn-style UI primitives, LanguageSwitcher, DateTime, i18next (EN + RO, `common` namespace), Storybook, Vitest + RTL, Biome, the whole Dependabot auto-merge + lockfile-sync + CodeQL + ruleset pipeline.
+
+**Template takeaway:** presentation / marketing sites are a very common use case, different enough from full-stack apps that a "presentation" template variant would save the strip step. Alternatively: making the current template modular so pieces can be individually opted in rather than stripped out. The current strip is reliable but destructive; an additive model would be safer for less-experienced users.
+
+**Process takeaway:** `project-bootstrap`'s strict contract (requires `graphs/<SLUG>/` from `requirements-elicitation`) is too heavy for clear-scope projects where the user can state requirements in a paragraph. The adapted-cleanup variant (show decision matrix, get user approval, execute + verify) is the right tool when there's no ambiguity worth an elicitation pass.

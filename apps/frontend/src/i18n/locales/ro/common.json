@@ -1,14 +1,8 @@
 {
   "app_name": "Premium Smile",
-  "nav": {
-    "home": "Acasa",
-    "widgets": "Widget-uri"
-  },
-  "actions": {
-    "save": "Salveaza",
-    "cancel": "Anuleaza",
-    "delete": "Sterge",
-    "create": "Creeaza"
+  "home": {
+    "title": "Bun venit la Premium Smile",
+    "tagline": "O clinica stomatologica moderna, dedicata confortului si ingrijirii dumneavoastra."
   },
   "language": {
     "en": "Engleza",
@@ -20,17 +14,5 @@
     "message": "A aparut o eroare neasteptata.",
     "reload": "Reincarca"
   },
-  "loading": "Se incarca...",
-  "network_error": "A aparut o eroare de retea. Va rugam incercati din nou.",
-  "request_id": "ID cerere: {{id}}",
-  "widgets": {
-    "title": "Widget-uri",
-    "empty": "Niciun widget inca.",
-    "create": "Creeaza Widget",
-    "name": "Nume",
-    "name_placeholder": "Introduceti numele widget-ului",
-    "description": "Descriere",
-    "description_placeholder": "Introduceti descrierea (optional)",
-    "created_at": "Creat"
-  }
+  "loading": "Se incarca..."
 }
