@@ -27,7 +27,7 @@ i18n
       escapeValue: false,
     },
     detection: {
-      order: ["navigator", "localStorage"],
+      order: ["localStorage", "navigator"],
       lookupLocalStorage: "app.language",
       caches: ["localStorage"],
     },
