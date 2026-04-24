@@ -25,6 +25,7 @@ export default defineConfig({
         "src/routeTree.gen.ts",
         "src/app/**",
         "src/routes/**",
+        "src/pages/**",
         "src/shared/components/ui/**",
         "src/shared/components/composite/card/**",
         "src/shared/components/composite/footer/**",
