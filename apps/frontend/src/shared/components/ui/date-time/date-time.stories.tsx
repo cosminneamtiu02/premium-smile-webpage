@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { DateTime } from "./date-time";
 
 const meta: Meta<typeof DateTime> = {
-  title: "Shared/DateTime",
+  title: "UI/DateTime",
   component: DateTime,
 };
 

@@ -1,13 +1,89 @@
 {
   "app_name": "Premium Smile",
-  "home": {
-    "title": "Welcome to Premium Smile",
-    "tagline": "A modern dental practice committed to your comfort and care."
+  "a11y": {
+    "skip_to_content": "Skip to main content"
+  },
+  "nav": {
+    "primary": "Primary",
+    "home": "Home",
+    "pricing": "Pricing",
+    "blog": "Blog",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu"
   },
   "language": {
     "en": "English",
     "ro": "Romanian",
     "switch": "Language"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "brand": "Brand",
+    "toggle_label": "Switch theme (current: {{theme}})"
+  },
+  "home": {
+    "hero": {
+      "title": "A modern dental practice for the whole family",
+      "subtitle": "Premium Smile combines clinical excellence with a calm, welcoming experience. Whatever brings you in, we make sure you leave feeling looked after.",
+      "cta_primary": "Book a consultation",
+      "cta_secondary": "See our services",
+      "image_placeholder": "Hero image placeholder"
+    },
+    "services": {
+      "title": "What we do",
+      "general": {
+        "title": "General dentistry",
+        "description": "Routine check-ups, cleanings, fillings, and preventive care."
+      },
+      "cosmetic": {
+        "title": "Cosmetic treatments",
+        "description": "Whitening, veneers, and personalised smile design."
+      },
+      "family": {
+        "title": "Family care",
+        "description": "Friendly, gentle dentistry for children and adults alike."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "Transparent prices for the most common treatments. Complex cases are quoted after consultation.",
+    "tiers": {
+      "consult": {
+        "name": "Consultation",
+        "description": "Initial assessment, X-rays if needed, and a personalised treatment plan.",
+        "price": "From 100 RON"
+      },
+      "cleaning": {
+        "name": "Professional cleaning",
+        "description": "Scaling, polishing, and a fluoride finish.",
+        "price": "From 250 RON"
+      },
+      "whitening": {
+        "name": "Teeth whitening",
+        "description": "In-office whitening session for visibly brighter teeth.",
+        "price": "From 800 RON"
+      }
+    },
+    "disclaimer": "Final price depends on case complexity. Please book a consultation for an accurate quote."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Tips, news, and updates from our practice.",
+    "empty": "No posts yet — check back soon."
+  },
+  "footer": {
+    "tagline": "Modern dentistry. Honest care.",
+    "contact": "Contact",
+    "phone": "+40 700 000 000",
+    "email": "hello@premium-smile.ro",
+    "address": "Str. Exemplu 12, Sibiu, Romania",
+    "hours_title": "Opening hours",
+    "hours_weekdays": "Mon – Fri: 09:00 – 19:00",
+    "hours_saturday": "Sat: 09:00 – 14:00",
+    "hours_sunday": "Sun: closed",
+    "copyright": "© {{year}} Premium Smile. All rights reserved."
   },
   "error_boundary": {
     "title": "Something went wrong",

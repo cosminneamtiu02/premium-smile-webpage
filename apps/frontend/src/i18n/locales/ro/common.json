@@ -1,13 +1,89 @@
 {
   "app_name": "Premium Smile",
-  "home": {
-    "title": "Bun venit la Premium Smile",
-    "tagline": "O clinica stomatologica moderna, dedicata confortului si ingrijirii dumneavoastra."
+  "a11y": {
+    "skip_to_content": "Sari la continutul principal"
+  },
+  "nav": {
+    "primary": "Principal",
+    "home": "Acasa",
+    "pricing": "Preturi",
+    "blog": "Blog",
+    "open_menu": "Deschide meniul",
+    "close_menu": "Inchide meniul"
   },
   "language": {
     "en": "Engleza",
     "ro": "Romana",
     "switch": "Limba"
+  },
+  "theme": {
+    "light": "Luminoasa",
+    "dark": "Intunecata",
+    "brand": "Marca",
+    "toggle_label": "Schimba tema (actuala: {{theme}})"
+  },
+  "home": {
+    "hero": {
+      "title": "O clinica stomatologica moderna pentru toata familia",
+      "subtitle": "Premium Smile combina excelenta clinica cu o experienta calma si primitoare. Orice te aduce la noi, te asiguram ca vei pleca multumit de ingrijire.",
+      "cta_primary": "Programeaza o consultatie",
+      "cta_secondary": "Vezi serviciile",
+      "image_placeholder": "Imagine principala (placeholder)"
+    },
+    "services": {
+      "title": "Ce facem",
+      "general": {
+        "title": "Stomatologie generala",
+        "description": "Controale de rutina, igienizari, plombe si ingrijire preventiva."
+      },
+      "cosmetic": {
+        "title": "Tratamente estetice",
+        "description": "Albire, fatete si design personalizat al zambetului."
+      },
+      "family": {
+        "title": "Ingrijire pentru familie",
+        "description": "Stomatologie blanda si prietenoasa pentru copii si adulti."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Preturi",
+    "subtitle": "Preturi transparente pentru cele mai frecvente tratamente. Cazurile complexe sunt cotate dupa consultatie.",
+    "tiers": {
+      "consult": {
+        "name": "Consultatie",
+        "description": "Evaluare initiala, radiografii daca este necesar si un plan personalizat de tratament.",
+        "price": "De la 100 RON"
+      },
+      "cleaning": {
+        "name": "Igienizare profesionala",
+        "description": "Detartraj, periaj profesional si fluorizare.",
+        "price": "De la 250 RON"
+      },
+      "whitening": {
+        "name": "Albire dentara",
+        "description": "Sedinta de albire in cabinet pentru dinti vizibil mai luminosi.",
+        "price": "De la 800 RON"
+      }
+    },
+    "disclaimer": "Pretul final depinde de complexitatea cazului. Va rugam sa programati o consultatie pentru o estimare exacta."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Sfaturi, noutati si actualizari din clinica.",
+    "empty": "Nicio postare inca — reveniti curand."
+  },
+  "footer": {
+    "tagline": "Stomatologie moderna. Ingrijire onesta.",
+    "contact": "Contact",
+    "phone": "+40 700 000 000",
+    "email": "hello@premium-smile.ro",
+    "address": "Str. Exemplu 12, Sibiu, Romania",
+    "hours_title": "Program",
+    "hours_weekdays": "Luni – Vineri: 09:00 – 19:00",
+    "hours_saturday": "Sambata: 09:00 – 14:00",
+    "hours_sunday": "Duminica: inchis",
+    "copyright": "© {{year}} Premium Smile. Toate drepturile rezervate."
   },
   "error_boundary": {
     "title": "Ceva nu a functionat",

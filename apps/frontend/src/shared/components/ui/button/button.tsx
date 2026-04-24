@@ -7,10 +7,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantStyles: Record<NonNullable<ButtonProps["variant"]>, string> = {
-  default: "bg-blue-600 text-white hover:bg-blue-700",
+  default: "bg-accent text-accent-fg hover:bg-accent-hover",
   destructive: "bg-red-600 text-white hover:bg-red-700",
-  outline: "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50",
-  ghost: "text-gray-700 hover:bg-gray-100",
+  outline: "border border-border bg-bg-elevated text-fg hover:bg-bg-subtle",
+  ghost: "text-fg hover:bg-bg-subtle",
 };
 
 const sizeStyles: Record<NonNullable<ButtonProps["size"]>, string> = {
@@ -28,8 +28,9 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
+      type="button"
       className={cn(
-        "inline-flex items-center justify-center rounded font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+        "inline-flex items-center justify-center rounded font-medium transition-colors disabled:pointer-events-none disabled:opacity-50",
         variantStyles[variant],
         sizeStyles[size],
         className,
