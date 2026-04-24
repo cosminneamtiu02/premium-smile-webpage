@@ -1,46 +1,46 @@
 # Premium Smile
 
-Full-stack webpage for the Premium Smile dental practice. React frontend, FastAPI backend, PostgreSQL.
+Presentation website for the Premium Smile dental clinic. Pure-frontend SPA, i18n
+(English / Romanian, browser-default), responsive across phone / tablet / laptop / desktop,
+accessibility-first, multi-theme.
 
 ## Tech Stack
 
-- **Frontend**: React 19, Vite, TypeScript strict, TanStack Query/Router, Tailwind, shadcn/ui, Storybook, i18next
-- **Backend**: Python 3.13, FastAPI, SQLAlchemy 2.0 async, Alembic, Pydantic v2, structlog
-- **Database**: PostgreSQL 17
-- **Testing**: Vitest + RTL + Playwright (FE), pytest + Testcontainers + Schemathesis (BE)
-- **Tooling**: Taskfile, Biome, Ruff, Pyright, import-linter
+- **Framework**: React 19, Vite, TypeScript strict
+- **Routing**: TanStack Router (file-based)
+- **Data**: TanStack Query (scaffolded; no backend yet)
+- **State**: Zustand (client-only)
+- **Styling**: Tailwind 4, shadcn/ui primitives as needed
+- **i18n**: i18next + browser language detector (EN, RO)
+- **Component dev**: Storybook
+- **Testing**: Vitest + React Testing Library
+- **Lint/format**: Biome
+- **Task runner**: Taskfile
 
 ## Quick Start
 
 ```bash
-# Prerequisites: Python 3.13, Node 22, pnpm 10, Docker
+# Prerequisites: Node 22, pnpm 10
 
-# Install backend
-cd apps/backend && uv sync --dev
-
-# Install frontend
-cd apps/frontend && pnpm install
-
-# Start with Docker
-task dev
+pnpm install
+task dev               # Vite HMR at http://localhost:5173
+task storybook         # Storybook at http://localhost:6006
 ```
 
 ## Commands
 
 | Command | Description |
 |---|---|
-| `task dev` | Start full stack via docker-compose |
-| `task check` | Run all linters, type checkers, and tests |
-| `task test:unit` | Run unit tests (backend + frontend) |
-| `task test:integration` | Run integration tests (Testcontainers) |
-| `task test:e2e` | Run Playwright E2E tests |
-| `task test:contract` | Run contract tests |
-| `task lint` | Run all linters |
-| `task format` | Run all formatters |
-| `task storybook` | Start Storybook |
-| `task db:migrate` | Run Alembic migrations |
-| `task errors:generate` | Generate error classes from errors.yaml |
-| `task errors:check` | Validate translations |
+| `task dev` | Vite dev server with HMR |
+| `task check` | Run all checks (lint, types, tests, storybook build) |
+| `task lint` | Biome check |
+| `task format` | Biome write |
+| `task typecheck` | `tsc --noEmit` |
+| `task test` | Vitest run |
+| `task test:watch` | Vitest watch mode |
+| `task build` | Production build (type-check + vite build) |
+| `task storybook` | Storybook dev server |
+| `task storybook:build` | Storybook build (CI check) |
 
 ## Documentation
 
