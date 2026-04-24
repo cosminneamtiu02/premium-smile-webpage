@@ -21,7 +21,7 @@ repos:
     hooks:
       - id: biome-check
         name: Biome lint + format check
-        entry: pnpm --filter @repo/frontend biome check src/
+        entry: pnpm --filter @premium-smile-webpage/frontend biome check src/
         language: system
         types_or: [javascript, ts, tsx, json]
         pass_filenames: false

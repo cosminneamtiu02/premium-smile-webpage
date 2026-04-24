@@ -1,6 +1,6 @@
-# Project Template
+# Premium Smile
 
-Full-stack monorepo template with React frontend, FastAPI backend, and PostgreSQL.
+Full-stack webpage for the Premium Smile dental practice. React frontend, FastAPI backend, PostgreSQL.
 
 ## Tech Stack
 
