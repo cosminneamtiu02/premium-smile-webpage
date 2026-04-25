@@ -35,6 +35,25 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    a11y: {
+      // Default axe config for every story. Override per story by setting
+      // `parameters.a11y` on the story object.
+      config: {
+        rules: [
+          // Storybook decorator wraps stories in a single <div>; that wrapper
+          // sometimes fails the "must have one main landmark" rule for atom
+          // stories that don't render a real page. Skip — pages are tested
+          // for landmarks separately.
+          { id: "landmark-one-main", enabled: false },
+          { id: "page-has-heading-one", enabled: false },
+          { id: "region", enabled: false },
+        ],
+      },
+      // "todo" = show violations as warnings without failing the story.
+      // Switch to "error" once we've cleaned the existing palette and want
+      // a per-story hard fail.
+      test: "todo",
+    },
   },
   globalTypes: {
     theme: {
