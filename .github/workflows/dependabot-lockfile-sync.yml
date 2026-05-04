@@ -1,20 +1,15 @@
-# Regenerate pnpm-lock.yaml on Dependabot PRs.
+# Dependabot lockfile-sync WRAPPER.
 #
-# WHY THIS EXISTS
-# ---------------
-# Dependabot's pnpm support has a known bug: when a monorepo uses a
-# single root pnpm-lock.yaml with per-workspace package.json files,
-# Dependabot updates the manifest but silently fails to regenerate the
-# root lockfile. CI then rejects every Dependabot PR with
-# ERR_PNPM_OUTDATED_LOCKFILE.
+# This file is the GitHub-visible workflow that fires on every PR. It
+# does the gating (Dependabot-actor, Dependabot-author, operator opt-in)
+# and then delegates the actual work to the reusable impl workflow at
+# .github/workflows/dependabot-lockfile-sync-impl.yml.
 #
-# This workflow fires on every Dependabot PR, regenerates the lockfile,
-# and pushes the fix back to the PR branch. It composes with
-# dependabot-automerge.yml so the PR then auto-squashes once CI is green.
-#
-# A fine-grained PAT is required (GITHUB_TOKEN-authored pushes do not
-# re-trigger workflows). Store it as DEPENDABOT_LOCKFILE_SYNC_PAT with
-# Contents + Pull requests read/write on this repo only.
+# Why split: declaring DEPENDABOT_LOCKFILE_SYNC_PAT as a required
+# `workflow_call` secret in the impl is the one in-repo lever that makes
+# VS Code's github-actions extension recognize the name and stop raising
+# "Context access might be invalid" warnings. See the impl file's header
+# for the full rationale.
 #
 # Emergency disable:
 #   gh variable set DEPENDABOT_LOCKFILE_SYNC_ENABLED --body "false"
@@ -32,7 +27,6 @@ permissions:
 
 jobs:
   sync:
-    runs-on: ubuntu-latest
     # The job is gated on THREE conditions, all of which must hold:
     #
     #  1. PR author is dependabot[bot] -- scopes the workflow to
@@ -54,65 +48,5 @@ jobs:
       github.event.pull_request.user.login == 'dependabot[bot]'
       && github.actor == 'dependabot[bot]'
       && vars.DEPENDABOT_LOCKFILE_SYNC_ENABLED == 'true'
-    steps:
-      - name: Verify PAT is configured
-        env:
-          PAT: ${{ secrets.DEPENDABOT_LOCKFILE_SYNC_PAT }}
-        run: |
-          if [ -z "$PAT" ]; then
-            echo "::error::DEPENDABOT_LOCKFILE_SYNC_PAT secret is not set, but DEPENDABOT_LOCKFILE_SYNC_ENABLED variable is 'true'. Either create the PAT (see docs/new-project-setup.md Phase 5b) or unset the variable with: gh variable set DEPENDABOT_LOCKFILE_SYNC_ENABLED --body 'false'"
-            exit 1
-          fi
-
-      - name: Checkout PR branch
-        uses: actions/checkout@v6
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
-          token: ${{ secrets.DEPENDABOT_LOCKFILE_SYNC_PAT }}
-
-      - name: Detect whether a package.json changed
-        id: changed
-        run: |
-          BASE_SHA="${{ github.event.pull_request.base.sha }}"
-          HEAD_SHA="${{ github.event.pull_request.head.sha }}"
-          CHANGED=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA")
-          if echo "$CHANGED" | grep -qE 'apps/frontend/package\.json$'; then
-            echo "needs_pnpm=true" >> $GITHUB_OUTPUT
-          else
-            echo "needs_pnpm=false" >> $GITHUB_OUTPUT
-            echo "No manifest changed; nothing to regenerate."
-          fi
-
-      - name: Set up Node.js
-        if: steps.changed.outputs.needs_pnpm == 'true'
-        uses: actions/setup-node@v6
-        with:
-          node-version: "22"
-
-      - name: Install pnpm
-        if: steps.changed.outputs.needs_pnpm == 'true'
-        run: npm install -g pnpm@10.33.0
-
-      - name: Regenerate pnpm lockfile
-        if: steps.changed.outputs.needs_pnpm == 'true'
-        run: pnpm install --no-frozen-lockfile --lockfile-only
-
-      - name: Commit and push lockfile updates
-        if: steps.changed.outputs.needs_pnpm == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add -u pnpm-lock.yaml 2>/dev/null || true
-
-          if git diff --cached --quiet; then
-            echo "No lockfile changes to commit. Dependabot may have regenerated it correctly."
-            exit 0
-          fi
-
-          git diff --cached --stat
-          git commit \
-            -m "chore(deps): regenerate pnpm-lock.yaml after dependabot bump" \
-            -m "Automated follow-up commit from .github/workflows/dependabot-lockfile-sync.yml."
-          git push
+    uses: ./.github/workflows/dependabot-lockfile-sync-impl.yml
+    secrets: inherit

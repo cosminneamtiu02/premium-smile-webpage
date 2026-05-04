@@ -171,13 +171,36 @@ the full explainer):
 
 **Handling broken Dependabot PRs:**
 
-The [.github/workflows/dependabot-lockfile-sync.yml](.github/workflows/dependabot-lockfile-sync.yml)
-workflow auto-fixes the pnpm lockfile-gap bug when
-`DEPENDABOT_LOCKFILE_SYNC_ENABLED=true` and `DEPENDABOT_LOCKFILE_SYNC_PAT`
-is set in the **Dependabot** secrets namespace (not Actions).
+The lockfile-sync workflow is split into a wrapper +
+reusable-impl pair so that the PAT reference can be declared as a
+required `workflow_call` secret in the impl. That declaration is what
+keeps VS Code's GitHub Actions extension from raising a "Context access
+might be invalid" warning on the secret reference.
 
-If that falls over and a Dependabot PR is red with `ERR_PNPM_OUTDATED_LOCKFILE`,
-close it, run `pnpm --filter @premium-smile-webpage/frontend update --latest <package>`
+- [.github/workflows/dependabot-lockfile-sync.yml](.github/workflows/dependabot-lockfile-sync.yml)
+  — wrapper. `pull_request` trigger, gating
+  (`dependabot[bot]` author + actor + `DEPENDABOT_LOCKFILE_SYNC_ENABLED`
+  variable), delegates to the impl with `secrets: inherit`. No secret
+  references, so no extension warnings.
+- [.github/workflows/dependabot-lockfile-sync-impl.yml](.github/workflows/dependabot-lockfile-sync-impl.yml)
+  — reusable. `workflow_call` trigger, declares
+  `DEPENDABOT_LOCKFILE_SYNC_PAT` as a required secret, contains the
+  actual checkout / regenerate / push steps. Because the secret name is
+  declared in this file's `secrets:` block, the extension validates
+  references against it and does not warn.
+
+The PAT itself still lives in the **Dependabot** secrets namespace (not
+Actions) and only Dependabot-actor runs can read it; do not move it.
+
+Both files must move together: never edit the wrapper's gating or the
+impl's steps without considering the other half. Never add a direct
+event trigger (`pull_request`, `push`, etc.) to the impl — it must stay
+`workflow_call`-only or the extension's secret-validation guarantee
+breaks and the warning returns.
+
+If the auto-sync falls over and a Dependabot PR is red with
+`ERR_PNPM_OUTDATED_LOCKFILE`, close it, run
+`pnpm --filter @premium-smile-webpage/frontend update --latest <package>`
 locally, commit manifest + lockfile atomically, open a replacement PR.
 
 ## Merge Authorization
