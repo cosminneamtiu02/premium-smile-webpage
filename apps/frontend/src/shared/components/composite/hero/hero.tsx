@@ -61,7 +61,7 @@ export function Hero({
     <section
       aria-label={ariaLabel}
       {...(isCarousel ? { "aria-roledescription": "carousel" } : {})}
-      className={cn("relative w-full bg-bg", className)}
+      className={cn("relative -mt-4 w-full bg-bg", className)}
     >
       <div className="relative h-[clamp(440px,70vh,640px)] w-full overflow-hidden bg-bg-subtle">
         {slides.map((slide, i) => {
@@ -94,6 +94,11 @@ export function Hero({
             </div>
           );
         })}
+
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[35%] bg-[linear-gradient(180deg,transparent_0%,var(--bg-subtle)_65%)]"
+        />
 
         <div
           className={cn(
@@ -135,7 +140,7 @@ export function Hero({
         </div>
 
         {isCarousel && (
-          <div className="absolute inset-x-0 bottom-3 z-[4] flex justify-center gap-2">
+          <div className="absolute inset-x-0 bottom-6 z-[4] flex justify-center gap-2 sm:bottom-8">
             {slides.map((slide, i) => (
               <button
                 // biome-ignore lint/suspicious/noArrayIndexKey: image src may repeat across slides; combining with index ensures unique keys
