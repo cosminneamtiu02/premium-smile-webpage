@@ -63,7 +63,7 @@ export function Hero({
       {...(isCarousel ? { "aria-roledescription": "carousel" } : {})}
       className={cn("relative -mt-4 w-full bg-bg", className)}
     >
-      <div className="relative h-[clamp(440px,70vh,640px)] w-full overflow-hidden bg-bg-subtle">
+      <div className="relative h-dvh w-full overflow-hidden bg-bg-subtle">
         {slides.map((slide, i) => {
           const isCurrent = i === active;
           return (
@@ -97,19 +97,19 @@ export function Hero({
 
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[12%] bg-[linear-gradient(180deg,transparent_0%,color-mix(in_srgb,var(--bg)_15%,transparent)_40%,color-mix(in_srgb,var(--bg)_60%,transparent)_75%,var(--bg)_100%)]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[10%] bg-[linear-gradient(180deg,transparent_0%,color-mix(in_srgb,var(--bg)_15%,transparent)_40%,color-mix(in_srgb,var(--bg)_60%,transparent)_75%,var(--bg)_100%)]"
         />
 
         <div
           className={cn(
             "absolute z-[4] flex max-w-[720px] flex-col gap-4",
             "left-[clamp(24px,5vw,46px)] right-[clamp(24px,5vw,46px)]",
-            "bottom-[120px] sm:bottom-[clamp(140px,14vh,180px)]",
+            "bottom-[17%]",
           )}
         >
           <Heading
             level={1}
-            className="text-white [text-shadow:0_2px_24px_rgba(20,15,30,0.35)] [text-wrap:balance]"
+            className="text-3xl text-white [text-shadow:0_2px_24px_rgba(20,15,30,0.35)] [text-wrap:balance] sm:text-4xl lg:text-5xl"
           >
             {title}
           </Heading>
@@ -122,7 +122,7 @@ export function Hero({
                   key={`desc-${slide.src}-${i}`}
                   aria-hidden={i !== active}
                   className={cn(
-                    "[grid-area:1/1] text-justify leading-snug text-white/95 [text-shadow:0_1px_12px_rgba(20,15,30,0.4)]",
+                    "[grid-area:1/1] text-justify text-sm leading-snug text-white/95 [text-shadow:0_1px_12px_rgba(20,15,30,0.4)] sm:text-base",
                     "transition-opacity duration-1000 ease-in-out motion-reduce:transition-none",
                     i === active ? "opacity-100" : "pointer-events-none opacity-0",
                   )}
@@ -140,7 +140,7 @@ export function Hero({
         </div>
 
         {isCarousel && (
-          <div className="absolute inset-x-0 bottom-[68px] z-[4] flex justify-center gap-2 sm:bottom-[88px]">
+          <div className="absolute inset-x-0 bottom-[12%] z-[4] flex justify-center gap-2">
             {slides.map((slide, i) => (
               <button
                 // biome-ignore lint/suspicious/noArrayIndexKey: image src may repeat across slides; combining with index ensures unique keys
