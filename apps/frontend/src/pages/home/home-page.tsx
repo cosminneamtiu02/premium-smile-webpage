@@ -1,29 +1,34 @@
 import { Sparkles, Stethoscope, Users } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Card } from "@/shared/components/composite/card/card";
-import { Hero } from "@/shared/components/composite/hero/hero";
+import { Hero, type HeroSlide } from "@/shared/components/composite/hero/hero";
 import { Button } from "@/shared/components/ui/button/button";
 import { Container } from "@/shared/components/ui/container/container";
 import { Heading } from "@/shared/components/ui/heading/heading";
 
+const SLIDE_IMAGES: Record<"calm" | "team" | "result", string> = {
+  calm: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1600",
+  team: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1600",
+  result:
+    "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1600",
+};
+
 export function HomePage() {
   const { t } = useTranslation();
+
+  const slides: HeroSlide[] = (["calm", "team", "result"] as const).map((id) => ({
+    src: SLIDE_IMAGES[id],
+    alt: t(`home.hero.slides.${id}.alt`),
+    description: t(`home.hero.slides.${id}.description`),
+  }));
+
   return (
     <>
       <Hero
         title={t("home.hero.title")}
-        subtitle={t("home.hero.subtitle")}
-        cta={
-          <>
-            <Button>{t("home.hero.cta_primary")}</Button>
-            <Button variant="outline">{t("home.hero.cta_secondary")}</Button>
-          </>
-        }
-        image={
-          <div className="flex h-full w-full items-center justify-center text-fg-muted">
-            {t("home.hero.image_placeholder")}
-          </div>
-        }
+        slides={slides}
+        ctaPrimary={<Button>{t("home.hero.cta_primary")}</Button>}
+        ctaSecondary={<Button variant="outline">{t("home.hero.cta_secondary")}</Button>}
       />
 
       <section className="py-12 sm:py-16">

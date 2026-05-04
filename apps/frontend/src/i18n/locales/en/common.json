@@ -23,10 +23,22 @@
   "home": {
     "hero": {
       "title": "A modern dental practice for the whole family",
-      "subtitle": "Premium Smile combines clinical excellence with a calm, welcoming experience. Whatever brings you in, we make sure you leave feeling looked after.",
       "cta_primary": "Book a consultation",
       "cta_secondary": "See our services",
-      "image_placeholder": "Hero image placeholder"
+      "slides": {
+        "calm": {
+          "alt": "Calm treatment room with natural light",
+          "description": "Premium Smile combines clinical excellence with a calm, welcoming experience. Whatever brings you in, we make sure you leave feeling looked after."
+        },
+        "team": {
+          "alt": "Friendly clinician greeting a patient at reception",
+          "description": "A team that takes the time to listen, plans every step in plain language, and treats your visit as more than a transaction."
+        },
+        "result": {
+          "alt": "Patient smiling confidently after treatment",
+          "description": "Cosmetic, restorative, and preventive care delivered with the craft of a luxury studio — for results that still look like you."
+        }
+      }
     },
     "services": {
       "title": "What we do",
