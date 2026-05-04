@@ -97,7 +97,7 @@ export function Hero({
 
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[10%] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--bg)_30%,transparent)_0%,var(--bg)_100%)]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[12%] bg-[linear-gradient(180deg,transparent_0%,color-mix(in_srgb,var(--bg)_15%,transparent)_40%,color-mix(in_srgb,var(--bg)_60%,transparent)_75%,var(--bg)_100%)]"
         />
 
         <div
@@ -140,7 +140,7 @@ export function Hero({
         </div>
 
         {isCarousel && (
-          <div className="absolute inset-x-0 bottom-[68px] z-[4] flex justify-center gap-2 sm:bottom-[80px]">
+          <div className="absolute inset-x-0 bottom-[68px] z-[4] flex justify-center gap-2 sm:bottom-[88px]">
             {slides.map((slide, i) => (
               <button
                 // biome-ignore lint/suspicious/noArrayIndexKey: image src may repeat across slides; combining with index ensures unique keys
