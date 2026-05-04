@@ -33,7 +33,27 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.user.login == 'dependabot[bot]' && vars.DEPENDABOT_LOCKFILE_SYNC_ENABLED == 'true'
+    # The job is gated on THREE conditions, all of which must hold:
+    #
+    #  1. PR author is dependabot[bot] -- scopes the workflow to
+    #     Dependabot PRs only (read from the event payload, stable
+    #     for the PR's whole lifetime).
+    #  2. The TRIGGERING actor is dependabot[bot] -- this is the
+    #     critical guard for secret access. GitHub only exposes the
+    #     "Dependabot secrets" namespace (where the PAT lives) when
+    #     the actor on the run is dependabot[bot]. On the synchronize
+    #     event that follows our own push, the actor is
+    #     github-actions[bot], the PAT is empty, and the run would
+    #     hard-fail at "Verify PAT is configured". This guard makes
+    #     the run skip cleanly instead. It also subsumes the previous
+    #     post-checkout loop_guard step, which was unreachable on the
+    #     failing follow-up runs.
+    #  3. The repo variable DEPENDABOT_LOCKFILE_SYNC_ENABLED is "true"
+    #     -- the explicit operator opt-in.
+    if: |
+      github.event.pull_request.user.login == 'dependabot[bot]'
+      && github.actor == 'dependabot[bot]'
+      && vars.DEPENDABOT_LOCKFILE_SYNC_ENABLED == 'true'
     steps:
       - name: Verify PAT is configured
         env:
@@ -51,21 +71,8 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.DEPENDABOT_LOCKFILE_SYNC_PAT }}
 
-      - name: Guard against self-triggered loops
-        id: loop_guard
-        run: |
-          LAST_AUTHOR=$(git log -1 --format='%ae' HEAD)
-          echo "Last commit author email: $LAST_AUTHOR"
-          if echo "$LAST_AUTHOR" | grep -q "github-actions\[bot\]@users.noreply.github.com"; then
-            echo "Last commit is from github-actions[bot]; this workflow already ran on a previous event. Skipping to prevent loop."
-            echo "skip=true" >> $GITHUB_OUTPUT
-          else
-            echo "skip=false" >> $GITHUB_OUTPUT
-          fi
-
       - name: Detect whether a package.json changed
         id: changed
-        if: steps.loop_guard.outputs.skip != 'true'
         run: |
           BASE_SHA="${{ github.event.pull_request.base.sha }}"
           HEAD_SHA="${{ github.event.pull_request.head.sha }}"
@@ -78,21 +85,21 @@ jobs:
           fi
 
       - name: Set up Node.js
-        if: steps.loop_guard.outputs.skip != 'true' && steps.changed.outputs.needs_pnpm == 'true'
+        if: steps.changed.outputs.needs_pnpm == 'true'
         uses: actions/setup-node@v6
         with:
           node-version: "22"
 
       - name: Install pnpm
-        if: steps.loop_guard.outputs.skip != 'true' && steps.changed.outputs.needs_pnpm == 'true'
+        if: steps.changed.outputs.needs_pnpm == 'true'
         run: npm install -g pnpm@10.33.0
 
       - name: Regenerate pnpm lockfile
-        if: steps.loop_guard.outputs.skip != 'true' && steps.changed.outputs.needs_pnpm == 'true'
+        if: steps.changed.outputs.needs_pnpm == 'true'
         run: pnpm install --no-frozen-lockfile --lockfile-only
 
       - name: Commit and push lockfile updates
-        if: steps.loop_guard.outputs.skip != 'true' && steps.changed.outputs.needs_pnpm == 'true'
+        if: steps.changed.outputs.needs_pnpm == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
