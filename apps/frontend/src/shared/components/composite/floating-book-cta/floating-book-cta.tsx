@@ -1,4 +1,5 @@
 import { Phone } from "lucide-react";
+import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { IconButton } from "@/shared/components/ui/icon-button/icon-button";
 import { cn } from "@/shared/lib/cn";
@@ -17,12 +18,18 @@ type FloatingBookCtaProps = {
  * buttons' hover state), outlined-elevated on hover (the social buttons'
  * base state). Phone icon inside, dialing the clinic on click.
  *
- * Mounted once at the layout level so it appears on every page.
+ * Rendered via React Portal directly into `document.body` so no layout
+ * ancestor's CSS (transform, filter, contain, backdrop-filter, dvh-min-height)
+ * can promote it into a non-viewport containing block — a known iOS Safari
+ * pitfall where `position: fixed` would otherwise behave like `position: absolute`
+ * relative to the document root, making the button only visible near the page bottom.
  */
 export function FloatingBookCta({ href, onClick, className }: FloatingBookCtaProps) {
   const { t } = useTranslation();
 
-  return (
+  if (typeof document === "undefined") return null;
+
+  return createPortal(
     <IconButton
       icon={<Phone aria-hidden />}
       label={t("book_cta.aria_label")}
@@ -39,6 +46,7 @@ export function FloatingBookCta({ href, onClick, className }: FloatingBookCtaPro
         "hover:border-border-subtle hover:bg-bg-elevated hover:text-accent hover:shadow-cta-lg",
         className,
       )}
-    />
+    />,
+    document.body,
   );
 }
