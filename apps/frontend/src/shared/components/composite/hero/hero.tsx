@@ -61,109 +61,105 @@ export function Hero({
     <section
       aria-label={ariaLabel}
       {...(isCarousel ? { "aria-roledescription": "carousel" } : {})}
-      className={cn(
-        "relative w-full overflow-hidden bg-bg-subtle",
-        "h-[clamp(560px,80vh,780px)]",
-        className,
-      )}
+      className={cn("relative w-full bg-bg", className)}
     >
-      {slides.map((slide, i) => {
-        const isCurrent = i === active;
-        return (
-          // biome-ignore lint/a11y/useSemanticElements: WAI-ARIA carousel pattern uses role="group" + aria-roledescription="slide"
-          <div
-            // biome-ignore lint/suspicious/noArrayIndexKey: image src may repeat across slides; combining with index ensures unique keys
-            key={`${slide.src}-${i}`}
-            role="group"
-            aria-roledescription="slide"
-            aria-label={slideLabel({ index: i, total })}
-            aria-current={isCurrent}
-            className={cn(
-              "absolute inset-0 transition-opacity duration-1000 ease-in-out motion-reduce:transition-none",
-              isCurrent ? "opacity-100" : "pointer-events-none opacity-0",
-            )}
-          >
-            <img
-              src={slide.src}
-              alt={isCurrent ? slide.alt : ""}
-              className="h-full w-full object-cover"
-              loading={i === 0 ? "eager" : "lazy"}
-              decoding="async"
-            />
+      <div className="relative h-[clamp(440px,70vh,640px)] w-full overflow-hidden bg-bg-subtle">
+        {slides.map((slide, i) => {
+          const isCurrent = i === active;
+          return (
+            // biome-ignore lint/a11y/useSemanticElements: WAI-ARIA carousel pattern uses role="group" + aria-roledescription="slide"
             <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[rgb(20_15_30_/_0.22)] via-[rgb(20_15_30_/_0.05)] to-[rgb(20_15_30_/_0.40)]"
-            />
-          </div>
-        );
-      })}
+              // biome-ignore lint/suspicious/noArrayIndexKey: image src may repeat across slides; combining with index ensures unique keys
+              key={`${slide.src}-${i}`}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={slideLabel({ index: i, total })}
+              aria-current={isCurrent}
+              className={cn(
+                "absolute inset-0 transition-opacity duration-1000 ease-in-out motion-reduce:transition-none",
+                isCurrent ? "opacity-100" : "pointer-events-none opacity-0",
+              )}
+            >
+              <img
+                src={slide.src}
+                alt={isCurrent ? slide.alt : ""}
+                className="h-full w-full object-cover"
+                loading={i === 0 ? "eager" : "lazy"}
+                decoding="async"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[rgb(20_15_30_/_0.22)] via-[rgb(20_15_30_/_0.05)] to-[rgb(20_15_30_/_0.40)]"
+              />
+            </div>
+          );
+        })}
 
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[35%] bg-[linear-gradient(180deg,transparent_0%,var(--bg)_65%)]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 -bottom-px z-[3] h-[2px] bg-bg"
-      />
-
-      <div
-        className={cn(
-          "absolute z-[4] flex max-w-[720px] flex-col gap-4",
-          "left-[clamp(24px,5vw,46px)] right-[clamp(24px,5vw,46px)]",
-          "bottom-[60px] sm:bottom-[clamp(80px,11vh,130px)]",
-        )}
-      >
-        <Heading
-          level={1}
-          className="text-white [text-shadow:0_2px_24px_rgba(20,15,30,0.35)] [text-wrap:balance]"
+        <div
+          className={cn(
+            "absolute z-[4] flex max-w-[720px] flex-col gap-4",
+            "left-[clamp(24px,5vw,46px)] right-[clamp(24px,5vw,46px)]",
+            "bottom-[60px] sm:bottom-[clamp(80px,11vh,130px)]",
+          )}
         >
-          {title}
-        </Heading>
+          <Heading
+            level={1}
+            className="text-white [text-shadow:0_2px_24px_rgba(20,15,30,0.35)] [text-wrap:balance]"
+          >
+            {title}
+          </Heading>
 
-        {total > 0 && (
-          <div className="grid max-w-[540px]">
+          {total > 0 && (
+            <div className="grid max-w-[540px]">
+              {slides.map((slide, i) => (
+                <p
+                  // biome-ignore lint/suspicious/noArrayIndexKey: stable slot for crossfade
+                  key={`desc-${slide.src}-${i}`}
+                  aria-hidden={i !== active}
+                  className={cn(
+                    "[grid-area:1/1] text-justify leading-snug text-white/95 [text-shadow:0_1px_12px_rgba(20,15,30,0.4)]",
+                    "transition-opacity duration-1000 ease-in-out motion-reduce:transition-none",
+                    i === active ? "opacity-100" : "pointer-events-none opacity-0",
+                  )}
+                >
+                  {slide.description}
+                </p>
+              ))}
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 gap-3 sm:max-w-md sm:grid-cols-2 [&>*]:w-full">
+            {ctaPrimary}
+            {ctaSecondary}
+          </div>
+        </div>
+
+        {isCarousel && (
+          <div className="absolute inset-x-0 bottom-3 z-[4] flex justify-center gap-2">
             {slides.map((slide, i) => (
-              <p
-                // biome-ignore lint/suspicious/noArrayIndexKey: stable slot for crossfade
-                key={`desc-${slide.src}-${i}`}
-                aria-hidden={i !== active}
+              <button
+                // biome-ignore lint/suspicious/noArrayIndexKey: image src may repeat across slides; combining with index ensures unique keys
+                key={`dot-${slide.src}-${i}`}
+                type="button"
+                aria-label={slideLabel({ index: i, total })}
+                aria-current={i === active}
+                onClick={() => goto(i)}
                 className={cn(
-                  "[grid-area:1/1] text-justify leading-snug text-white/95 [text-shadow:0_1px_12px_rgba(20,15,30,0.4)]",
-                  "transition-opacity duration-1000 ease-in-out motion-reduce:transition-none",
-                  i === active ? "opacity-100" : "pointer-events-none opacity-0",
+                  "h-2 rounded-full transition-all duration-200 ease-out",
+                  i === active
+                    ? "w-7 bg-white"
+                    : "w-2 bg-white/50 hover:scale-125 hover:bg-white/85",
                 )}
-              >
-                {slide.description}
-              </p>
+              />
             ))}
           </div>
         )}
-
-        <div className="grid grid-cols-1 gap-3 sm:max-w-md sm:grid-cols-2 [&>*]:w-full">
-          {ctaPrimary}
-          {ctaSecondary}
-        </div>
       </div>
 
-      {isCarousel && (
-        <div className="absolute inset-x-0 bottom-3 z-[4] flex justify-center gap-2">
-          {slides.map((slide, i) => (
-            <button
-              // biome-ignore lint/suspicious/noArrayIndexKey: image src may repeat across slides; combining with index ensures unique keys
-              key={`dot-${slide.src}-${i}`}
-              type="button"
-              aria-label={slideLabel({ index: i, total })}
-              aria-current={i === active}
-              onClick={() => goto(i)}
-              className={cn(
-                "h-2 rounded-full transition-all duration-200 ease-out",
-                i === active ? "w-7 bg-white" : "w-2 bg-white/50 hover:scale-125 hover:bg-white/85",
-              )}
-            />
-          ))}
-        </div>
-      )}
+      <div
+        aria-hidden
+        className="h-[120px] w-full bg-gradient-to-b from-bg-subtle to-bg sm:h-[160px]"
+      />
     </section>
   );
 }
