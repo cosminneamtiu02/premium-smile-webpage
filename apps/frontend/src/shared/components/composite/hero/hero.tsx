@@ -97,7 +97,7 @@ export function Hero({
 
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[10%] bg-gradient-to-b from-transparent to-[var(--bg)]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[10%] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--bg)_30%,transparent)_0%,var(--bg)_100%)]"
         />
 
         <div
