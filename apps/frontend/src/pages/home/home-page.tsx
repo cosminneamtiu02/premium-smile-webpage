@@ -79,7 +79,7 @@ export function HomePage() {
         </Container>
       </section>
 
-      <section className="bg-bg-subtle py-12 sm:py-16">
+      <section className="py-12 sm:py-16">
         <Container width="lg">
           <div className="mb-8 max-w-2xl">
             <Heading level={2}>{t("home.reviews.title")}</Heading>
