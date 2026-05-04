@@ -59,3 +59,6 @@ packages/api-client/openapi.json
 *.log
 docs/implementation-reference.md
 infra/compose/docker-compose.override.yml
+
+# Local design / mockup reference (not tracked, not built)
+example/

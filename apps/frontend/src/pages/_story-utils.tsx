@@ -7,12 +7,14 @@ import {
   RouterProvider,
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { FloatingBookCta } from "@/shared/components/composite/floating-book-cta/floating-book-cta";
 import { Footer } from "@/shared/components/composite/footer/footer";
-import { NavBar } from "@/shared/components/composite/nav-bar/nav-bar";
+import { TopBar } from "@/shared/components/composite/top-bar/top-bar";
 
 /**
  * Wraps a page component with the same layout shell the real app uses
- * (NavBar + main + Footer) and a memory router so <Link>s resolve.
+ * (TopBar + main + Footer + FloatingBookCta) and a memory router so
+ * <Link>s resolve.
  *
  * Lives in `src/pages/` because page stories are the only consumers.
  */
@@ -26,11 +28,12 @@ export function PageStoryShell({
   const rootRoute = createRootRoute({
     component: () => (
       <div className="flex min-h-dvh flex-col bg-bg text-fg">
-        <NavBar />
+        <TopBar bookLabel="Book now" />
         <main className="flex-1">
           <Outlet />
         </main>
         <Footer />
+        <FloatingBookCta href="tel:+40700000000" />
       </div>
     ),
   });

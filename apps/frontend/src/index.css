@@ -1,74 +1,40 @@
 @import "tailwindcss";
 
-/* Premium Smile signature color — a clinical, modern teal */
+/* Single brand palette — there is no theme switcher. The lavender tokens
+ * below are the entire colour system. The only @theme entries are values
+ * that need Tailwind's auto-generated colour utilities (gold for star ratings). */
 @theme {
-  --color-brand-50: #eefcfa;
-  --color-brand-100: #d1f7f1;
-  --color-brand-200: #a4eee3;
-  --color-brand-300: #71dfd0;
-  --color-brand-400: #3ec9b8;
-  --color-brand-500: #18ad9c;
-  --color-brand-600: #118b80;
-  --color-brand-700: #0f6e67;
-  --color-brand-800: #0f5751;
-  --color-brand-900: #0f4842;
-  --color-brand-950: #052b28;
+  --color-gold: #d4af37;
 }
 
-/* Theme tokens — consumed by component classes.
- * Three themes: light (default), dark, brand.
- * Data attribute on <html> selects which palette is live. */
 @layer base {
-  :root,
-  [data-theme="light"] {
-    --bg: oklch(99% 0 0);
-    --bg-elevated: oklch(100% 0 0);
-    --bg-subtle: oklch(97% 0 0);
-    --fg: oklch(20% 0 0);
-    --fg-muted: oklch(45% 0.01 220);
-    --border: oklch(92% 0 0);
-    --accent: var(--color-brand-600);
-    --accent-fg: oklch(100% 0 0);
-    --accent-hover: var(--color-brand-700);
-    --ring: var(--color-brand-400);
+  /* Lavender — the brand. Applied at :root so it's live from first paint. */
+  :root {
+    --bg: rgb(249, 248, 250);
+    --bg-elevated: #ffffff;
+    --bg-subtle: rgb(229, 228, 236);
+    --bg-inverse: rgb(45, 38, 60);
+
+    --fg: rgb(45, 38, 60);
+    --fg-muted: rgb(145, 146, 151);
+    --fg-on-accent: #ffffff;
+
+    --border: rgb(204, 198, 223);
+    --border-subtle: rgba(131, 119, 163, 0.18);
+
+    --accent: rgb(131, 119, 163);
+    --accent-fg: #ffffff;
+    --accent-hover: rgb(136, 117, 180);
+    --accent-soft: rgb(229, 228, 236);
+
+    --ring: rgb(160, 152, 180);
     --danger: oklch(60% 0.22 25);
-  }
-
-  [data-theme="dark"] {
-    --bg: oklch(17% 0.01 220);
-    --bg-elevated: oklch(22% 0.01 220);
-    --bg-subtle: oklch(25% 0.01 220);
-    --fg: oklch(98% 0 0);
-    --fg-muted: oklch(70% 0.01 220);
-    --border: oklch(32% 0.01 220);
-    --accent: var(--color-brand-400);
-    --accent-fg: oklch(15% 0.01 220);
-    --accent-hover: var(--color-brand-300);
-    --ring: var(--color-brand-500);
-    --danger: oklch(70% 0.2 25);
-  }
-
-  [data-theme="brand"] {
-    --bg: var(--color-brand-50);
-    --bg-elevated: oklch(100% 0 0);
-    --bg-subtle: var(--color-brand-100);
-    --fg: var(--color-brand-950);
-    --fg-muted: var(--color-brand-800);
-    --border: var(--color-brand-200);
-    --accent: var(--color-brand-700);
-    --accent-fg: oklch(100% 0 0);
-    --accent-hover: var(--color-brand-800);
-    --ring: var(--color-brand-500);
-    --danger: oklch(55% 0.22 25);
   }
 
   html {
     color-scheme: light;
     background-color: var(--bg);
     color: var(--fg);
-  }
-  html[data-theme="dark"] {
-    color-scheme: dark;
   }
 
   body {
@@ -98,41 +64,113 @@
   }
 }
 
-/* Utility classes that map to theme tokens — these let components write
- * `bg-bg`, `text-fg`, `border-border` etc. without knowing which theme is live. */
+/* ────────────────────────────────────────────────────────────────────
+ * Theme-token utilities, declared with `@utility` so Tailwind 4
+ * auto-generates every variant — `hover:`, `group-hover:`, `focus:`,
+ * `focus-visible:`, `group-focus-visible:`, `md:`, etc.
+ *
+ * Previous version put these in `@layer utilities`, which means
+ * Tailwind sees them as opaque CSS classes and DOES NOT generate
+ * variants. Anything like `group-hover:text-accent` was a silent
+ * no-op. `@utility` is the modern Tailwind 4 directive that fixes
+ * this — every utility below now works with every variant.
+ * ──────────────────────────────────────────────────────────────────── */
+
+/* Foreground colours */
+@utility text-fg {
+  color: var(--fg);
+}
+@utility text-fg-muted {
+  color: var(--fg-muted);
+}
+@utility text-fg-on-accent {
+  color: var(--fg-on-accent);
+}
+@utility text-accent {
+  color: var(--accent);
+}
+@utility text-accent-fg {
+  color: var(--accent-fg);
+}
+@utility text-gold {
+  color: var(--color-gold);
+}
+
+/* Background colours */
+@utility bg-bg {
+  background-color: var(--bg);
+}
+@utility bg-bg-elevated {
+  background-color: var(--bg-elevated);
+}
+@utility bg-bg-subtle {
+  background-color: var(--bg-subtle);
+}
+@utility bg-bg-inverse {
+  background-color: var(--bg-inverse);
+}
+@utility bg-accent {
+  background-color: var(--accent);
+}
+@utility bg-accent-hover {
+  background-color: var(--accent-hover);
+}
+@utility bg-accent-soft {
+  background-color: var(--accent-soft);
+}
+
+/* Border colours */
+@utility border-border {
+  border-color: var(--border);
+}
+@utility border-border-subtle {
+  border-color: var(--border-subtle);
+}
+@utility border-accent {
+  border-color: var(--accent);
+}
+@utility border-accent-soft {
+  border-color: var(--accent-soft);
+}
+
+/* Ring + SVG fill */
+@utility ring-ring {
+  --tw-ring-color: var(--ring);
+}
+@utility fill-gold {
+  fill: var(--color-gold);
+}
+@utility fill-bg {
+  fill: var(--bg);
+}
+@utility fill-bg-elevated {
+  fill: var(--bg-elevated);
+}
+
+/* Lavender-tinted semantic shadows. They use `--accent` so the tint
+ * always matches the brand colour. */
+@utility shadow-soft-sm {
+  box-shadow: 0 4px 20px -8px color-mix(in srgb, var(--accent) 15%, transparent);
+}
+@utility shadow-soft-md {
+  box-shadow: 0 6px 18px -6px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+@utility shadow-cta {
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+@utility shadow-cta-lg {
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+/* Translucent bg-elevated — slashes can't be in `@utility` names so
+ * these stay declared in `@layer utilities`. They aren't used with
+ * variants, so the no-variant limitation doesn't matter for them. */
 @layer utilities {
-  .bg-bg {
-    background-color: var(--bg);
+  .bg-bg-elevated\/86 {
+    background-color: color-mix(in srgb, var(--bg-elevated) 86%, transparent);
   }
-  .bg-bg-elevated {
-    background-color: var(--bg-elevated);
-  }
-  .bg-bg-subtle {
-    background-color: var(--bg-subtle);
-  }
-  .text-fg {
-    color: var(--fg);
-  }
-  .text-fg-muted {
-    color: var(--fg-muted);
-  }
-  .border-border {
-    border-color: var(--border);
-  }
-  .bg-accent {
-    background-color: var(--accent);
-  }
-  .text-accent {
-    color: var(--accent);
-  }
-  .text-accent-fg {
-    color: var(--accent-fg);
-  }
-  .hover\:bg-accent-hover:hover {
-    background-color: var(--accent-hover);
-  }
-  .ring-ring {
-    --tw-ring-color: var(--ring);
+  .bg-bg-elevated\/96 {
+    background-color: color-mix(in srgb, var(--bg-elevated) 96%, transparent);
   }
 }
 

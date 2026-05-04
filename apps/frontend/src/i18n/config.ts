@@ -27,9 +27,11 @@ i18n
       escapeValue: false,
     },
     detection: {
-      order: ["localStorage", "navigator"],
-      lookupLocalStorage: "app.language",
-      caches: ["localStorage"],
+      // Browser language only — no localStorage. The page picks `navigator.language`
+      // on every visit. Falls through to `fallbackLng` when the detected
+      // locale isn't in `supportedLngs`.
+      order: ["navigator"],
+      caches: [],
     },
   });
 

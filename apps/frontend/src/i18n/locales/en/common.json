@@ -16,11 +16,9 @@
     "ro": "Romanian",
     "switch": "Language"
   },
-  "theme": {
-    "light": "Light",
-    "dark": "Dark",
-    "brand": "Brand",
-    "toggle_label": "Switch theme (current: {{theme}})"
+  "book_cta": {
+    "label": "Book now",
+    "aria_label": "Book a consultation by phone"
   },
   "home": {
     "hero": {
@@ -75,14 +73,28 @@
   },
   "footer": {
     "tagline": "Modern dentistry. Honest care.",
-    "contact": "Contact",
+    "contact_section": "Contact",
+    "contact_label": "Contact us here",
     "phone": "+40 700 000 000",
-    "email": "hello@premium-smile.ro",
-    "address": "Str. Exemplu 12, Sibiu, Romania",
-    "hours_title": "Opening hours",
-    "hours_weekdays": "Mon – Fri: 09:00 – 19:00",
-    "hours_saturday": "Sat: 09:00 – 14:00",
-    "hours_sunday": "Sun: closed",
+    "links_section": "Links",
+    "anpc_section": "Consumer protection",
+    "anpc_online": "<b>Online</b> dispute resolution",
+    "anpc_alt": "Alternative dispute resolution",
+    "anpc_logo_alt": "Romanian Authority for Consumer Protection (ANPC)",
+    "hours_title": "Working hours",
+    "hours_mon": "Mon",
+    "hours_tue": "Tue",
+    "hours_wed": "Wed",
+    "hours_thu": "Thu",
+    "hours_fri": "Fri",
+    "hours_sat": "Sat",
+    "hours_sun": "Sun",
+    "hours_value_weekday": "09:00 – 19:00",
+    "hours_value_saturday": "09:00 – 14:00",
+    "hours_value_sunday": "Closed",
+    "social_instagram_label": "Premium Smile on Instagram",
+    "social_tiktok_label": "Premium Smile on TikTok",
+    "back_to_top": "Back to top",
     "copyright": "© {{year}} Premium Smile. All rights reserved."
   },
   "error_boundary": {
