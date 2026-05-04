@@ -23,10 +23,22 @@
   "home": {
     "hero": {
       "title": "O clinica stomatologica moderna pentru toata familia",
-      "subtitle": "Premium Smile combina excelenta clinica cu o experienta calma si primitoare. Orice te aduce la noi, te asiguram ca vei pleca multumit de ingrijire.",
       "cta_primary": "Programeaza o consultatie",
       "cta_secondary": "Vezi serviciile",
-      "image_placeholder": "Imagine principala (placeholder)"
+      "slides": {
+        "calm": {
+          "alt": "Cabinet de tratament linistit cu lumina naturala",
+          "description": "Premium Smile combina excelenta clinica cu o experienta calma si primitoare. Orice te aduce la noi, te asiguram ca vei pleca multumit de ingrijire."
+        },
+        "team": {
+          "alt": "Medic primitor salutand un pacient la receptie",
+          "description": "O echipa care isi face timp sa asculte, explica fiecare pas pe limba ta si trateaza vizita ta ca pe mult mai mult decat o tranzactie."
+        },
+        "result": {
+          "alt": "Pacient zambind increzator dupa tratament",
+          "description": "Tratamente estetice, restaurative si preventive realizate cu meticulozitatea unui studio de lux — pentru rezultate care arata in continuare ca tine."
+        }
+      }
     },
     "services": {
       "title": "Ce facem",
