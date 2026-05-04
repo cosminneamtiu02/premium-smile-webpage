@@ -97,14 +97,14 @@ export function Hero({
 
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[35%] bg-[linear-gradient(180deg,transparent_0%,var(--bg-subtle)_65%)]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[10%] bg-gradient-to-b from-transparent to-[var(--bg)]"
         />
 
         <div
           className={cn(
             "absolute z-[4] flex max-w-[720px] flex-col gap-4",
             "left-[clamp(24px,5vw,46px)] right-[clamp(24px,5vw,46px)]",
-            "bottom-[60px] sm:bottom-[clamp(80px,11vh,130px)]",
+            "bottom-[140px] sm:bottom-[clamp(160px,18vh,220px)]",
           )}
         >
           <Heading
@@ -140,7 +140,7 @@ export function Hero({
         </div>
 
         {isCarousel && (
-          <div className="absolute inset-x-0 bottom-6 z-[4] flex justify-center gap-2 sm:bottom-8">
+          <div className="absolute inset-x-0 bottom-[80px] z-[4] flex justify-center gap-2 sm:bottom-[100px]">
             {slides.map((slide, i) => (
               <button
                 // biome-ignore lint/suspicious/noArrayIndexKey: image src may repeat across slides; combining with index ensures unique keys
@@ -160,11 +160,6 @@ export function Hero({
           </div>
         )}
       </div>
-
-      <div
-        aria-hidden
-        className="h-[120px] w-full bg-gradient-to-b from-bg-subtle to-bg sm:h-[160px]"
-      />
     </section>
   );
 }
