@@ -63,7 +63,7 @@ export function Hero({
       {...(isCarousel ? { "aria-roledescription": "carousel" } : {})}
       className={cn("relative -mt-4 w-full bg-bg", className)}
     >
-      <div className="relative h-screen w-full overflow-hidden bg-bg-subtle [@supports(height:100dvh)]:h-[100dvh]">
+      <div className="relative h-screen max-h-[640px] w-full overflow-hidden bg-bg-subtle [@supports(height:100dvh)]:h-[100dvh]">
         {slides.map((slide, i) => {
           const isCurrent = i === active;
           return (
