@@ -138,7 +138,10 @@ export function TopBar({
               <Button
                 {...(onBook ? { onClick: onBook } : {})}
                 className={cn(
-                  "relative h-10 px-5 text-sm font-medium shadow-cta hover:-translate-y-0.5 hover:shadow-cta-lg sm:h-11 sm:px-6",
+                  // Hidden on phone — the same CTA lives inside the mobile
+                  // dropdown panel below. `inline-flex` re-applies the
+                  // Button base display at md+.
+                  "relative hidden h-10 px-5 text-sm font-medium shadow-cta hover:-translate-y-0.5 hover:shadow-cta-lg sm:h-11 sm:px-6 md:inline-flex",
                   // Sliding underline like the nav links — uses accent-fg
                   // (white) so it shows against the lavender button bg.
                   "after:pointer-events-none after:absolute after:bottom-2 after:left-5 after:right-5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-accent-fg after:transition-transform after:duration-300 after:ease-out after:content-['']",
@@ -196,6 +199,19 @@ export function TopBar({
                 );
               })}
             </ul>
+            {bookLabel && (
+              <div className="mt-2 border-t border-border-subtle px-1 pt-2">
+                <Button
+                  onClick={() => {
+                    onBook?.();
+                    setOpen(false);
+                  }}
+                  className="h-12 w-full text-base font-medium shadow-cta"
+                >
+                  {bookLabel}
+                </Button>
+              </div>
+            )}
           </div>
         )}
       </div>

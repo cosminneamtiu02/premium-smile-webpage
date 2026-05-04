@@ -1,4 +1,4 @@
-import { screen } from "@testing-library/react";
+import { screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { renderWithProviders } from "@/test-utils";
@@ -49,5 +49,22 @@ describe("TopBar", () => {
     renderWithProviders(<TopBar items={ITEMS} activeKey="pricing" />);
     expect(screen.getByRole("link", { name: "Pricing" })).toHaveAttribute("aria-current", "page");
     expect(screen.getByRole("link", { name: "Home" })).not.toHaveAttribute("aria-current");
+  });
+
+  it("renders the CTA inside the open mobile menu and closes it on click", async () => {
+    const user = userEvent.setup();
+    const onBook = vi.fn();
+    renderWithProviders(<TopBar items={ITEMS} bookLabel="Book Now" onBook={onBook} />);
+
+    await user.click(screen.getByRole("button", { name: /open menu/i }));
+    const dialog = screen.getByRole("dialog");
+    const dropdownBook = within(dialog).getByRole("button", { name: "Book Now" });
+
+    await user.click(dropdownBook);
+    expect(onBook).toHaveBeenCalledTimes(1);
+    expect(screen.getByRole("button", { name: /open menu/i })).toHaveAttribute(
+      "aria-expanded",
+      "false",
+    );
   });
 });
