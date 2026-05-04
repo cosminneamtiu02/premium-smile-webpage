@@ -15,8 +15,9 @@ import { I18nextProvider, initReactI18next } from "react-i18next";
 import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from "@/i18n/config";
 import enCommon from "@/i18n/locales/en/common.json";
 import roCommon from "@/i18n/locales/ro/common.json";
+import { FloatingBookCta } from "@/shared/components/composite/floating-book-cta/floating-book-cta";
 import { Footer } from "@/shared/components/composite/footer/footer";
-import { NavBar } from "@/shared/components/composite/nav-bar/nav-bar";
+import { TopBar } from "@/shared/components/composite/top-bar/top-bar";
 
 const testI18n = i18n.createInstance();
 testI18n.use(initReactI18next).init({
@@ -77,19 +78,20 @@ export function renderWithRouter(ui: ReactNode, options: { initialPath?: string 
 }
 
 /**
- * Render a page wrapped in the real layout shell (NavBar + main + Footer)
- * inside a memory router. Use for page-level a11y tests so axe sees the
- * whole user-facing surface, including landmarks.
+ * Render a page wrapped in the real layout shell (TopBar + main + Footer +
+ * FloatingBookCta) inside a memory router. Use for page-level a11y tests
+ * so axe sees the whole user-facing surface, including landmarks.
  */
 export function renderPageWithLayout(page: ReactNode, initialPath = "/en") {
   const rootRoute = createRootRoute({
     component: () => (
       <div className="flex min-h-dvh flex-col bg-bg text-fg">
-        <NavBar />
+        <TopBar bookLabel="Book now" />
         <main id="main-content" className="flex-1">
           <Outlet />
         </main>
         <Footer />
+        <FloatingBookCta href="tel:+40700000000" />
       </div>
     ),
   });

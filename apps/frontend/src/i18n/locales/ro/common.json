@@ -16,11 +16,9 @@
     "ro": "Romana",
     "switch": "Limba"
   },
-  "theme": {
-    "light": "Luminoasa",
-    "dark": "Intunecata",
-    "brand": "Marca",
-    "toggle_label": "Schimba tema (actuala: {{theme}})"
+  "book_cta": {
+    "label": "Programeaza",
+    "aria_label": "Programeaza o consultatie la telefon"
   },
   "home": {
     "hero": {
@@ -75,14 +73,28 @@
   },
   "footer": {
     "tagline": "Stomatologie moderna. Ingrijire onesta.",
-    "contact": "Contact",
+    "contact_section": "Contact",
+    "contact_label": "Contacteaza-ne aici",
     "phone": "+40 700 000 000",
-    "email": "hello@premium-smile.ro",
-    "address": "Str. Exemplu 12, Sibiu, Romania",
-    "hours_title": "Program",
-    "hours_weekdays": "Luni – Vineri: 09:00 – 19:00",
-    "hours_saturday": "Sambata: 09:00 – 14:00",
-    "hours_sunday": "Duminica: inchis",
+    "links_section": "Linkuri",
+    "anpc_section": "Protectia consumatorilor",
+    "anpc_online": "Solutionarea <b>online</b> a litigiilor",
+    "anpc_alt": "Solutionarea alternativa a litigiilor",
+    "anpc_logo_alt": "Autoritatea Nationala pentru Protectia Consumatorilor (ANPC)",
+    "hours_title": "Program de lucru",
+    "hours_mon": "Luni",
+    "hours_tue": "Marti",
+    "hours_wed": "Miercuri",
+    "hours_thu": "Joi",
+    "hours_fri": "Vineri",
+    "hours_sat": "Sambata",
+    "hours_sun": "Duminica",
+    "hours_value_weekday": "09:00 – 19:00",
+    "hours_value_saturday": "09:00 – 14:00",
+    "hours_value_sunday": "Inchis",
+    "social_instagram_label": "Premium Smile pe Instagram",
+    "social_tiktok_label": "Premium Smile pe TikTok",
+    "back_to_top": "Inapoi sus",
     "copyright": "© {{year}} Premium Smile. Toate drepturile rezervate."
   },
   "error_boundary": {
