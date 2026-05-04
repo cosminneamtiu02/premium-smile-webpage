@@ -54,6 +54,58 @@
         "title": "Family care",
         "description": "Friendly, gentle dentistry for children and adults alike."
       }
+    },
+    "reviews": {
+      "title": "What our patients say",
+      "aria_label": "Patient reviews",
+      "previous_label": "Previous review",
+      "next_label": "Next review",
+      "navigate_label": "Navigate Reviews",
+      "stars_label": "{{rating}} out of 5 stars",
+      "items": {
+        "andreea": {
+          "name": "Andreea Popescu",
+          "role": "Veneers patient",
+          "title": "Confidence restored",
+          "text": "Premium Smile transformed my confidence. The team explained every step, and the result is the smile I dreamed of."
+        },
+        "mihai": {
+          "name": "Mihai Ionescu",
+          "role": "Implants",
+          "title": "Calm, professional, kind",
+          "text": "From consultation to follow-up, the experience felt like a spa, not a clinic. I cannot recommend them enough."
+        },
+        "elena": {
+          "name": "Elena Dumitru",
+          "role": "Whitening",
+          "title": "Worth every minute",
+          "text": "I drove two hours each way and would do it again. Painless, gorgeous results, and the kindest staff."
+        },
+        "radu": {
+          "name": "Radu Marin",
+          "role": "Routine cleaning",
+          "title": "First clinic without fear",
+          "text": "I have always been anxious at the dentist. Here, for the first time, I felt completely safe. They listened."
+        },
+        "ioana": {
+          "name": "Ioana Stan",
+          "role": "Orthodontics",
+          "title": "Like a different person",
+          "text": "Eighteen months of clear aligners, weekly check-ins, zero pressure. My alignment and bite are finally right."
+        },
+        "cristian": {
+          "name": "Cristian Voicu",
+          "role": "Full mouth plan",
+          "title": "They saw the whole picture",
+          "text": "Other clinics gave me a price. Premium Smile gave me a plan. Three years later, my mouth is healthy."
+        },
+        "ana": {
+          "name": "Ana Petrescu",
+          "role": "Family patient",
+          "title": "My kids actually ask to go",
+          "text": "Two children, zero tantrums. The pediatric room and the staff make every visit feel like an adventure."
+        }
+      }
     }
   },
   "pricing": {
