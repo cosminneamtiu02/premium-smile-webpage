@@ -1,3 +1,4 @@
+import type { Ref } from "react";
 import { SectionHeading } from "@/shared/components/composite/section-heading/section-heading";
 import { Button } from "@/shared/components/ui/button/button";
 import { RichText, type RichTextPart } from "@/shared/components/ui/rich-text/rich-text";
@@ -20,62 +21,30 @@ export type Doctor = {
   bio: string | ReadonlyArray<RichTextPart>;
 };
 
-/**
- * Where this card sits inside a `Doctors` list. The decorative connecting
- * line uses this to know which segments to draw (top overhang on first card,
- * bottom overhang on last, gap-bridge between adjacent cards).
- */
-export type DoctorCardPosition = "only" | "first" | "middle" | "last";
-
 type DoctorCardProps = {
   doctor: Doctor;
   /** On md+ viewports, place the photo on this side. Mobile always hides the photo. */
   imageSide?: "left" | "right";
-  /** Where this card sits in a list — drives the decorative line. Defaults to "only". */
-  position?: DoctorCardPosition;
   /** Optional CTA below the bio. Omit for a text-only card. */
   ctaLabel?: string;
   onCta?: () => void;
+  /** Forwarded to the root <article>. Used by DoctorShowcase to measure layout. */
+  ref?: Ref<HTMLElement>;
   className?: string;
 };
 
 const ROLE_SEPARATOR = " · ";
 
-// Geometry of the decorative line (matches the example's pixel grid).
-const INSET = 24;
-const LINE_W = 6;
-const GAP = 56;
-const OVERHANG = 32;
-const GAP_HALF_MINUS_LINE = GAP / 2 - LINE_W / 2; // 25
-const MIRROR_HEIGHT = GAP / 2 + LINE_W / 2; // 31
-
-/**
- * The line stays on a single side at mobile width (no image alternation
- * to mirror), then flips to follow `imageSide` on md+. Mirror is always
- * the opposite side. Encoded as Tailwind classes so the breakpoint switch
- * is pure CSS.
- */
-const LINE_SIDE_CLASS: Record<"left" | "right", string> = {
-  left: "left-6",
-  right: "left-6 md:left-auto md:right-6",
-};
-const MIRROR_SIDE_CLASS: Record<"left" | "right", string> = {
-  left: "right-6",
-  right: "right-6 md:right-auto md:left-6",
-};
-
 export function DoctorCard({
   doctor,
   imageSide = "left",
-  position = "only",
   ctaLabel,
   onCta,
+  ref,
   className,
 }: DoctorCardProps) {
   const headingId = `doctor-${doctor.id}-name`;
   const eyebrowText = doctor.roles.join(ROLE_SEPARATOR);
-  const isFirst = position === "first" || position === "only";
-  const isLast = position === "last" || position === "only";
   const isTextOnly = !doctor.photo;
 
   const bioContent =
@@ -106,12 +75,13 @@ export function DoctorCard({
 
   return (
     <article
+      ref={ref}
       aria-labelledby={headingId}
       className={cn(
         "relative flex w-full flex-col gap-4 rounded-2xl bg-bg-subtle shadow-soft-sm",
-        // Mobile is ALWAYS text-only-style: photo is hidden, content centered,
-        // padding clears the decorative side line (left-6, w-1.5 → 24-30px).
-        // px-10 keeps content beyond the line on both sides.
+        // Mobile is ALWAYS text-only-style: photo is hidden, content centered.
+        // px-10 keeps content beyond the decorative line drawn by the parent
+        // showcase (24-30px from each edge).
         "px-10 py-8",
         // md+ branches: text-only cards stay centered with generous padding;
         // cards with a photo become a horizontal split with no outer padding.
@@ -170,49 +140,6 @@ export function DoctorCard({
           </div>
         )}
       </div>
-
-      {/* Decorative continuous line — visible at every breakpoint.
-       * Sides stay on left/right at mobile (no alternation possible without
-       * images), then mirror imageSide at md+. */}
-      <div
-        aria-hidden="true"
-        className={cn("pointer-events-none absolute w-1.5 bg-accent", LINE_SIDE_CLASS[imageSide])}
-        style={{
-          top: isFirst ? -OVERHANG : 0,
-          bottom: isLast ? -OVERHANG : -MIRROR_HEIGHT,
-        }}
-      />
-      {isFirst && (
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute right-6 left-6 h-1.5 bg-accent"
-          style={{ top: -OVERHANG }}
-        />
-      )}
-      {!isLast && (
-        <>
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute h-1.5 bg-accent"
-            style={{
-              top: `calc(100% + ${GAP_HALF_MINUS_LINE}px)`,
-              left: INSET + LINE_W,
-              right: INSET + LINE_W,
-            }}
-          />
-          <div
-            aria-hidden="true"
-            className={cn(
-              "pointer-events-none absolute w-1.5 bg-accent",
-              MIRROR_SIDE_CLASS[imageSide],
-            )}
-            style={{
-              top: `calc(100% + ${GAP_HALF_MINUS_LINE}px)`,
-              height: MIRROR_HEIGHT,
-            }}
-          />
-        </>
-      )}
     </article>
   );
 }
