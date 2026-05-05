@@ -150,6 +150,11 @@ Notes:
 
 - Photo container caps at `200px` (vs. `240px` on the doctor card) — sized
   for a 3-col grid on a `Container width="lg"`.
+- `h-full` on the article so the card stretches to fill its grid cell. Paired
+  with `auto-rows-fr` on the grid (see grid section below), this enforces a
+  shared height across every card regardless of how many roles wrap onto a
+  second line. Without this, a card whose role list wraps becomes taller and
+  produces a visually ragged grid.
 - `level={3}` (no `visualLevel` override) so these tiles are subordinate to
   the grid's `<h2>` and visually quieter than the doctor cards.
 - The card has **zero literal strings** in JSX — every visible word comes
@@ -180,7 +185,7 @@ export function HelpingStaffGrid({
           id={headingId}
           className="mb-12 sm:mb-16"
         />
-        <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+        <ul className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
           {staff.map((person) => (
             <li key={person.id}>
               <HelpingStaffCard staff={person} />
@@ -196,6 +201,11 @@ export function HelpingStaffGrid({
 Notes:
 
 - Three breakpoints: 1 col mobile, 2 cols `sm` (≥640px), 3 cols `lg` (≥1024px).
+- `auto-rows-fr` so every row in the grid gets the same height regardless of
+  how many cards are in it. Combined with `h-full` on the card's `<article>`
+  (see card section above), this guarantees that every visible card — across
+  every row — has identical width AND identical height, avoiding the ragged
+  look you get when one row's tallest card differs from another row's.
 - `<ul>` / `<li>` semantics so screen readers announce "list, N items" — a
   real benefit over `<div>`s for a roster of people. No explicit `role="list"`
   — Biome's `noRedundantRoles` rule treats it as noise on a `<ul>`, and modern

@@ -27,7 +27,10 @@ export function HelpingStaffCard({ staff, className }: HelpingStaffCardProps) {
     <article
       aria-labelledby={headingId}
       className={cn(
-        "flex flex-col items-center gap-4 rounded-2xl bg-bg-subtle p-6 text-center shadow-soft-sm",
+        // h-full so the card fills its grid cell when the grid uses
+        // auto-rows-fr — keeps every card the same height regardless of how
+        // many roles wrap onto a second line.
+        "flex h-full flex-col items-center gap-4 rounded-2xl bg-bg-subtle p-6 text-center shadow-soft-sm",
         className,
       )}
     >

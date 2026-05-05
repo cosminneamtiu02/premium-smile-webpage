@@ -45,7 +45,7 @@ export function HelpingStaffGrid({
           id={headingId}
           className="mb-12 sm:mb-16"
         />
-        <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+        <ul className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
           {staff.map((person) => (
             <li key={person.id}>
               <HelpingStaffCard staff={person} />
