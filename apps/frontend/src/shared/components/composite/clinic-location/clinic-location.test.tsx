@@ -55,4 +55,12 @@ describe("ClinicLocation", () => {
     expect(section).toHaveAttribute("aria-labelledby", "custom-heading-id");
     expect(container.querySelector("#custom-heading-id")).not.toBeNull();
   });
+
+  it("uses the default headingId when none is provided", () => {
+    const { container } = renderWithProviders(<ClinicLocation {...baseProps} />);
+
+    const section = container.querySelector("section");
+    expect(section).toHaveAttribute("aria-labelledby", "clinic-location-heading");
+    expect(container.querySelector("#clinic-location-heading")).not.toBeNull();
+  });
 });

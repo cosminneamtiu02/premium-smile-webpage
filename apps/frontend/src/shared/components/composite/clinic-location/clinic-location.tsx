@@ -56,7 +56,7 @@ function ContactRow({ href, ariaLabel, icon, text, external }: ContactRowProps) 
     >
       <span
         aria-hidden
-        className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border-subtle bg-bg-elevated text-accent transition-all duration-200 ease-out group-hover:scale-105 group-hover:border-accent group-hover:bg-accent group-hover:text-accent-fg [&_svg]:h-5 [&_svg]:w-5"
+        className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border-subtle bg-bg-elevated text-accent transition-all duration-200 ease-out group-hover:scale-105 group-active:scale-100 group-hover:border-accent group-hover:bg-accent group-hover:text-accent-fg [&_svg]:h-5 [&_svg]:w-5"
       >
         {icon}
       </span>
