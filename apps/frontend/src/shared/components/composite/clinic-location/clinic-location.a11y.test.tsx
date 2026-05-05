@@ -1,20 +1,7 @@
-// axe-core is a direct devDependency (see apps/frontend/package.json) — not a transitive import.
-import type { RunOptions } from "axe-core";
 import { describe, expect, it } from "vitest";
 import { axe } from "vitest-axe";
-import { renderWithProviders } from "@/test-utils";
+import { AXE_OPTIONS_FOR_IFRAME, renderWithProviders } from "@/test-utils";
 import { ClinicLocation } from "./clinic-location";
-
-// jsdom does not load iframe content, so axe-core's cross-frame recursion
-// (`_collectResultsFromFrames`) throws "Respondable target must be a frame
-// in the current window" against any iframe in the tree. `iframes: false`
-// skips the recursion entirely. The `frame-title` rule still runs on the
-// parent document and still catches the regression of someone removing
-// the iframe's `title` attribute, because it inspects the iframe element
-// from the parent side without postMessage.
-const AXE_OPTIONS_FOR_IFRAME: RunOptions = {
-  iframes: false,
-};
 
 const baseProps = {
   eyebrow: "Find us",

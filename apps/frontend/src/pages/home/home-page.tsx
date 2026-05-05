@@ -33,6 +33,10 @@ const REVIEW_RATINGS: Record<ReviewKey, number> = {
 // pressing Share → Embed a map, and copying the iframe `src`. Update
 // CLINIC_DIRECTIONS_HREF to a maps.app.goo.gl share link or a manual
 // `https://www.google.com/maps/dir/?api=1&destination=...` URL.
+// Also update the `SAMPLE_EMBED` constant in both Storybook stories
+// (`shared/components/ui/map-frame/map-frame.stories.tsx` and
+// `shared/components/composite/clinic-location/clinic-location.stories.tsx`)
+// so the visual stays consistent between Storybook and the running site.
 const CLINIC_EMBED_SRC =
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.4488!2d26.1003!3d44.4356" +
   "!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff465e6f76db%3A0x4d8b0a5e0a8a0f8e" +
