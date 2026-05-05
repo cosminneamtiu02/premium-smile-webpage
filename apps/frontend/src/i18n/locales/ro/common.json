@@ -106,6 +106,14 @@
           "text": "Doi copii, zero crize. Camera pediatrica si personalul fac fiecare vizita sa para o aventura."
         }
       }
+    },
+    "location": {
+      "eyebrow": "Ne găsești",
+      "title": "Vizitează clinica noastră",
+      "address": "Strada Ana Ipătescu nr. 11, București",
+      "directions_label": "Vezi direcțiile către {{address}}",
+      "call_label": "Sună la {{phone}}",
+      "map_title": "Hartă cu locația clinicii Premium Smile"
     }
   },
   "pricing": {

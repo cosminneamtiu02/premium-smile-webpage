@@ -106,6 +106,14 @@
           "text": "Two children, zero tantrums. The pediatric room and the staff make every visit feel like an adventure."
         }
       }
+    },
+    "location": {
+      "eyebrow": "Find us",
+      "title": "Visit our clinic",
+      "address": "Strada Ana Ipătescu nr. 11, București",
+      "directions_label": "Get directions to {{address}}",
+      "call_label": "Call {{phone}}",
+      "map_title": "Map showing Premium Smile clinic location"
     }
   },
   "pricing": {
