@@ -30,7 +30,7 @@ const ANDREI: Doctor = {
 };
 
 const meta: Meta<typeof DoctorCard> = {
-  title: "Composite/DoctorCard",
+  title: "Composite/DoctorShowcase/DoctorCard",
   component: DoctorCard,
   parameters: { layout: "padded" },
 };
