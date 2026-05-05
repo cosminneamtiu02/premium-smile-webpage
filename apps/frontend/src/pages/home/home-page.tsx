@@ -2,6 +2,8 @@ import { Sparkles, Stethoscope, Users } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Card } from "@/shared/components/composite/card/card";
 import { Hero, type HeroSlide } from "@/shared/components/composite/hero/hero";
+import type { Review } from "@/shared/components/composite/review-card/review-card";
+import { ReviewsCarousel } from "@/shared/components/composite/reviews-carousel/reviews-carousel";
 import { Button } from "@/shared/components/ui/button/button";
 import { Container } from "@/shared/components/ui/container/container";
 import { Heading } from "@/shared/components/ui/heading/heading";
@@ -13,6 +15,18 @@ const SLIDE_IMAGES: Record<"calm" | "team" | "result", string> = {
     "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1600",
 };
 
+const REVIEW_KEYS = ["andreea", "mihai", "elena", "radu", "ioana", "cristian", "ana"] as const;
+type ReviewKey = (typeof REVIEW_KEYS)[number];
+const REVIEW_RATINGS: Record<ReviewKey, number> = {
+  andreea: 5,
+  mihai: 5,
+  elena: 5,
+  radu: 4,
+  ioana: 5,
+  cristian: 4,
+  ana: 5,
+};
+
 export function HomePage() {
   const { t } = useTranslation();
 
@@ -20,6 +34,15 @@ export function HomePage() {
     src: SLIDE_IMAGES[id],
     alt: t(`home.hero.slides.${id}.alt`),
     description: t(`home.hero.slides.${id}.description`),
+  }));
+
+  const reviews: Review[] = REVIEW_KEYS.map((key) => ({
+    id: key,
+    name: t(`home.reviews.items.${key}.name`),
+    role: t(`home.reviews.items.${key}.role`),
+    title: t(`home.reviews.items.${key}.title`),
+    text: t(`home.reviews.items.${key}.text`),
+    rating: REVIEW_RATINGS[key],
   }));
 
   return (
@@ -53,6 +76,22 @@ export function HomePage() {
               icon={<Users size={20} aria-hidden />}
             />
           </div>
+        </Container>
+      </section>
+
+      <section className="py-12 sm:py-16">
+        <Container width="lg">
+          <div className="mb-8 max-w-2xl">
+            <Heading level={2}>{t("home.reviews.title")}</Heading>
+          </div>
+          <ReviewsCarousel
+            reviews={reviews}
+            ariaLabel={t("home.reviews.aria_label")}
+            previousLabel={t("home.reviews.previous_label")}
+            nextLabel={t("home.reviews.next_label")}
+            navigateLabel={t("home.reviews.navigate_label")}
+            starsLabel={(rating) => t("home.reviews.stars_label", { rating })}
+          />
         </Container>
       </section>
     </>

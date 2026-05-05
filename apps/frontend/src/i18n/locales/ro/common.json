@@ -54,6 +54,58 @@
         "title": "Ingrijire pentru familie",
         "description": "Stomatologie blanda si prietenoasa pentru copii si adulti."
       }
+    },
+    "reviews": {
+      "title": "Ce spun pacientii nostri",
+      "aria_label": "Recenziile pacientilor",
+      "previous_label": "Recenzia anterioara",
+      "next_label": "Recenzia urmatoare",
+      "navigate_label": "Navigheaza recenziile",
+      "stars_label": "{{rating}} din 5 stele",
+      "items": {
+        "andreea": {
+          "name": "Andreea Popescu",
+          "role": "Pacient fatete",
+          "title": "Increderea regasita",
+          "text": "Premium Smile mi-a transformat increderea. Echipa mi-a explicat fiecare pas, iar rezultatul este zambetul la care am visat."
+        },
+        "mihai": {
+          "name": "Mihai Ionescu",
+          "role": "Implanturi",
+          "title": "Calm, profesional, amabil",
+          "text": "De la consultatie pana la control, experienta a fost ca la un spa, nu la o clinica. Nu-i pot recomanda suficient."
+        },
+        "elena": {
+          "name": "Elena Dumitru",
+          "role": "Albire",
+          "title": "Fiecare minut a meritat",
+          "text": "Am condus doua ore in fiecare sens si as face-o din nou. Fara durere, rezultate frumoase si personalul cel mai amabil."
+        },
+        "radu": {
+          "name": "Radu Marin",
+          "role": "Igienizare",
+          "title": "Prima clinica fara teama",
+          "text": "Mereu am avut frica de dentist. Aici, pentru prima data, m-am simtit complet in siguranta. M-au ascultat."
+        },
+        "ioana": {
+          "name": "Ioana Stan",
+          "role": "Ortodontie",
+          "title": "Ca o persoana diferita",
+          "text": "Optsprezece luni de aligneri transparenti, controale saptamanale, zero presiune. Alinierea si ocluzia sunt in sfarsit corecte."
+        },
+        "cristian": {
+          "name": "Cristian Voicu",
+          "role": "Plan complet",
+          "title": "Au vazut imaginea de ansamblu",
+          "text": "Alte clinici mi-au dat un pret. Premium Smile mi-a dat un plan. Trei ani mai tarziu, gura mea este sanatoasa."
+        },
+        "ana": {
+          "name": "Ana Petrescu",
+          "role": "Pacient familie",
+          "title": "Copiii imi cer sa mergem",
+          "text": "Doi copii, zero crize. Camera pediatrica si personalul fac fiecare vizita sa para o aventura."
+        }
+      }
     }
   },
   "pricing": {

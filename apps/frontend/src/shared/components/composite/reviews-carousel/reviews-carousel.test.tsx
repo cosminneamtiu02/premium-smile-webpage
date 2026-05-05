@@ -1,4 +1,4 @@
-import { fireEvent, screen } from "@testing-library/react";
+import { fireEvent, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import type { Review } from "@/shared/components/composite/review-card/review-card";
@@ -11,28 +11,35 @@ const REVIEWS: Review[] = [
   { id: "c", name: "C", role: "Patient", title: "Title C", text: "Text C.", rating: 5 },
 ];
 
+function getCenterSlide() {
+  const slides = screen.getAllByRole("group", { name: /review \d of \d/i });
+  const current = slides.find((el) => el.getAttribute("aria-current") === "true");
+  if (!current) throw new Error("No slide is aria-current");
+  return current;
+}
+
 describe("ReviewsCarousel", () => {
-  it("renders the first review as current on mount", () => {
+  it("marks the centered slide aria-current=true on mount", () => {
     renderWithProviders(<ReviewsCarousel reviews={REVIEWS} />);
-    const slides = screen.getAllByRole("group", { name: /review \d of 3/i });
-    expect(slides[0]).toHaveAttribute("aria-current", "true");
-    expect(slides[1]).toHaveAttribute("aria-current", "false");
+    // 3 reviews → centerIdx = floor(3/2) = 1 → middle review (Title B) is current.
+    const center = getCenterSlide();
+    expect(within(center).getByText("Title B")).toBeInTheDocument();
   });
 
-  it("advances to the next review when Next is clicked", async () => {
+  it("advances the centered slide when Next is clicked", async () => {
     const user = userEvent.setup();
     renderWithProviders(<ReviewsCarousel reviews={REVIEWS} />);
+    expect(within(getCenterSlide()).getByText("Title B")).toBeInTheDocument();
     await user.click(screen.getByRole("button", { name: /next/i }));
-    const slides = screen.getAllByRole("group", { name: /review \d of 3/i });
-    expect(slides[1]).toHaveAttribute("aria-current", "true");
+    expect(within(getCenterSlide()).getByText("Title C")).toBeInTheDocument();
   });
 
-  it("wraps to the last review when Previous is pressed at the start", async () => {
+  it("wraps via Previous from the start", async () => {
     const user = userEvent.setup();
     renderWithProviders(<ReviewsCarousel reviews={REVIEWS} />);
+    expect(within(getCenterSlide()).getByText("Title B")).toBeInTheDocument();
     await user.click(screen.getByRole("button", { name: /previous/i }));
-    const slides = screen.getAllByRole("group", { name: /review \d of 3/i });
-    expect(slides[2]).toHaveAttribute("aria-current", "true");
+    expect(within(getCenterSlide()).getByText("Title A")).toBeInTheDocument();
   });
 
   it("navigates with ArrowRight / ArrowLeft when the carousel has focus", () => {
@@ -40,15 +47,14 @@ describe("ReviewsCarousel", () => {
     const region = screen.getByRole("region", { name: /reviews/i });
     region.focus();
     fireEvent.keyDown(region, { key: "ArrowRight" });
-    let slides = screen.getAllByRole("group", { name: /review \d of 3/i });
-    expect(slides[1]).toHaveAttribute("aria-current", "true");
+    expect(within(getCenterSlide()).getByText("Title C")).toBeInTheDocument();
     fireEvent.keyDown(region, { key: "ArrowLeft" });
-    slides = screen.getAllByRole("group", { name: /review \d of 3/i });
-    expect(slides[0]).toHaveAttribute("aria-current", "true");
+    expect(within(getCenterSlide()).getByText("Title B")).toBeInTheDocument();
   });
 
   it("renders an empty state when there are no reviews", () => {
     renderWithProviders(<ReviewsCarousel reviews={[]} />);
     expect(screen.queryByRole("button", { name: /next/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("group", { name: /review/i })).not.toBeInTheDocument();
   });
 });

@@ -4,7 +4,7 @@ import { ReviewsCarousel } from "./reviews-carousel";
 
 const REVIEWS: Review[] = [
   {
-    id: "1",
+    id: "andreea",
     name: "Andreea Popescu",
     role: "Veneers patient",
     title: "Confidence restored",
@@ -16,7 +16,7 @@ const REVIEWS: Review[] = [
     },
   },
   {
-    id: "2",
+    id: "mihai",
     name: "Mihai Ionescu",
     role: "Implants",
     title: "Calm, professional, kind",
@@ -28,7 +28,7 @@ const REVIEWS: Review[] = [
     },
   },
   {
-    id: "3",
+    id: "elena",
     name: "Elena Dumitru",
     role: "Whitening",
     title: "Worth every minute",
@@ -36,12 +36,44 @@ const REVIEWS: Review[] = [
     rating: 5,
   },
   {
-    id: "4",
+    id: "radu",
     name: "Radu Marin",
     role: "Routine cleaning",
     title: "First clinic without fear",
-    text: "I have always been anxious at the dentist. Here, for the first time, I felt completely safe.",
+    text: "I have always been anxious at the dentist. Here, for the first time, I felt completely safe. They listened.",
     rating: 4,
+  },
+  {
+    id: "ioana",
+    name: "Ioana Stan",
+    role: "Orthodontics",
+    title: "Like a different person",
+    text: "Eighteen months of clear aligners, weekly check-ins, zero pressure. My alignment and bite are finally right.",
+    rating: 5,
+    avatar: {
+      src: "https://api.dicebear.com/7.x/initials/svg?seed=IS&backgroundColor=8377a3&textColor=ffffff",
+      alt: "Avatar of Ioana Stan",
+    },
+  },
+  {
+    id: "cristian",
+    name: "Cristian Voicu",
+    role: "Full mouth plan",
+    title: "They saw the whole picture",
+    text: "Other clinics gave me a price. Premium Smile gave me a plan. Three years later, my mouth is healthy.",
+    rating: 4,
+  },
+  {
+    id: "ana",
+    name: "Ana Petrescu",
+    role: "Family patient",
+    title: "My kids actually ask to go",
+    text: "Two children, zero tantrums. The pediatric room and the staff make every visit feel like an adventure.",
+    rating: 5,
+    avatar: {
+      src: "https://api.dicebear.com/7.x/initials/svg?seed=AP2&backgroundColor=8377a3&textColor=ffffff",
+      alt: "Avatar of Ana Petrescu",
+    },
   },
 ];
 
@@ -62,7 +94,7 @@ export const SingleReview: Story = {
   args: {
     reviews: [
       {
-        id: "1",
+        id: "andreea",
         name: "Andreea Popescu",
         role: "Veneers patient",
         title: "Confidence restored",
