@@ -180,7 +180,7 @@ export function HelpingStaffGrid({
           id={headingId}
           className="mb-12 sm:mb-16"
         />
-        <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
           {staff.map((person) => (
             <li key={person.id}>
               <HelpingStaffCard staff={person} />
@@ -197,9 +197,9 @@ Notes:
 
 - Three breakpoints: 1 col mobile, 2 cols `sm` (≥640px), 3 cols `lg` (≥1024px).
 - `<ul>` / `<li>` semantics so screen readers announce "list, N items" — a
-  real benefit over `<div>`s for a roster of people. `role="list"` is
-  defensive against Safari's reset of list semantics when `list-style: none`
-  is in effect.
+  real benefit over `<div>`s for a roster of people. No explicit `role="list"`
+  — Biome's `noRedundantRoles` rule treats it as noise on a `<ul>`, and modern
+  Safari (17+) preserves list semantics under `list-style: none`.
 - Section padding (`py-16 sm:py-20 lg:py-24`) and container width (`width="lg"`)
   copy `DoctorShowcase` so the two sections rhythmically align on the same
   page.
