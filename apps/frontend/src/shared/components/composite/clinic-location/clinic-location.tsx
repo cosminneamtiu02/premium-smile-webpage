@@ -109,14 +109,14 @@ export function ClinicLocation({
             <ContactRow
               href={directionsHref}
               ariaLabel={directionsLabel}
-              icon={<MapPin aria-hidden />}
+              icon={<MapPin />}
               text={address}
               external
             />
             <ContactRow
               href={derivedPhoneHref}
               ariaLabel={callLabel}
-              icon={<Phone aria-hidden />}
+              icon={<Phone />}
               text={phone}
             />
           </div>
