@@ -16,6 +16,8 @@ export type MapFrameProps = {
   className?: string;
 };
 
+// Typed as Record<MapFrameAspect, string> (not Record<string, string>) so the
+// lookup stays exhaustively typed under noUncheckedIndexedAccess.
 const ASPECT_CLASS: Record<MapFrameAspect, string> = {
   wide: "aspect-[16/10]",
   video: "aspect-video",
@@ -36,7 +38,7 @@ export function MapFrame({ embedSrc, title, aspect = "wide", className }: MapFra
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-2xl border border-border-subtle bg-bg-subtle shadow-sm",
+        "overflow-hidden rounded-2xl border border-border-subtle bg-bg-subtle shadow-soft-sm",
         ASPECT_CLASS[aspect],
         className,
       )}
