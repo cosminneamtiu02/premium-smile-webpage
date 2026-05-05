@@ -1,3 +1,4 @@
+// axe-core is a direct devDependency (see apps/frontend/package.json) — not a transitive import.
 import type { RunOptions } from "axe-core";
 import { describe, expect, it } from "vitest";
 import { axe } from "vitest-axe";
