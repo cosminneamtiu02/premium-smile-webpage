@@ -36,7 +36,7 @@ const TEAM: Doctor[] = [
 ];
 
 const meta: Meta<typeof DoctorShowcase> = {
-  title: "Composite/DoctorShowcase",
+  title: "Composite/DoctorShowcase/Implementation",
   component: DoctorShowcase,
   parameters: { layout: "fullscreen" },
 };
