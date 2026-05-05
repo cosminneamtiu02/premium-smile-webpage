@@ -60,15 +60,3 @@ export const TextOnly: Story = {
 export const NoCta: Story = {
   args: { doctor: ELENA, imageSide: "left" },
 };
-
-export const FirstInList: Story = {
-  args: { doctor: ELENA, imageSide: "left", position: "first", ctaLabel: "Book Consultation" },
-};
-
-export const MiddleInList: Story = {
-  args: { doctor: ANDREI, imageSide: "right", position: "middle", ctaLabel: "Book Consultation" },
-};
-
-export const LastInList: Story = {
-  args: { doctor: ELENA, imageSide: "left", position: "last", ctaLabel: "Book Consultation" },
-};
