@@ -96,6 +96,20 @@ export function HomePage() {
         </Container>
       </section>
 
+      <ClinicLocation
+        eyebrow={t("home.location.eyebrow")}
+        title={t("home.location.title")}
+        embedSrc={CLINIC_EMBED_SRC}
+        mapTitle={t("home.location.map_title")}
+        directionsHref={CLINIC_DIRECTIONS_HREF}
+        address={t("home.location.address")}
+        directionsLabel={t("home.location.directions_label", {
+          address: t("home.location.address"),
+        })}
+        phone={t("footer.phone")}
+        callLabel={t("home.location.call_label", { phone: t("footer.phone") })}
+      />
+
       <section className="py-12 sm:py-16">
         <Container width="lg">
           <div className="mb-8 max-w-2xl">
@@ -111,20 +125,6 @@ export function HomePage() {
           />
         </Container>
       </section>
-
-      <ClinicLocation
-        eyebrow={t("home.location.eyebrow")}
-        title={t("home.location.title")}
-        embedSrc={CLINIC_EMBED_SRC}
-        mapTitle={t("home.location.map_title")}
-        directionsHref={CLINIC_DIRECTIONS_HREF}
-        address={t("home.location.address")}
-        directionsLabel={t("home.location.directions_label", {
-          address: t("home.location.address"),
-        })}
-        phone={t("footer.phone")}
-        callLabel={t("home.location.call_label", { phone: t("footer.phone") })}
-      />
     </>
   );
 }
