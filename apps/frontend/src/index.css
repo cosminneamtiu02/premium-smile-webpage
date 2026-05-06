@@ -205,8 +205,8 @@
   --os-track-bg-hover: transparent;
   --os-track-bg-active: transparent;
   --os-handle-border-radius: 8px;
-  --os-handle-bg: color-mix(in srgb, var(--accent) 50%, transparent);
-  --os-handle-bg-hover: color-mix(in srgb, var(--accent) 70%, transparent);
-  --os-handle-bg-active: color-mix(in srgb, var(--accent) 85%, transparent);
+  --os-handle-bg: var(--accent);
+  --os-handle-bg-hover: var(--accent-hover);
+  --os-handle-bg-active: var(--accent-hover);
   --os-handle-min-size: 40px;
 }
