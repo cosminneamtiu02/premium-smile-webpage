@@ -98,15 +98,15 @@ export function Hero({
           );
         })}
 
-        {/* Permanent grayed-out screen — a transparent overlay that always
-         *  sits above the image and below the bottom fade, desaturating
-         *  what's behind it via `backdrop-filter: grayscale(...)`. No
-         *  colour painted on top; the slides' palette is just pulled
-         *  toward gray so the hero feels visually muted regardless of
-         *  the underlying photography. */}
+        {/* Permanent muted-and-tinted screen — single overlay that does two
+         *  things at once. `backdrop-filter: grayscale(0.6)` desaturates
+         *  whatever is behind it (the slide image), then the element's
+         *  own translucent --bg background paints a 20 % lavender wash on
+         *  top. Effect: every image reads as a muted, brand-tinted
+         *  underlay regardless of its original palette. */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 z-[2] [backdrop-filter:grayscale(0.7)] [-webkit-backdrop-filter:grayscale(0.7)]"
+          className="pointer-events-none absolute inset-0 z-[2] bg-[color-mix(in_srgb,var(--bg)_20%,transparent)] [backdrop-filter:grayscale(0.6)] [-webkit-backdrop-filter:grayscale(0.6)]"
         />
 
         {/* Bottom fade-to-bg. 10% of stage — a thin seam between hero and
