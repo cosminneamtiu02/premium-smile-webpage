@@ -99,21 +99,21 @@ export function Hero({
           );
         })}
 
-        {/* Bottom fade-to-bg. Tall (28% of stage) and gradual so the eye reads
-         *  "image content above, page background below" with about 60% of the
-         *  transition visible at the bottom of the initial viewport. The stops
-         *  front-load the transparent region so the upper part stays crisp,
-         *  then ramp into solid `--bg` at the very bottom. */}
+        {/* Bottom fade-to-bg. 16% of stage — tight enough to feel like a
+         *  seam between hero and next section, tall enough that the gradient
+         *  ramp doesn't read as a hard line. Stops front-load the transparent
+         *  region so the upper part stays crisp, then accelerate into solid
+         *  `--bg` at the very bottom. */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[28%] bg-[linear-gradient(180deg,transparent_0%,color-mix(in_srgb,var(--bg)_8%,transparent)_30%,color-mix(in_srgb,var(--bg)_30%,transparent)_55%,color-mix(in_srgb,var(--bg)_70%,transparent)_80%,var(--bg)_100%)]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[16%] bg-[linear-gradient(180deg,transparent_0%,color-mix(in_srgb,var(--bg)_8%,transparent)_30%,color-mix(in_srgb,var(--bg)_30%,transparent)_55%,color-mix(in_srgb,var(--bg)_70%,transparent)_80%,var(--bg)_100%)]"
         />
 
         <div
           className={cn(
-            "absolute z-[4] flex max-w-[720px] flex-col gap-4",
+            "absolute z-[4] flex flex-col gap-4 max-w-[720px] lg:max-w-[920px] xl:max-w-[1040px] lg:gap-6",
             "left-[clamp(24px,5vw,46px)] right-[clamp(24px,5vw,46px)]",
-            // Anchored above the 28% bottom fade so the title/description/CTAs
+            // Anchored above the bottom fade so the title/description/CTAs
             // sit on the unaltered image area instead of the fade-tinted
             // transition zone. clamp keeps it from drifting too far on tiny
             // and very tall viewports.
@@ -122,20 +122,20 @@ export function Hero({
         >
           <Heading
             level={1}
-            className="text-3xl text-white [text-shadow:0_2px_24px_rgba(20,15,30,0.35)] [text-wrap:balance] sm:text-4xl lg:text-5xl"
+            className="text-3xl text-white [text-shadow:0_2px_24px_rgba(20,15,30,0.35)] [text-wrap:balance] sm:text-4xl lg:text-6xl xl:text-7xl"
           >
             {title}
           </Heading>
 
           {total > 0 && (
-            <div className="grid max-w-[540px]">
+            <div className="grid max-w-[540px] lg:max-w-[680px] xl:max-w-[760px]">
               {slides.map((slide, i) => (
                 <p
                   // biome-ignore lint/suspicious/noArrayIndexKey: stable slot for crossfade
                   key={`desc-${slide.src}-${i}`}
                   aria-hidden={i !== active}
                   className={cn(
-                    "[grid-area:1/1] text-justify text-sm leading-snug text-white/95 [text-shadow:0_1px_12px_rgba(20,15,30,0.4)] sm:text-base",
+                    "[grid-area:1/1] text-justify text-sm leading-snug text-white/95 [text-shadow:0_1px_12px_rgba(20,15,30,0.4)] sm:text-base lg:text-lg lg:leading-relaxed xl:text-xl",
                     "transition-opacity duration-1000 ease-in-out motion-reduce:transition-none",
                     i === active ? "opacity-100" : "pointer-events-none opacity-0",
                   )}
@@ -146,7 +146,7 @@ export function Hero({
             </div>
           )}
 
-          <div className="grid grid-cols-1 gap-3 sm:max-w-md sm:grid-cols-2 [&>*]:w-full">
+          <div className="grid grid-cols-1 gap-3 sm:max-w-md sm:grid-cols-2 lg:max-w-lg lg:gap-4 lg:[&>*]:h-12 lg:[&>*]:px-7 lg:[&>*]:text-base [&>*]:w-full">
             {ctaPrimary}
             {ctaSecondary}
           </div>
