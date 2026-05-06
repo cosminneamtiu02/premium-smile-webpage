@@ -90,10 +90,7 @@ export function HomePage() {
           </Button>
         }
         ctaSecondary={
-          <Button
-            variant="outline"
-            className="border-2 border-accent bg-bg-elevated text-accent shadow-cta transition-all duration-200 ease-out hover:bg-accent hover:text-accent-fg hover:border-accent hover:-translate-y-0.5 hover:shadow-cta-lg active:translate-y-0"
-          >
+          <Button className="border border-[var(--bg-inverse)] bg-bg-inverse text-fg-on-accent shadow-cta transition-all duration-200 ease-out hover:scale-105 hover:translate-y-0 hover:bg-bg-elevated hover:text-[var(--bg-inverse)] hover:border-[var(--bg-inverse)] hover:shadow-cta-lg active:scale-100">
             {t("home.hero.cta_secondary")}
           </Button>
         }
