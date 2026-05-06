@@ -63,13 +63,11 @@ export function Hero({
       {...(isCarousel ? { "aria-roledescription": "carousel" } : {})}
       className={cn("relative -mt-4 w-full bg-bg", className)}
     >
-      {/* Stage is intentionally 112vh — slightly taller than the viewport — so
-       *  ~40% of the bottom fade region sits below the fold. With fade height
-       *  at 28% of the stage, that puts ~60% of the transition visible at the
-       *  bottom of the initial viewport (the "tease to scroll" pattern). The
-       *  remaining ~12vh of stage is the bottom of the fade ramping into solid
-       *  --bg, which the user only sees once they start scrolling. */}
-      <div className="relative h-[112vh] w-full overflow-hidden bg-bg-subtle [@supports(height:100dvh)]:h-[112dvh]">
+      {/* Stage fills the full viewport height so the bottom fade-to-bg
+       *  transition (28% of the stage, see element below) reaches solid --bg
+       *  exactly where the next section begins — entire fade visible above
+       *  the fold, seamless join into the page background. */}
+      <div className="relative h-screen w-full overflow-hidden bg-bg-subtle [@supports(height:100dvh)]:h-[100dvh]">
         {slides.map((slide, i) => {
           const isCurrent = i === active;
           return (
