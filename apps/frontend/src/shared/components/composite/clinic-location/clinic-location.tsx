@@ -102,7 +102,7 @@ export function ClinicLocation({
         />
 
         <div className="mt-8 grid gap-6 sm:mt-10 lg:mt-12 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-6">
-          <MapFrame embedSrc={embedSrc} title={mapTitle} aspect="wide" />
+          <MapFrame embedSrc={embedSrc} title={mapTitle} aspect="wide" className="aspect-[2/1]" />
 
           <div className="flex flex-col gap-4 sm:gap-5">
             <ContactRow
