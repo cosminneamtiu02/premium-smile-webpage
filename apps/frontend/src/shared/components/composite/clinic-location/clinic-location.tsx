@@ -51,7 +51,7 @@ function ContactRow({ href, ariaLabel, icon, text, external }: ContactRowProps) 
       href={href}
       aria-label={ariaLabel}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="group -m-3 flex items-center gap-4 rounded-2xl p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      className="group -m-3 flex items-center justify-end gap-4 rounded-2xl p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
       <span
         aria-hidden
