@@ -6,11 +6,11 @@ import { cn } from "@/shared/lib/cn";
 export type HeroSlide = {
   src: string;
   alt: string;
-  description: string;
+  /** Per-slide H1 title — crossfades along with the image. */
+  title: string;
 };
 
 type HeroProps = {
-  title: string;
   slides: ReadonlyArray<HeroSlide>;
   ctaPrimary: ReactNode;
   ctaSecondary: ReactNode;
@@ -25,7 +25,6 @@ const DEFAULT_SLIDE_LABEL = ({ index, total }: { index: number; total: number })
   `Slide ${index + 1} of ${total}`;
 
 export function Hero({
-  title,
   slides,
   ctaPrimary,
   ctaSecondary,
@@ -99,6 +98,16 @@ export function Hero({
           );
         })}
 
+        {/* Permanent brand-tint screen — a translucent layer of --bg that
+         *  always sits above the image and below the bottom fade. Subtly
+         *  pulls the slide's colours toward the page's lavender so the
+         *  hero feels visually continuous with the rest of the site, even
+         *  when the underlying photography spans different palettes. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-[2] bg-[color-mix(in_srgb,var(--bg)_18%,transparent)]"
+        />
+
         {/* Bottom fade-to-bg. 10% of stage — a thin seam between hero and
          *  next section. Stops front-load the transparent region so the
          *  upper edge reads clean, then accelerate into solid `--bg` at
@@ -125,28 +134,28 @@ export function Hero({
             "bottom-[clamp(140px,28%,380px)]",
           )}
         >
-          <Heading
-            level={1}
-            className="text-3xl text-white [text-shadow:0_2px_24px_rgba(20,15,30,0.35)] [text-wrap:balance] sm:text-4xl lg:text-6xl xl:text-7xl"
-          >
-            {title}
-          </Heading>
-
+          {/* Per-slide H1 titles — crossfade in lockstep with the image.
+           *  Every title sits in the same grid cell ([grid-area:1/1]) so
+           *  the box height stays stable as titles change. The non-active
+           *  ones carry aria-hidden so the accessibility tree only sees
+           *  the visible heading; @testing-library / axe both treat the
+           *  hidden h1s as if they don't exist. */}
           {total > 0 && (
-            <div className="grid max-w-[540px] lg:max-w-[680px] xl:max-w-[760px]">
+            <div className="grid">
               {slides.map((slide, i) => (
-                <p
+                <Heading
+                  level={1}
                   // biome-ignore lint/suspicious/noArrayIndexKey: stable slot for crossfade
-                  key={`desc-${slide.src}-${i}`}
+                  key={`title-${slide.src}-${i}`}
                   aria-hidden={i !== active}
                   className={cn(
-                    "[grid-area:1/1] text-justify text-sm leading-snug text-white/95 [text-shadow:0_1px_12px_rgba(20,15,30,0.4)] sm:text-base lg:text-lg lg:leading-relaxed xl:text-xl",
+                    "[grid-area:1/1] text-3xl text-white [text-shadow:0_2px_24px_rgba(20,15,30,0.35)] [text-wrap:balance] sm:text-4xl lg:text-6xl xl:text-7xl",
                     "transition-opacity duration-1000 ease-in-out motion-reduce:transition-none",
                     i === active ? "opacity-100" : "pointer-events-none opacity-0",
                   )}
                 >
-                  {slide.description}
-                </p>
+                  {slide.title}
+                </Heading>
               ))}
             </div>
           )}

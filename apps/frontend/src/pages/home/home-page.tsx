@@ -68,7 +68,7 @@ export function HomePage() {
   const slides: HeroSlide[] = (["calm", "team", "result"] as const).map((id) => ({
     src: SLIDE_IMAGES[id],
     alt: t(`home.hero.slides.${id}.alt`),
-    description: t(`home.hero.slides.${id}.description`),
+    title: t(`home.hero.slides.${id}.title`),
   }));
 
   const reviews: Review[] = REVIEW_KEYS.map((key) => ({
@@ -83,7 +83,6 @@ export function HomePage() {
   return (
     <>
       <Hero
-        title={t("home.hero.title")}
         slides={slides}
         ctaPrimary={<Button>{t("home.hero.cta_primary")}</Button>}
         ctaSecondary={<Button variant="outline">{t("home.hero.cta_secondary")}</Button>}
