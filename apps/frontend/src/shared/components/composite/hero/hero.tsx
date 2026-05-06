@@ -151,7 +151,7 @@ export function Hero({
                   key={`title-${slide.src}-${i}`}
                   aria-hidden={i !== active}
                   className={cn(
-                    "[grid-area:1/1] text-3xl text-white [text-shadow:0_2px_24px_rgba(20,15,30,0.35)] [text-wrap:balance] whitespace-pre-line sm:text-4xl lg:text-6xl xl:text-7xl",
+                    "[grid-area:1/1] text-justify text-3xl text-white [text-shadow:0_2px_24px_rgba(20,15,30,0.35)] [text-wrap:balance] whitespace-pre-line sm:text-4xl lg:text-6xl xl:text-7xl",
                     // Lavender stroke outline — adds high-contrast definition
                     // around each glyph so the title stays legible against
                     // the brand-tinted B&W image regardless of the slide's
