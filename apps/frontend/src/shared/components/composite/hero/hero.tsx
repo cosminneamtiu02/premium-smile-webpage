@@ -99,14 +99,13 @@ export function Hero({
           );
         })}
 
-        {/* Bottom fade-to-bg. 16% of stage — tight enough to feel like a
-         *  seam between hero and next section, tall enough that the gradient
-         *  ramp doesn't read as a hard line. Stops front-load the transparent
-         *  region so the upper part stays crisp, then accelerate into solid
-         *  `--bg` at the very bottom. */}
+        {/* Bottom fade-to-bg. 10% of stage — a thin seam between hero and
+         *  next section. Stops front-load the transparent region so the
+         *  upper edge reads clean, then accelerate into solid `--bg` at
+         *  the very bottom. */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[16%] bg-[linear-gradient(180deg,transparent_0%,color-mix(in_srgb,var(--bg)_8%,transparent)_30%,color-mix(in_srgb,var(--bg)_30%,transparent)_55%,color-mix(in_srgb,var(--bg)_70%,transparent)_80%,var(--bg)_100%)]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[10%] bg-[linear-gradient(180deg,transparent_0%,color-mix(in_srgb,var(--bg)_8%,transparent)_30%,color-mix(in_srgb,var(--bg)_30%,transparent)_55%,color-mix(in_srgb,var(--bg)_70%,transparent)_80%,var(--bg)_100%)]"
         />
 
         <div
@@ -165,11 +164,10 @@ export function Hero({
         </div>
 
         {isCarousel && (
-          // Dots sit just above the top edge of the fade region (16% from
-          // bottom) — close enough that the eye reads them as part of the
-          // bottom edge of the carousel, but still in the unaltered image
-          // area so the white dots stay crisp and high-contrast.
-          <div className="absolute inset-x-0 bottom-[clamp(80px,18%,220px)] z-[4] flex justify-center gap-2">
+          // Dots sit just above the top edge of the now-10% fade — they
+          // read as the bottom edge of the carousel without dipping into
+          // the bg-tinted seam.
+          <div className="absolute inset-x-0 bottom-[clamp(40px,11%,140px)] z-[4] flex justify-center gap-2">
             {slides.map((slide, i) => (
               <button
                 // biome-ignore lint/suspicious/noArrayIndexKey: image src may repeat across slides; combining with index ensures unique keys
