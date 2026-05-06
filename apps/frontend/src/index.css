@@ -197,9 +197,12 @@
  * cross-browser true-overlay scrollbar (no reserved gutter) themed in
  * brand lavender. */
 .os-theme-smile-overlay {
-  --os-size: 18px;
-  --os-padding-perpendicular: 6px;
-  --os-padding-axis: 6px;
+  /* Thumb visible width = `--os-size` − 2 × `--os-padding-perpendicular`.
+   * Original: 14 − 4 = 10 px. New: 22 − 8 = 14 px, with 4 px of breathing
+   * room each side. So both the thumb and its surrounding gap grow. */
+  --os-size: 22px;
+  --os-padding-perpendicular: 4px;
+  --os-padding-axis: 4px;
   --os-track-border-radius: 8px;
   --os-track-bg: transparent;
   --os-track-bg-hover: transparent;
