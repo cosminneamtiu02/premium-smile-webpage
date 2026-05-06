@@ -56,7 +56,7 @@ function ContactRow({ href, ariaLabel, icon, text, external }: ContactRowProps) 
     >
       <span
         aria-hidden
-        className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border-subtle bg-bg-elevated text-accent transition-all duration-200 ease-out group-hover:scale-105 group-active:scale-100 group-hover:border-accent group-hover:bg-accent group-hover:text-accent-fg [&_svg]:h-5 [&_svg]:w-5"
+        className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-accent bg-accent text-accent-fg shadow-cta [&_svg]:h-5 [&_svg]:w-5"
       >
         {icon}
       </span>
@@ -90,10 +90,7 @@ export function ClinicLocation({
   const derivedPhoneHref = phoneHref ?? `tel:${phone.replace(/\s/g, "")}`;
 
   return (
-    <section
-      aria-labelledby={headingId}
-      className={cn("bg-bg-subtle py-12 sm:py-16 lg:py-20", className)}
-    >
+    <section aria-labelledby={headingId} className={cn("bg-bg py-12 sm:py-16 lg:py-20", className)}>
       <Container width="lg">
         <SectionHeading
           {...(eyebrow ? { eyebrow } : {})}
