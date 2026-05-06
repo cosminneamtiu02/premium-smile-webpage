@@ -104,6 +104,36 @@
           "role": "Family patient",
           "title": "My kids actually ask to go",
           "text": "Two children, zero tantrums. The pediatric room and the staff make every visit feel like an adventure."
+        },
+        "bogdan": {
+          "name": "Bogdan Ene",
+          "role": "Root canal",
+          "title": "Painless, even the root canal",
+          "text": "Honestly, I expected the worst. They walked me through every minute, kept me numb, and I left without a single ache."
+        },
+        "diana": {
+          "name": "Diana Munteanu",
+          "role": "Cosmetic bonding",
+          "title": "A small fix that changed everything",
+          "text": "Just one chipped front tooth, but it bothered me for years. Twenty minutes here and I cannot tell which one was repaired."
+        },
+        "stefan": {
+          "name": "Stefan Radu",
+          "role": "Wisdom teeth",
+          "title": "Smooth, swift, friendly",
+          "text": "All four wisdom teeth in one morning. Clear instructions, gentle hands, and a follow-up call the next day to check on me."
+        },
+        "larisa": {
+          "name": "Larisa Toma",
+          "role": "Crown work",
+          "title": "Indistinguishable from my own",
+          "text": "The crown they fitted matches the rest of my teeth perfectly. Three months in and I still forget which side it is on."
+        },
+        "tudor": {
+          "name": "Tudor Albu",
+          "role": "Emergency visit",
+          "title": "They fit me in within an hour",
+          "text": "Cracked a molar on a Saturday. The receptionist arranged a slot before noon and I walked out with the tooth fully repaired."
         }
       }
     },

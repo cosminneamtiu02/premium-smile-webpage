@@ -16,7 +16,20 @@ const SLIDE_IMAGES: Record<"calm" | "team" | "result", string> = {
     "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1600",
 };
 
-const REVIEW_KEYS = ["andreea", "mihai", "elena", "radu", "ioana", "cristian", "ana"] as const;
+const REVIEW_KEYS = [
+  "andreea",
+  "mihai",
+  "elena",
+  "radu",
+  "ioana",
+  "cristian",
+  "ana",
+  "bogdan",
+  "diana",
+  "stefan",
+  "larisa",
+  "tudor",
+] as const;
 type ReviewKey = (typeof REVIEW_KEYS)[number];
 const REVIEW_RATINGS: Record<ReviewKey, number> = {
   andreea: 5,
@@ -26,6 +39,11 @@ const REVIEW_RATINGS: Record<ReviewKey, number> = {
   ioana: 5,
   cristian: 4,
   ana: 5,
+  bogdan: 5,
+  diana: 5,
+  stefan: 5,
+  larisa: 4,
+  tudor: 5,
 };
 
 // Bucharest landmark placeholder — replace both URLs when the real clinic
@@ -115,15 +133,15 @@ export function HomePage() {
           <div className="mb-8 max-w-2xl">
             <Heading level={2}>{t("home.reviews.title")}</Heading>
           </div>
-          <ReviewsCarousel
-            reviews={reviews}
-            ariaLabel={t("home.reviews.aria_label")}
-            previousLabel={t("home.reviews.previous_label")}
-            nextLabel={t("home.reviews.next_label")}
-            navigateLabel={t("home.reviews.navigate_label")}
-            starsLabel={(rating) => t("home.reviews.stars_label", { rating })}
-          />
         </Container>
+        <ReviewsCarousel
+          reviews={reviews}
+          ariaLabel={t("home.reviews.aria_label")}
+          previousLabel={t("home.reviews.previous_label")}
+          nextLabel={t("home.reviews.next_label")}
+          navigateLabel={t("home.reviews.navigate_label")}
+          starsLabel={(rating) => t("home.reviews.stars_label", { rating })}
+        />
       </section>
     </>
   );

@@ -104,6 +104,36 @@
           "role": "Pacient familie",
           "title": "Copiii imi cer sa mergem",
           "text": "Doi copii, zero crize. Camera pediatrica si personalul fac fiecare vizita sa para o aventura."
+        },
+        "bogdan": {
+          "name": "Bogdan Ene",
+          "role": "Tratament canal",
+          "title": "Fara durere, chiar si la tratamentul de canal",
+          "text": "Sincer, ma asteptam la ce e mai rau. Mi-au explicat fiecare minut, m-au tinut anesteziat si am plecat fara pic de durere."
+        },
+        "diana": {
+          "name": "Diana Munteanu",
+          "role": "Lipire estetica",
+          "title": "O reparatie mica a schimbat totul",
+          "text": "Doar un dinte din fata ciobit, dar ma deranja de ani buni. Douazeci de minute aici si nu mai disting care a fost reparat."
+        },
+        "stefan": {
+          "name": "Stefan Radu",
+          "role": "Masele de minte",
+          "title": "Rapid, lin, prietenos",
+          "text": "Toate cele patru masele de minte intr-o dimineata. Instructiuni clare, maini blande si un telefon de control a doua zi."
+        },
+        "larisa": {
+          "name": "Larisa Toma",
+          "role": "Coroana dentara",
+          "title": "Imposibil de deosebit de dintii mei",
+          "text": "Coroana montata se potriveste perfect cu restul dintilor. Au trecut trei luni si tot uit pe care parte este."
+        },
+        "tudor": {
+          "name": "Tudor Albu",
+          "role": "Vizita de urgenta",
+          "title": "M-au programat in mai putin de o ora",
+          "text": "Mi-am crapat o masea sambata. Receptia mi-a gasit un loc inainte de pranz si am plecat cu masea reparata complet."
         }
       }
     },
