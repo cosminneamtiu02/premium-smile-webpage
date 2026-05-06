@@ -94,7 +94,7 @@ export function TopBar({
       <div className="pointer-events-auto relative">
         <div
           className={cn(
-            "flex h-16 items-center justify-between gap-3 rounded-lg border border-border-subtle px-4 backdrop-blur-md backdrop-saturate-150 transition-[background-color,box-shadow] duration-300 ease-out sm:h-20 sm:px-6",
+            "flex h-14 items-center justify-between gap-3 rounded-lg border border-border-subtle px-3 backdrop-blur-md backdrop-saturate-150 transition-[background-color,box-shadow] duration-300 ease-out sm:h-16 sm:px-5",
             scrolled ? "bg-bg-elevated/86 shadow-cta" : "bg-bg-elevated/96 shadow-soft-sm",
           )}
         >
@@ -108,7 +108,7 @@ export function TopBar({
             aria-label={`${brandLabel}, home`}
             className="inline-flex items-center rounded"
           >
-            <Wordmark brandLabel={brandLabel} size={32} labelClassName="hidden sm:inline" />
+            <Wordmark brandLabel={brandLabel} size={26} labelClassName="hidden sm:inline" />
           </a>
 
           <ul className="hidden items-center gap-1 md:flex">
@@ -124,7 +124,7 @@ export function TopBar({
                     }}
                     aria-current={isActive ? "page" : undefined}
                     className={cn(
-                      "relative inline-flex h-12 items-center px-5 text-base font-medium transition-colors duration-200 ease-out",
+                      "relative inline-flex h-12 items-center px-5 text-lg font-medium transition-colors duration-200 ease-out",
                       "after:pointer-events-none after:absolute after:bottom-2 after:left-5 after:right-5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 after:ease-out after:content-['']",
                       "hover:text-accent hover:after:scale-x-100",
                       isActive ? "text-accent after:scale-x-100" : "text-fg",
@@ -145,7 +145,7 @@ export function TopBar({
                   // Hidden on phone — the same CTA lives inside the mobile
                   // dropdown panel below. `inline-flex` re-applies the
                   // Button base display at md+.
-                  "hidden h-12 border border-accent px-6 text-base font-medium shadow-cta sm:h-14 sm:px-7 md:inline-flex",
+                  "hidden h-10 border border-accent px-5 text-sm font-medium shadow-cta sm:h-11 sm:px-6 md:inline-flex",
                   // FloatingBookCta-style hover: scale up + invert colours
                   // (filled lavender → white with lavender text/border) +
                   // shadow growth. Same pattern is propagated to the Hero
@@ -165,11 +165,11 @@ export function TopBar({
               aria-expanded={open}
               aria-controls="topbar-menu"
               className={cn(
-                "inline-flex h-12 w-12 items-center justify-center rounded-md text-fg transition-all duration-150 ease-out hover:bg-bg-subtle active:scale-95 md:hidden",
+                "inline-flex h-11 w-11 items-center justify-center rounded-md text-fg transition-all duration-150 ease-out hover:bg-bg-subtle active:scale-95 md:hidden",
                 open && "bg-accent-soft text-accent",
               )}
             >
-              {open ? <X size={24} aria-hidden /> : <Menu size={24} aria-hidden />}
+              {open ? <X size={20} aria-hidden /> : <Menu size={20} aria-hidden />}
             </button>
           </div>
         </div>
