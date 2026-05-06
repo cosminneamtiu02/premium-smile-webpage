@@ -105,7 +105,7 @@ export function Hero({
          *  when the underlying photography spans different palettes. */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 z-[2] bg-[color-mix(in_srgb,var(--bg)_18%,transparent)]"
+          className="pointer-events-none absolute inset-0 z-[2] bg-[color-mix(in_srgb,var(--bg)_32%,transparent)]"
         />
 
         {/* Bottom fade-to-bg. 10% of stage — a thin seam between hero and
