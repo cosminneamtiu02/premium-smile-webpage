@@ -63,7 +63,13 @@ export function Hero({
       {...(isCarousel ? { "aria-roledescription": "carousel" } : {})}
       className={cn("relative -mt-4 w-full bg-bg", className)}
     >
-      <div className="relative h-screen max-h-[640px] w-full overflow-hidden bg-bg-subtle [@supports(height:100dvh)]:h-[100dvh]">
+      {/* Stage is intentionally 112vh — slightly taller than the viewport — so
+       *  ~40% of the bottom fade region sits below the fold. With fade height
+       *  at 28% of the stage, that puts ~60% of the transition visible at the
+       *  bottom of the initial viewport (the "tease to scroll" pattern). The
+       *  remaining ~12vh of stage is the bottom of the fade ramping into solid
+       *  --bg, which the user only sees once they start scrolling. */}
+      <div className="relative h-[112vh] w-full overflow-hidden bg-bg-subtle [@supports(height:100dvh)]:h-[112dvh]">
         {slides.map((slide, i) => {
           const isCurrent = i === active;
           return (
@@ -95,9 +101,14 @@ export function Hero({
           );
         })}
 
+        {/* Bottom fade-to-bg. Tall (28% of stage) and gradual so the eye reads
+         *  "image content above, page background below" with about 60% of the
+         *  transition visible at the bottom of the initial viewport. The stops
+         *  front-load the transparent region so the upper part stays crisp,
+         *  then ramp into solid `--bg` at the very bottom. */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[10%] bg-[linear-gradient(180deg,transparent_0%,color-mix(in_srgb,var(--bg)_15%,transparent)_40%,color-mix(in_srgb,var(--bg)_60%,transparent)_75%,var(--bg)_100%)]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[28%] bg-[linear-gradient(180deg,transparent_0%,color-mix(in_srgb,var(--bg)_8%,transparent)_30%,color-mix(in_srgb,var(--bg)_30%,transparent)_55%,color-mix(in_srgb,var(--bg)_70%,transparent)_80%,var(--bg)_100%)]"
         />
 
         <div
