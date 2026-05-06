@@ -59,7 +59,9 @@ function ContactRow({ href, ariaLabel, icon, text, external }: ContactRowProps) 
       >
         {icon}
       </span>
-      <span className="text-base font-medium text-fg sm:text-lg lg:flex-1 lg:text-right">{text}</span>
+      <span className="text-base font-medium text-fg sm:text-lg lg:flex-1 lg:text-right">
+        {text}
+      </span>
     </a>
   );
 }
