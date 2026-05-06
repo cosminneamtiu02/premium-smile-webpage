@@ -122,7 +122,7 @@ export function Hero({
             // sit on the unaltered image area instead of the fade-tinted
             // transition zone. clamp keeps it from drifting too far on tiny
             // and very tall viewports.
-            "bottom-[clamp(160px,32%,440px)]",
+            "bottom-[clamp(140px,28%,380px)]",
           )}
         >
           <Heading
