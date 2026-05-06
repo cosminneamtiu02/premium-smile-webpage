@@ -89,10 +89,11 @@ export function ClinicLocation({
   return (
     <section aria-labelledby={headingId} className={cn("bg-bg py-12 sm:py-16 lg:py-20", className)}>
       {/* Both the heading AND the map+contact grid use the hero-aligned
-       *  padding so the section reads as a single, wide column starting
-       *  at the same x-coordinate as the slide titles above. The map
-       *  iframe scales freely with the wider available space. */}
-      <div className="pl-[clamp(48px,10vw,200px)] pr-[clamp(24px,5vw,46px)]">
+       *  padding on the left, with a symmetric (same as left) padding on
+       *  the right so the section's right edge matches the WIP card's
+       *  right edge above. The whole block reads as a centred-feeling
+       *  column anchored at the hero's left edge. */}
+      <div className="pl-[clamp(48px,10vw,200px)] pr-[clamp(48px,10vw,200px)]">
         <SectionHeading
           {...(eyebrow ? { eyebrow } : {})}
           title={title}
