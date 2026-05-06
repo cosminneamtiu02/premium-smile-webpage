@@ -112,7 +112,12 @@ export function Hero({
         <div
           className={cn(
             "absolute z-[4] flex flex-col gap-4 max-w-[720px] lg:max-w-[920px] xl:max-w-[1040px] lg:gap-6",
-            "left-[clamp(24px,5vw,46px)] right-[clamp(24px,5vw,46px)]",
+            // inset-x + mx-auto centers the block horizontally on every
+            // viewport (mx-auto absorbs the slack between max-width and
+            // the available area defined by inset-x). The block was
+            // previously left-anchored — `inset-x` alone with max-width
+            // is over-constrained and CSS resolves to left:N, right:auto.
+            "inset-x-[clamp(24px,5vw,46px)] mx-auto",
             // Anchored above the bottom fade so the title/description/CTAs
             // sit on the unaltered image area instead of the fade-tinted
             // transition zone. clamp keeps it from drifting too far on tiny
@@ -146,7 +151,13 @@ export function Hero({
             </div>
           )}
 
-          <div className="grid grid-cols-1 gap-3 sm:max-w-md sm:grid-cols-2 lg:max-w-lg lg:gap-4 lg:[&>*]:h-12 lg:[&>*]:px-7 lg:[&>*]:text-base [&>*]:w-full">
+          {/* CTA grid: 2 columns at sm+ with equal-fraction tracks (`grid-cols-2`)
+           *  so both buttons are exactly the same width. Wrapper max-width is
+           *  generous enough that the longer "Programează o consultație" label
+           *  fits on a single line at every breakpoint, and `whitespace-nowrap`
+           *  enforces it as a guarantee. The buttons grow taller and roomier on
+           *  lg+ so they read as primary heroes, not afterthoughts. */}
+          <div className="grid grid-cols-1 gap-3 sm:max-w-lg sm:grid-cols-2 lg:max-w-2xl lg:gap-4 lg:[&>*]:h-12 lg:[&>*]:px-7 lg:[&>*]:text-base [&>*]:w-full [&>*]:whitespace-nowrap">
             {ctaPrimary}
             {ctaSecondary}
           </div>
