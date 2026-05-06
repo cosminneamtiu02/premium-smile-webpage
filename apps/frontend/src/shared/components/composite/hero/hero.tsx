@@ -122,7 +122,7 @@ export function Hero({
             // sit on the unaltered image area instead of the fade-tinted
             // transition zone. clamp keeps it from drifting too far on tiny
             // and very tall viewports.
-            "bottom-[clamp(200px,38%,520px)]",
+            "bottom-[clamp(160px,32%,440px)]",
           )}
         >
           <Heading
@@ -164,10 +164,11 @@ export function Hero({
         </div>
 
         {isCarousel && (
-          // Dots sit just above the top edge of the now-10% fade — they
-          // read as the bottom edge of the carousel without dipping into
-          // the bg-tinted seam.
-          <div className="absolute inset-x-0 bottom-[clamp(40px,11%,140px)] z-[4] flex justify-center gap-2">
+          // Dots sit at exactly 10% from stage bottom — same y-coord as the
+          // fade region's top edge. The dots' bottom edge touches the fade's
+          // top edge with no overlap, the lowest possible position that
+          // keeps them entirely on the unaltered image area.
+          <div className="absolute inset-x-0 bottom-[10%] z-[4] flex justify-center gap-2">
             {slides.map((slide, i) => (
               <button
                 // biome-ignore lint/suspicious/noArrayIndexKey: image src may repeat across slides; combining with index ensures unique keys
