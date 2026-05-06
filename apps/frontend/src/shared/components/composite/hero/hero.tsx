@@ -152,6 +152,11 @@ export function Hero({
                   aria-hidden={i !== active}
                   className={cn(
                     "[grid-area:1/1] text-3xl text-white [text-shadow:0_2px_24px_rgba(20,15,30,0.35)] [text-wrap:balance] sm:text-4xl lg:text-6xl xl:text-7xl",
+                    // Lavender stroke outline — adds high-contrast definition
+                    // around each glyph so the title stays legible against
+                    // the brand-tinted B&W image regardless of the slide's
+                    // brightness profile.
+                    "[-webkit-text-stroke:0.6px_var(--accent)] [paint-order:stroke_fill]",
                     "transition-opacity duration-1000 ease-in-out motion-reduce:transition-none",
                     i === active ? "opacity-100" : "pointer-events-none opacity-0",
                   )}

@@ -106,7 +106,7 @@ export function TopBar({
               handleNavigate("home");
             }}
             aria-label={`${brandLabel}, home`}
-            className="inline-flex items-center rounded transition-opacity hover:opacity-90"
+            className="inline-flex items-center rounded"
           >
             <Wordmark brandLabel={brandLabel} size={24} labelClassName="hidden sm:inline" />
           </a>
@@ -145,11 +145,14 @@ export function TopBar({
                   // Hidden on phone — the same CTA lives inside the mobile
                   // dropdown panel below. `inline-flex` re-applies the
                   // Button base display at md+.
-                  "relative hidden h-10 px-5 text-sm font-medium shadow-cta hover:-translate-y-0.5 hover:shadow-cta-lg sm:h-11 sm:px-6 md:inline-flex",
-                  // Sliding underline like the nav links — uses accent-fg
-                  // (white) so it shows against the lavender button bg.
-                  "after:pointer-events-none after:absolute after:bottom-2 after:left-5 after:right-5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-accent-fg after:transition-transform after:duration-300 after:ease-out after:content-['']",
-                  "hover:after:scale-x-100",
+                  "hidden h-10 border border-accent px-5 text-sm font-medium shadow-cta sm:h-11 sm:px-6 md:inline-flex",
+                  // FloatingBookCta-style hover: scale up + invert colours
+                  // (filled lavender → white with lavender text/border) +
+                  // shadow growth. Same pattern is propagated to the Hero
+                  // primary CTA and the ClinicLocation contact-row icons,
+                  // so every "primary action" button on the page reacts the
+                  // same way to hover.
+                  "transition-all duration-200 ease-out hover:scale-105 hover:translate-y-0 hover:bg-bg-elevated hover:text-accent hover:border-accent hover:shadow-cta-lg active:scale-100",
                 )}
               >
                 {bookLabel}

@@ -52,11 +52,11 @@ function ContactRow({ href, ariaLabel, icon, text, external }: ContactRowProps) 
       href={href}
       aria-label={ariaLabel}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="-m-3 flex items-center gap-4 rounded-2xl p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      className="group -m-3 flex items-center gap-4 rounded-2xl p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
       <span
         aria-hidden
-        className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-accent bg-accent text-accent-fg shadow-cta [&_svg]:h-5 [&_svg]:w-5"
+        className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-accent bg-accent text-accent-fg shadow-cta transition-all duration-200 ease-out group-hover:scale-105 group-hover:border-border-subtle group-hover:bg-bg-elevated group-hover:text-accent group-hover:shadow-cta-lg group-active:scale-100 [&_svg]:h-5 [&_svg]:w-5"
       >
         {icon}
       </span>

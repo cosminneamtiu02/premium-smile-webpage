@@ -84,8 +84,19 @@ export function HomePage() {
     <>
       <Hero
         slides={slides}
-        ctaPrimary={<Button>{t("home.hero.cta_primary")}</Button>}
-        ctaSecondary={<Button variant="outline">{t("home.hero.cta_secondary")}</Button>}
+        ctaPrimary={
+          <Button className="border border-accent shadow-cta transition-all duration-200 ease-out hover:scale-105 hover:translate-y-0 hover:bg-bg-elevated hover:text-accent hover:border-accent hover:shadow-cta-lg active:scale-100">
+            {t("home.hero.cta_primary")}
+          </Button>
+        }
+        ctaSecondary={
+          <Button
+            variant="outline"
+            className="border-2 border-accent bg-bg-elevated text-accent shadow-cta transition-all duration-200 ease-out hover:bg-accent hover:text-accent-fg hover:border-accent hover:-translate-y-0.5 hover:shadow-cta-lg active:translate-y-0"
+          >
+            {t("home.hero.cta_secondary")}
+          </Button>
+        }
       />
 
       <section className="py-12 sm:py-16">
