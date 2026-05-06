@@ -98,15 +98,16 @@ export function Hero({
           );
         })}
 
-        {/* Permanent muted-and-tinted screen — single overlay that does two
-         *  things at once. `backdrop-filter: grayscale(0.6)` desaturates
-         *  whatever is behind it (the slide image), then the element's
-         *  own translucent --bg background paints a 20 % lavender wash on
-         *  top. Effect: every image reads as a muted, brand-tinted
-         *  underlay regardless of its original palette. */}
+        {/* Permanent B&W-and-tinted screen — single overlay that does two
+         *  things at once. `backdrop-filter: grayscale(1)` strips colour
+         *  from the slide behind entirely (true black-and-white), then
+         *  the element's own translucent --bg background paints a 20 %
+         *  lavender wash on top. Effect: every image reads as a B&W
+         *  photograph with a brand tint, regardless of its original
+         *  palette. */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 z-[2] bg-[color-mix(in_srgb,var(--bg)_20%,transparent)] [backdrop-filter:grayscale(0.6)] [-webkit-backdrop-filter:grayscale(0.6)]"
+          className="pointer-events-none absolute inset-0 z-[2] bg-[color-mix(in_srgb,var(--bg)_20%,transparent)] [backdrop-filter:grayscale(1)] [-webkit-backdrop-filter:grayscale(1)]"
         />
 
         {/* Bottom fade-to-bg. 10% of stage — a thin seam between hero and
