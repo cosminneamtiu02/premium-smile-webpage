@@ -90,7 +90,7 @@ export function HomePage() {
           </Button>
         }
         ctaSecondary={
-          <Button variant="outline" className="border-accent text-accent hover:translate-y-0">
+          <Button className="border border-accent bg-bg-elevated text-accent shadow-cta transition-all duration-200 ease-out hover:scale-105 hover:translate-y-0 hover:bg-bg-subtle hover:text-accent hover:border-accent hover:shadow-cta-lg active:scale-100">
             {t("home.hero.cta_secondary")}
           </Button>
         }
