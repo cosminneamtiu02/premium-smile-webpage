@@ -112,13 +112,13 @@ export function Hero({
         <div
           className={cn(
             "absolute z-[4] flex flex-col gap-4 max-w-[720px] lg:max-w-[920px] xl:max-w-[1040px] lg:gap-6",
-            // Left-anchored: both `left` and `right` are pinned, but the
-            // max-width cap over-constrains the box, so CSS resolves to
-            // left:N, right:auto — the block hugs the left edge with the
-            // right margin growing with the viewport. The right anchor
-            // still kicks in on viewports narrower than the max-width
-            // (mobile/tablet), keeping the block clear of the right edge.
-            "left-[clamp(24px,5vw,46px)] right-[clamp(24px,5vw,46px)]",
+            // Left-anchored but with a generous left offset that scales
+            // with the viewport — the block sits between the original
+            // edge-hugging position and a fully-centered one. Right anchor
+            // stays small so the box can stretch close to the right edge
+            // on narrow screens (the max-width cap takes over on wide
+            // screens, leaving slack on the right that the user accepts).
+            "left-[clamp(48px,10vw,200px)] right-[clamp(24px,5vw,46px)]",
             // Anchored above the bottom fade so the title/description/CTAs
             // sit on the unaltered image area instead of the fade-tinted
             // transition zone. clamp keeps it from drifting too far on tiny
