@@ -164,10 +164,11 @@ export function Hero({
         </div>
 
         {isCarousel && (
-          // Dots sit just inside the top edge of the fade region (28% from
-          // bottom). The gradient is still mostly transparent there, so the
-          // image reads through and the white dots stay clearly visible.
-          <div className="absolute inset-x-0 bottom-[clamp(120px,24%,300px)] z-[4] flex justify-center gap-2">
+          // Dots sit just above the top edge of the fade region (16% from
+          // bottom) — close enough that the eye reads them as part of the
+          // bottom edge of the carousel, but still in the unaltered image
+          // area so the white dots stay crisp and high-contrast.
+          <div className="absolute inset-x-0 bottom-[clamp(80px,18%,220px)] z-[4] flex justify-center gap-2">
             {slides.map((slide, i) => (
               <button
                 // biome-ignore lint/suspicious/noArrayIndexKey: image src may repeat across slides; combining with index ensures unique keys
