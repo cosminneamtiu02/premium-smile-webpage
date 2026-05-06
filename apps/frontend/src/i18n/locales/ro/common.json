@@ -1,127 +1,127 @@
 {
   "app_name": "Premium Smile",
   "a11y": {
-    "skip_to_content": "Sari la continutul principal"
+    "skip_to_content": "Sari la conținutul principal"
   },
   "nav": {
     "primary": "Principal",
-    "home": "Acasa",
-    "pricing": "Preturi",
+    "home": "Acasă",
+    "pricing": "Prețuri",
     "blog": "Blog",
     "open_menu": "Deschide meniul",
-    "close_menu": "Inchide meniul"
+    "close_menu": "Închide meniul"
   },
   "language": {
-    "en": "Engleza",
-    "ro": "Romana",
+    "en": "Engleză",
+    "ro": "Română",
     "switch": "Limba"
   },
   "book_cta": {
-    "label": "Programeaza o consultatie",
-    "aria_label": "Programeaza o consultatie la telefon"
+    "label": "Programează o consultație",
+    "aria_label": "Programează o consultație la telefon"
   },
   "home": {
     "hero": {
-      "cta_primary": "Programeaza o consultatie",
+      "cta_primary": "Programează o consultație",
       "cta_secondary": "Vezi serviciile",
       "slides": {
         "calm": {
-          "alt": "Cabinet de tratament linistit cu lumina naturala",
-          "title": "O clinica stomatologica moderna pentru toata familia"
+          "alt": "Cabinet de tratament liniștit cu lumină naturală",
+          "title": "O clinică stomatologică modernă pentru toată familia"
         },
         "team": {
-          "alt": "Medic primitor salutand un pacient la receptie",
-          "title": "O echipa care asculta,\npe limba ta"
+          "alt": "Medic primitor salutând un pacient la recepție",
+          "title": "O echipă care ascultă,\npe limba ta"
         },
         "result": {
-          "alt": "Pacient zambind increzator dupa tratament",
-          "title": "Tratamente realizate ca intr-un studio de lux"
+          "alt": "Pacient zâmbind încrezător după tratament",
+          "title": "Tratamente realizate ca într-un studio de lux"
         }
       }
     },
     "wip": {
-      "label": "In lucru"
+      "label": "În lucru"
     },
     "reviews": {
-      "eyebrow": "Parerea ta conteaza",
-      "title": "Alte pareri ale pacientilor nostri",
-      "aria_label": "Recenziile pacientilor",
-      "previous_label": "Recenzia anterioara",
-      "next_label": "Recenzia urmatoare",
-      "navigate_label": "Navigheaza recenziile",
+      "eyebrow": "Părerea ta contează",
+      "title": "Alte păreri ale pacienților noștri",
+      "aria_label": "Recenziile pacienților",
+      "previous_label": "Recenzia anterioară",
+      "next_label": "Recenzia următoare",
+      "navigate_label": "Navighează recenziile",
       "stars_label": "{{rating}} din 5 stele",
       "items": {
         "andreea": {
           "name": "Andreea Popescu",
-          "role": "Pacient fatete",
-          "title": "Increderea regasita",
-          "text": "Premium Smile mi-a transformat increderea. Echipa mi-a explicat fiecare pas, iar rezultatul este zambetul la care am visat."
+          "role": "Pacient fațete",
+          "title": "Încrederea regăsită",
+          "text": "Premium Smile mi-a transformat încrederea. Echipa mi-a explicat fiecare pas, iar rezultatul este zâmbetul la care am visat."
         },
         "mihai": {
           "name": "Mihai Ionescu",
           "role": "Implanturi",
           "title": "Calm, profesional, amabil",
-          "text": "De la consultatie pana la control, experienta a fost ca la un spa, nu la o clinica. Nu-i pot recomanda suficient."
+          "text": "De la consultație până la control, experiența a fost ca la un spa, nu la o clinică. Nu-i pot recomanda suficient."
         },
         "elena": {
           "name": "Elena Dumitru",
           "role": "Albire",
           "title": "Fiecare minut a meritat",
-          "text": "Am condus doua ore in fiecare sens si as face-o din nou. Fara durere, rezultate frumoase si personalul cel mai amabil."
+          "text": "Am condus două ore în fiecare sens și aș face-o din nou. Fără durere, rezultate frumoase și personalul cel mai amabil."
         },
         "radu": {
           "name": "Radu Marin",
           "role": "Igienizare",
-          "title": "Prima clinica fara teama",
-          "text": "Mereu am avut frica de dentist. Aici, pentru prima data, m-am simtit complet in siguranta. M-au ascultat."
+          "title": "Prima clinică fără teamă",
+          "text": "Mereu am avut frică de dentist. Aici, pentru prima dată, m-am simțit complet în siguranță. M-au ascultat."
         },
         "ioana": {
           "name": "Ioana Stan",
-          "role": "Ortodontie",
-          "title": "Ca o persoana diferita",
-          "text": "Optsprezece luni de aligneri transparenti, controale saptamanale, zero presiune. Alinierea si ocluzia sunt in sfarsit corecte."
+          "role": "Ortodonție",
+          "title": "Ca o persoană diferită",
+          "text": "Optsprezece luni de aligneri transparenți, controale săptămânale, zero presiune. Alinierea și ocluzia sunt în sfârșit corecte."
         },
         "cristian": {
           "name": "Cristian Voicu",
           "role": "Plan complet",
-          "title": "Au vazut imaginea de ansamblu",
-          "text": "Alte clinici mi-au dat un pret. Premium Smile mi-a dat un plan. Trei ani mai tarziu, gura mea este sanatoasa."
+          "title": "Au văzut imaginea de ansamblu",
+          "text": "Alte clinici mi-au dat un preț. Premium Smile mi-a dat un plan. Trei ani mai târziu, gura mea este sănătoasă."
         },
         "ana": {
           "name": "Ana Petrescu",
           "role": "Pacient familie",
-          "title": "Copiii imi cer sa mergem",
-          "text": "Doi copii, zero crize. Camera pediatrica si personalul fac fiecare vizita sa para o aventura."
+          "title": "Copiii îmi cer să mergem",
+          "text": "Doi copii, zero crize. Camera pediatrică și personalul fac fiecare vizită să pară o aventură."
         },
         "bogdan": {
           "name": "Bogdan Ene",
           "role": "Tratament canal",
-          "title": "Fara durere, chiar si la tratamentul de canal",
-          "text": "Sincer, ma asteptam la ce e mai rau. Mi-au explicat fiecare minut, m-au tinut anesteziat si am plecat fara pic de durere."
+          "title": "Fără durere, chiar și la tratamentul de canal",
+          "text": "Sincer, mă așteptam la ce e mai rău. Mi-au explicat fiecare minut, m-au ținut anesteziat și am plecat fără pic de durere."
         },
         "diana": {
           "name": "Diana Munteanu",
-          "role": "Lipire estetica",
-          "title": "O reparatie mica a schimbat totul",
-          "text": "Doar un dinte din fata ciobit, dar ma deranja de ani buni. Douazeci de minute aici si nu mai disting care a fost reparat."
+          "role": "Lipire estetică",
+          "title": "O reparație mică a schimbat totul",
+          "text": "Doar un dinte din față ciobit, dar mă deranja de ani buni. Douăzeci de minute aici și nu mai disting care a fost reparat."
         },
         "stefan": {
-          "name": "Stefan Radu",
-          "role": "Masele de minte",
+          "name": "Ștefan Radu",
+          "role": "Măsele de minte",
           "title": "Rapid, lin, prietenos",
-          "text": "Toate cele patru masele de minte intr-o dimineata. Instructiuni clare, maini blande si un telefon de control a doua zi."
+          "text": "Toate cele patru măsele de minte într-o dimineață. Instrucțiuni clare, mâini blânde și un telefon de control a doua zi."
         },
         "larisa": {
           "name": "Larisa Toma",
-          "role": "Coroana dentara",
-          "title": "Imposibil de deosebit de dintii mei",
-          "text": "Coroana montata se potriveste perfect cu restul dintilor. Au trecut trei luni si tot uit pe care parte este."
+          "role": "Coroană dentară",
+          "title": "Imposibil de deosebit de dinții mei",
+          "text": "Coroana montată se potrivește perfect cu restul dinților. Au trecut trei luni și tot uit pe care parte este."
         },
         "tudor": {
           "name": "Tudor Albu",
-          "role": "Vizita de urgenta",
-          "title": "M-au programat in mai putin de o ora",
-          "text": "Mi-am crapat o masea sambata. Receptia mi-a gasit un loc inainte de pranz si am plecat cu masea reparata complet."
+          "role": "Vizită de urgență",
+          "title": "M-au programat în mai puțin de o oră",
+          "text": "Mi-am crăpat o măsea sâmbătă. Recepția mi-a găsit un loc înainte de prânz și am plecat cu măseaua reparată complet."
         }
       }
     },
@@ -135,62 +135,62 @@
     }
   },
   "pricing": {
-    "title": "Preturi",
-    "subtitle": "Preturi transparente pentru cele mai frecvente tratamente. Cazurile complexe sunt cotate dupa consultatie.",
+    "title": "Prețuri",
+    "subtitle": "Prețuri transparente pentru cele mai frecvente tratamente. Cazurile complexe sunt cotate după consultație.",
     "tiers": {
       "consult": {
-        "name": "Consultatie",
-        "description": "Evaluare initiala, radiografii daca este necesar si un plan personalizat de tratament.",
+        "name": "Consultație",
+        "description": "Evaluare inițială, radiografii dacă este necesar și un plan personalizat de tratament.",
         "price": "De la 100 RON"
       },
       "cleaning": {
-        "name": "Igienizare profesionala",
-        "description": "Detartraj, periaj profesional si fluorizare.",
+        "name": "Igienizare profesională",
+        "description": "Detartraj, periaj profesional și fluorizare.",
         "price": "De la 250 RON"
       },
       "whitening": {
-        "name": "Albire dentara",
-        "description": "Sedinta de albire in cabinet pentru dinti vizibil mai luminosi.",
+        "name": "Albire dentară",
+        "description": "Ședință de albire în cabinet pentru dinți vizibil mai luminoși.",
         "price": "De la 800 RON"
       }
     },
-    "disclaimer": "Pretul final depinde de complexitatea cazului. Va rugam sa programati o consultatie pentru o estimare exacta."
+    "disclaimer": "Prețul final depinde de complexitatea cazului. Vă rugăm să programați o consultație pentru o estimare exactă."
   },
   "blog": {
     "title": "Blog",
-    "subtitle": "Sfaturi, noutati si actualizari din clinica.",
-    "empty": "Nicio postare inca — reveniti curand."
+    "subtitle": "Sfaturi, noutăți și actualizări din clinică.",
+    "empty": "Nicio postare încă — reveniți curând."
   },
   "footer": {
-    "tagline": "Stomatologie moderna. Ingrijire onesta.",
+    "tagline": "Stomatologie modernă. Îngrijire onestă.",
     "contact_section": "Contact",
-    "contact_label": "Contacteaza-ne aici",
+    "contact_label": "Contactează-ne aici",
     "phone": "+40 700 000 000",
     "links_section": "Linkuri",
-    "anpc_section": "Protectia consumatorilor",
-    "anpc_online": "Solutionarea <b>online</b> a litigiilor",
-    "anpc_alt": "Solutionarea alternativa a litigiilor",
-    "anpc_logo_alt": "Autoritatea Nationala pentru Protectia Consumatorilor (ANPC)",
+    "anpc_section": "Protecția consumatorilor",
+    "anpc_online": "Soluționarea <b>online</b> a litigiilor",
+    "anpc_alt": "Soluționarea alternativă a litigiilor",
+    "anpc_logo_alt": "Autoritatea Națională pentru Protecția Consumatorilor (ANPC)",
     "hours_title": "Program de lucru",
     "hours_mon": "Luni",
-    "hours_tue": "Marti",
+    "hours_tue": "Marți",
     "hours_wed": "Miercuri",
     "hours_thu": "Joi",
     "hours_fri": "Vineri",
-    "hours_sat": "Sambata",
-    "hours_sun": "Duminica",
+    "hours_sat": "Sâmbătă",
+    "hours_sun": "Duminică",
     "hours_value_weekday": "09:00 – 19:00",
     "hours_value_saturday": "09:00 – 14:00",
-    "hours_value_sunday": "Inchis",
+    "hours_value_sunday": "Închis",
     "social_instagram_label": "Premium Smile pe Instagram",
     "social_tiktok_label": "Premium Smile pe TikTok",
-    "back_to_top": "Inapoi sus",
+    "back_to_top": "Înapoi sus",
     "copyright": "© {{year}} Premium Smile. Toate drepturile rezervate."
   },
   "error_boundary": {
-    "title": "Ceva nu a functionat",
-    "message": "A aparut o eroare neasteptata.",
-    "reload": "Reincarca"
+    "title": "Ceva nu a funcționat",
+    "message": "A apărut o eroare neașteptată.",
+    "reload": "Reîncarcă"
   },
-  "loading": "Se incarca..."
+  "loading": "Se încarcă..."
 }

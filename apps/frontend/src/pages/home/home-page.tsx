@@ -5,7 +5,6 @@ import type { Review } from "@/shared/components/composite/review-card/review-ca
 import { ReviewsCarousel } from "@/shared/components/composite/reviews-carousel/reviews-carousel";
 import { SectionHeading } from "@/shared/components/composite/section-heading/section-heading";
 import { Button } from "@/shared/components/ui/button/button";
-import { Container } from "@/shared/components/ui/container/container";
 
 const SLIDE_IMAGES: Record<"calm" | "team" | "result", string> = {
   calm: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1600",
@@ -121,15 +120,13 @@ export function HomePage() {
       />
 
       <section className="py-12 sm:py-16">
-        <Container width="lg">
-          <div className="mb-8">
-            <SectionHeading
-              eyebrow={t("home.reviews.eyebrow")}
-              title={t("home.reviews.title")}
-              align="start"
-            />
-          </div>
-        </Container>
+        <div className="mb-8 pl-[clamp(48px,10vw,200px)] pr-[clamp(24px,5vw,46px)]">
+          <SectionHeading
+            eyebrow={t("home.reviews.eyebrow")}
+            title={t("home.reviews.title")}
+            align="start"
+          />
+        </div>
         <ReviewsCarousel
           reviews={reviews}
           ariaLabel={t("home.reviews.aria_label")}
