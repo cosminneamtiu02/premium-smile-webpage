@@ -98,14 +98,15 @@ export function Hero({
           );
         })}
 
-        {/* Permanent brand-tint screen — a translucent layer of --bg that
-         *  always sits above the image and below the bottom fade. Subtly
-         *  pulls the slide's colours toward the page's lavender so the
-         *  hero feels visually continuous with the rest of the site, even
-         *  when the underlying photography spans different palettes. */}
+        {/* Permanent grayed-out screen — a transparent overlay that always
+         *  sits above the image and below the bottom fade, desaturating
+         *  what's behind it via `backdrop-filter: grayscale(...)`. No
+         *  colour painted on top; the slides' palette is just pulled
+         *  toward gray so the hero feels visually muted regardless of
+         *  the underlying photography. */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 z-[2] bg-[color-mix(in_srgb,var(--bg)_32%,transparent)]"
+          className="pointer-events-none absolute inset-0 z-[2] [backdrop-filter:grayscale(0.7)] [-webkit-backdrop-filter:grayscale(0.7)]"
         />
 
         {/* Bottom fade-to-bg. 10% of stage — a thin seam between hero and
