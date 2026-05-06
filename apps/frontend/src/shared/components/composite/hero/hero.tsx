@@ -113,7 +113,11 @@ export function Hero({
           className={cn(
             "absolute z-[4] flex max-w-[720px] flex-col gap-4",
             "left-[clamp(24px,5vw,46px)] right-[clamp(24px,5vw,46px)]",
-            "bottom-[clamp(96px,17%,260px)]",
+            // Anchored above the 28% bottom fade so the title/description/CTAs
+            // sit on the unaltered image area instead of the fade-tinted
+            // transition zone. clamp keeps it from drifting too far on tiny
+            // and very tall viewports.
+            "bottom-[clamp(200px,38%,520px)]",
           )}
         >
           <Heading
@@ -149,7 +153,10 @@ export function Hero({
         </div>
 
         {isCarousel && (
-          <div className="absolute inset-x-0 bottom-[clamp(60px,12%,180px)] z-[4] flex justify-center gap-2">
+          // Dots sit just inside the top edge of the fade region (28% from
+          // bottom). The gradient is still mostly transparent there, so the
+          // image reads through and the white dots stay clearly visible.
+          <div className="absolute inset-x-0 bottom-[clamp(120px,24%,300px)] z-[4] flex justify-center gap-2">
             {slides.map((slide, i) => (
               <button
                 // biome-ignore lint/suspicious/noArrayIndexKey: image src may repeat across slides; combining with index ensures unique keys
