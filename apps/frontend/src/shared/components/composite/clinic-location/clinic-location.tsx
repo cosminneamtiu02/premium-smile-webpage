@@ -51,7 +51,7 @@ function ContactRow({ href, ariaLabel, icon, text, external }: ContactRowProps) 
       href={href}
       aria-label={ariaLabel}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="group -m-3 flex items-center justify-end gap-4 rounded-2xl p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      className="group -m-3 flex items-center justify-center gap-4 rounded-2xl p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:justify-end"
     >
       <span
         aria-hidden
@@ -101,7 +101,7 @@ export function ClinicLocation({
           align="start"
         />
 
-        <div className="mt-8 grid gap-6 sm:mt-10 lg:mt-12 lg:grid-cols-[3fr_2fr] lg:items-center lg:gap-10">
+        <div className="mt-8 grid gap-6 sm:mt-10 lg:mt-12 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-6">
           <MapFrame embedSrc={embedSrc} title={mapTitle} aspect="wide" />
 
           <div className="flex flex-col gap-4 sm:gap-5">
