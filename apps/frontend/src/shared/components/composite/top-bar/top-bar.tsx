@@ -83,7 +83,10 @@ export function TopBar({
         // `sticky top-4` matches that offset, so the bar sits at the same
         // visual y at every scroll position — looks like an overlay that
         // floats with consistent spacing.
-        "pointer-events-none sticky top-4 z-50 mx-auto mt-4 h-0 w-full max-w-6xl px-3 sm:px-6",
+        // `w-[94%]` (instead of a pixel-capped max-width) gives the same
+        // ~3% horizontal margin on every screen — the bar grows with the
+        // viewport instead of plateauing at a desktop-style 1152 px cap.
+        "pointer-events-none sticky top-4 z-50 mx-auto mt-4 h-0 w-[94%]",
         className,
       )}
     >
