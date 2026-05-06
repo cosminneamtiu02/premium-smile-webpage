@@ -156,7 +156,7 @@ export function Hero({
                     // around each glyph so the title stays legible against
                     // the brand-tinted B&W image regardless of the slide's
                     // brightness profile.
-                    "[-webkit-text-stroke:0.6px_var(--accent)] [paint-order:stroke_fill]",
+                    "[-webkit-text-stroke:1px_var(--accent)] [paint-order:stroke_fill]",
                     "transition-opacity duration-1000 ease-in-out motion-reduce:transition-none",
                     i === active ? "opacity-100" : "pointer-events-none opacity-0",
                   )}
