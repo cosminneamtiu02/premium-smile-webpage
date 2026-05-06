@@ -35,31 +35,6 @@
     color-scheme: light;
     background-color: var(--bg);
     color: var(--fg);
-
-    /* Page scrollbar: transparent track so the page --bg shows through
-     * instead of the browser's default white channel. Thumb keeps a
-     * lavender-tinted accent so it's visible against the page. Firefox
-     * uses `scrollbar-color`; webkit browsers use the ::-webkit-*
-     * pseudo-elements below. */
-    scrollbar-color: color-mix(in srgb, var(--accent) 45%, transparent) transparent;
-    scrollbar-width: thin;
-  }
-
-  ::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
-  }
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: color-mix(in srgb, var(--accent) 45%, transparent);
-    border-radius: 6px;
-    border: 3px solid transparent;
-    background-clip: padding-box;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: color-mix(in srgb, var(--accent) 65%, transparent);
   }
 
   body {
@@ -213,4 +188,25 @@
 }
 .skip-link:focus {
   top: 1rem;
+}
+
+/* OverlayScrollbars custom theme. Applied via the `theme` option on the
+ * `useOverlayScrollbars` hook in `app/body-overlay-scrollbar.tsx`. The lib
+ * paints its own thumb element on top of the page content while letting
+ * the native scrollbar still drive the actual scroll, so we get a
+ * cross-browser true-overlay scrollbar (no reserved gutter) themed in
+ * brand lavender. */
+.os-theme-smile-overlay {
+  --os-size: 14px;
+  --os-padding-perpendicular: 2px;
+  --os-padding-axis: 2px;
+  --os-track-border-radius: 8px;
+  --os-track-bg: transparent;
+  --os-track-bg-hover: transparent;
+  --os-track-bg-active: transparent;
+  --os-handle-border-radius: 8px;
+  --os-handle-bg: color-mix(in srgb, var(--accent) 50%, transparent);
+  --os-handle-bg-hover: color-mix(in srgb, var(--accent) 70%, transparent);
+  --os-handle-bg-active: color-mix(in srgb, var(--accent) 85%, transparent);
+  --os-handle-min-size: 40px;
 }
