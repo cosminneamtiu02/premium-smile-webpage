@@ -151,12 +151,12 @@ export function Hero({
                   key={`title-${slide.src}-${i}`}
                   aria-hidden={i !== active}
                   className={cn(
-                    "[grid-area:1/1] text-3xl text-white [text-shadow:0_2px_24px_rgba(20,15,30,0.35)] [text-wrap:balance] sm:text-4xl lg:text-6xl xl:text-7xl",
+                    "[grid-area:1/1] text-4xl text-white [text-shadow:0_2px_24px_rgba(20,15,30,0.35)] [text-wrap:balance] sm:text-5xl lg:text-7xl xl:text-8xl",
                     // Lavender stroke outline — adds high-contrast definition
                     // around each glyph so the title stays legible against
                     // the brand-tinted B&W image regardless of the slide's
                     // brightness profile.
-                    "[-webkit-text-stroke:1.5px_var(--accent)] [paint-order:stroke_fill]",
+                    "[-webkit-text-stroke:3px_var(--accent)] [paint-order:stroke_fill]",
                     "transition-opacity duration-1000 ease-in-out motion-reduce:transition-none",
                     i === active ? "opacity-100" : "pointer-events-none opacity-0",
                   )}
@@ -173,7 +173,7 @@ export function Hero({
            *  fits on a single line at every breakpoint, and `whitespace-nowrap`
            *  enforces it as a guarantee. The buttons grow taller and roomier on
            *  lg+ so they read as primary heroes, not afterthoughts. */}
-          <div className="grid grid-cols-1 gap-3 sm:max-w-lg sm:grid-cols-2 lg:max-w-2xl lg:gap-4 lg:[&>*]:h-12 lg:[&>*]:px-7 lg:[&>*]:text-base [&>*]:w-full [&>*]:whitespace-nowrap">
+          <div className="grid grid-cols-1 gap-3 sm:max-w-lg sm:grid-cols-2 lg:max-w-2xl lg:gap-4 lg:[&>*]:h-14 lg:[&>*]:px-9 lg:[&>*]:text-lg [&>*]:w-full [&>*]:whitespace-nowrap">
             {ctaPrimary}
             {ctaSecondary}
           </div>
