@@ -89,14 +89,20 @@ export function ClinicLocation({
 
   return (
     <section aria-labelledby={headingId} className={cn("bg-bg py-12 sm:py-16 lg:py-20", className)}>
-      <Container width="lg">
+      {/* Heading sits with the same horizontal padding as the Hero text
+       *  block so the eyebrow + title line up vertically with the slide
+       *  titles above. Map + contact panel below stay inside the standard
+       *  Container so the iframe doesn't blow out on wide screens. */}
+      <div className="pl-[clamp(48px,10vw,200px)] pr-[clamp(24px,5vw,46px)]">
         <SectionHeading
           {...(eyebrow ? { eyebrow } : {})}
           title={title}
           id={headingId}
           align="start"
         />
+      </div>
 
+      <Container width="lg">
         <div className="mt-8 grid gap-6 sm:mt-10 lg:mt-12 lg:grid-cols-[3fr_2fr] lg:items-center lg:gap-10">
           <MapFrame embedSrc={embedSrc} title={mapTitle} aspect="wide" />
 

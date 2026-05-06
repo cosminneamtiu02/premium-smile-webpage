@@ -1,13 +1,11 @@
-import { Sparkles, Stethoscope, Users } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Card } from "@/shared/components/composite/card/card";
 import { ClinicLocation } from "@/shared/components/composite/clinic-location/clinic-location";
 import { Hero, type HeroSlide } from "@/shared/components/composite/hero/hero";
 import type { Review } from "@/shared/components/composite/review-card/review-card";
 import { ReviewsCarousel } from "@/shared/components/composite/reviews-carousel/reviews-carousel";
+import { SectionHeading } from "@/shared/components/composite/section-heading/section-heading";
 import { Button } from "@/shared/components/ui/button/button";
 import { Container } from "@/shared/components/ui/container/container";
-import { Heading } from "@/shared/components/ui/heading/heading";
 
 const SLIDE_IMAGES: Record<"calm" | "team" | "result", string> = {
   calm: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1600",
@@ -96,29 +94,16 @@ export function HomePage() {
         }
       />
 
+      {/* Placeholder card sitting where the services grid used to live.
+       *  Symmetric `mx-[clamp(48px,10vw,200px)]` so the left edge lines up
+       *  with the Hero text block and the right edge mirrors the same
+       *  margin — equal breathing room on both sides. */}
       <section className="py-12 sm:py-16">
-        <Container width="lg">
-          <div className="mb-8 max-w-2xl">
-            <Heading level={2}>{t("home.services.title")}</Heading>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <Card
-              title={t("home.services.general.title")}
-              description={t("home.services.general.description")}
-              icon={<Stethoscope size={20} aria-hidden />}
-            />
-            <Card
-              title={t("home.services.cosmetic.title")}
-              description={t("home.services.cosmetic.description")}
-              icon={<Sparkles size={20} aria-hidden />}
-            />
-            <Card
-              title={t("home.services.family.title")}
-              description={t("home.services.family.description")}
-              icon={<Users size={20} aria-hidden />}
-            />
-          </div>
-        </Container>
+        <div className="mx-[clamp(48px,10vw,200px)] flex h-72 items-center justify-center rounded-2xl border border-border-subtle bg-bg-elevated text-fg-muted shadow-soft-sm">
+          <p className="text-lg font-medium uppercase tracking-[0.18em] sm:text-xl">
+            {t("home.wip.label")}
+          </p>
+        </div>
       </section>
 
       <ClinicLocation
@@ -137,8 +122,12 @@ export function HomePage() {
 
       <section className="py-12 sm:py-16">
         <Container width="lg">
-          <div className="mb-8 max-w-2xl">
-            <Heading level={2}>{t("home.reviews.title")}</Heading>
+          <div className="mb-8">
+            <SectionHeading
+              eyebrow={t("home.reviews.eyebrow")}
+              title={t("home.reviews.title")}
+              align="start"
+            />
           </div>
         </Container>
         <ReviewsCarousel

@@ -39,23 +39,12 @@
         }
       }
     },
-    "services": {
-      "title": "What we do",
-      "general": {
-        "title": "General dentistry",
-        "description": "Routine check-ups, cleanings, fillings, and preventive care."
-      },
-      "cosmetic": {
-        "title": "Cosmetic treatments",
-        "description": "Whitening, veneers, and personalised smile design."
-      },
-      "family": {
-        "title": "Family care",
-        "description": "Friendly, gentle dentistry for children and adults alike."
-      }
+    "wip": {
+      "label": "Work in progress"
     },
     "reviews": {
-      "title": "What our patients say",
+      "eyebrow": "Your voice matters",
+      "title": "More from our patients",
       "aria_label": "Patient reviews",
       "previous_label": "Previous review",
       "next_label": "Next review",

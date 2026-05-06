@@ -39,23 +39,12 @@
         }
       }
     },
-    "services": {
-      "title": "Ce facem",
-      "general": {
-        "title": "Stomatologie generala",
-        "description": "Controale de rutina, igienizari, plombe si ingrijire preventiva."
-      },
-      "cosmetic": {
-        "title": "Tratamente estetice",
-        "description": "Albire, fatete si design personalizat al zambetului."
-      },
-      "family": {
-        "title": "Ingrijire pentru familie",
-        "description": "Stomatologie blanda si prietenoasa pentru copii si adulti."
-      }
+    "wip": {
+      "label": "In lucru"
     },
     "reviews": {
-      "title": "Ce spun pacientii nostri",
+      "eyebrow": "Parerea ta conteaza",
+      "title": "Alte pareri ale pacientilor nostri",
       "aria_label": "Recenziile pacientilor",
       "previous_label": "Recenzia anterioara",
       "next_label": "Recenzia urmatoare",
