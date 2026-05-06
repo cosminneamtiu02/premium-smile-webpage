@@ -90,10 +90,7 @@ export function HomePage() {
           </Button>
         }
         ctaSecondary={
-          <Button
-            variant="outline"
-            className="border-accent text-accent hover:translate-y-0"
-          >
+          <Button variant="outline" className="border-accent text-accent hover:translate-y-0">
             {t("home.hero.cta_secondary")}
           </Button>
         }
