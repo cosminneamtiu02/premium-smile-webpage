@@ -83,12 +83,11 @@ export function TopBar({
         // `sticky top-4` matches that offset, so the bar sits at the same
         // visual y at every scroll position — looks like an overlay that
         // floats with consistent spacing.
-        // Left margin matches the Hero text block's `left-[clamp(48px,10vw,
-        // 200px)]` so the bar's left edge aligns vertically with the
-        // headline below it. Right margin stays small (clamp(24px,5vw,46px))
-        // so the bar reaches close to the right edge — the result is an
-        // asymmetric overlay that anchors visually to the headline column.
-        "pointer-events-none sticky top-4 z-50 mt-4 h-0 ml-[clamp(48px,10vw,200px)] mr-[clamp(24px,5vw,46px)]",
+        // Equal `mx` on both sides — the value matches the Hero text
+        // block's `left-[clamp(48px,10vw,200px)]` so the bar's left edge
+        // still lines up with the headline column, but with identical
+        // right-side margin so the bar reads as a symmetric overlay.
+        "pointer-events-none sticky top-4 z-50 mt-4 h-0 mx-[clamp(48px,10vw,200px)]",
         className,
       )}
     >
