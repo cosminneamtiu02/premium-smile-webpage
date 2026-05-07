@@ -8,6 +8,7 @@
     "home": "Home",
     "pricing": "Pricing",
     "blog": "Blog",
+    "team": "Team",
     "open_menu": "Open menu",
     "close_menu": "Close menu"
   },
@@ -166,5 +167,51 @@
     "message": "An unexpected error occurred.",
     "reload": "Reload"
   },
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "team": {
+    "intro": {
+      "eyebrow": "The people behind your smile",
+      "title": "Meet the Premium Smile team",
+      "dedication": "Our doctors are deeply committed to every patient who walks through our doors. They lead with patience, attention, and a steady hand — choosing every plan with the person in front of them in mind, not a checklist. The result is care that feels personal because it is."
+    },
+    "doctors": {
+      "title": "Our doctors",
+      "elena": {
+        "name": "Dr. Elena Marin",
+        "initials": "EM",
+        "roles": ["Founder", "Cosmetic Dentistry"],
+        "bio": "Dr. Marin leads the clinic with a commitment to patient-first care. Every plan she designs starts from listening, not from a procedure list — and the work is shaped by the person in front of her."
+      },
+      "andrei": {
+        "name": "Dr. Andrei Popescu",
+        "initials": "AP",
+        "roles": ["Restorative Dentistry"],
+        "bio": "Dr. Popescu builds long-term relationships with his patients. He explains every step before it happens, so consent is informed and trust grows over years, not appointments."
+      },
+      "mihai": {
+        "name": "Dr. Mihai Stoica",
+        "initials": "MI",
+        "roles": ["General Dentistry"],
+        "bio": "Dr. Stoica is known for his calm, methodical approach. Patients who arrived nervous tend to leave relaxed — and come back."
+      }
+    },
+    "helpingStaff": {
+      "title": "Our helping staff",
+      "ana": {
+        "name": "Ana Georgescu",
+        "initials": "AG",
+        "roles": ["Dental Assistant", "Patient Coordinator"]
+      },
+      "raluca": {
+        "name": "Raluca Pop",
+        "initials": "RP",
+        "roles": ["Office Manager"]
+      },
+      "ioana": {
+        "name": "Ioana Stan",
+        "initials": "IS",
+        "roles": ["Receptionist"]
+      }
+    }
+  }
 }
