@@ -8,6 +8,7 @@ import {
   RouterProvider,
 } from "@tanstack/react-router";
 import { type RenderOptions, render } from "@testing-library/react";
+import type { RunOptions } from "axe-core";
 import i18n from "i18next";
 import type { ReactElement, ReactNode } from "react";
 import { I18nextProvider, initReactI18next } from "react-i18next";
@@ -18,6 +19,17 @@ import roCommon from "@/i18n/locales/ro/common.json";
 import { FloatingBookCta } from "@/shared/components/composite/floating-book-cta/floating-book-cta";
 import { Footer } from "@/shared/components/composite/footer/footer";
 import { TopBar } from "@/shared/components/composite/top-bar/top-bar";
+
+/**
+ * Use these axe options for any test that renders a tree containing an
+ * iframe. jsdom does not load iframe content, so axe-core's cross-frame
+ * recursion (`_collectResultsFromFrames`) throws "Respondable target must
+ * be a frame in the current window" against any iframe (real or fake src).
+ * `iframes: false` skips the recursion entirely. The `frame-title` rule
+ * still runs on the parent document and still catches the regression of
+ * someone removing an iframe's `title` attribute.
+ */
+export const AXE_OPTIONS_FOR_IFRAME: RunOptions = { iframes: false };
 
 const testI18n = i18n.createInstance();
 testI18n.use(initReactI18next).init({

@@ -1,0 +1,126 @@
+import { MapPin, Phone } from "lucide-react";
+import type { ReactNode } from "react";
+import { SectionHeading } from "@/shared/components/composite/section-heading/section-heading";
+import { MapFrame } from "@/shared/components/ui/map-frame/map-frame";
+import { cn } from "@/shared/lib/cn";
+
+export type ClinicLocationProps = {
+  /** Optional eyebrow above the title (e.g. "Find us"). */
+  eyebrow?: string;
+  /** Section heading, e.g. "Visit our clinic". */
+  title: string;
+  /** Google Maps Embed URL — passed to `<MapFrame>`. */
+  embedSrc: string;
+  /** Map iframe title (a11y) — passed to `<MapFrame>`. */
+  mapTitle: string;
+  /** Where the address row links to. Opens in a new tab. */
+  directionsHref: string;
+  /** Visible address text. */
+  address: string;
+  /** Aria-label for the address row's link, e.g. "Get directions to {address}". */
+  directionsLabel: string;
+  /** Visible phone (with the formatting the user should see). */
+  phone: string;
+  /** Aria-label for the phone row's link, e.g. "Call {phone}". */
+  callLabel: string;
+  /** Optional override; defaults to `tel:` of the digits in `phone`. */
+  phoneHref?: string;
+  /** id for the section heading — used as `aria-labelledby` on the wrapping section. */
+  headingId?: string;
+  className?: string;
+};
+
+type ContactRowProps = {
+  href: string;
+  ariaLabel: string;
+  icon: ReactNode;
+  text: string;
+  /** Adds target="_blank" + rel="noopener noreferrer". */
+  external?: boolean;
+};
+
+/**
+ * One row of the contact panel. The whole row is a single anchor — the round
+ * icon span is decorative (`aria-hidden`) and animated via `group-hover:`
+ * triggers on the parent. We do NOT nest `IconButton` inside this anchor;
+ * nesting interactive content inside `<a>` is invalid HTML.
+ */
+function ContactRow({ href, ariaLabel, icon, text, external }: ContactRowProps) {
+  return (
+    <a
+      href={href}
+      aria-label={ariaLabel}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      className="group -m-3 flex items-center justify-center gap-4 rounded-2xl p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:justify-start"
+    >
+      <span
+        aria-hidden
+        className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-accent bg-accent text-accent-fg shadow-cta transition-all duration-200 ease-out group-hover:scale-105 group-hover:border-border-subtle group-hover:bg-bg-elevated group-hover:text-accent group-hover:shadow-cta-lg group-active:scale-100 [&_svg]:h-5 [&_svg]:w-5"
+      >
+        {icon}
+      </span>
+      <span className="text-base font-medium text-fg sm:text-lg">{text}</span>
+    </a>
+  );
+}
+
+/**
+ * Standalone home-page section showing the clinic on a Google Maps Embed
+ * iframe alongside an address row and a phone row. Each row is a single
+ * clickable target — the address row opens directions in a new tab, the
+ * phone row dials via `tel:`.
+ */
+export function ClinicLocation({
+  eyebrow,
+  title,
+  embedSrc,
+  mapTitle,
+  directionsHref,
+  address,
+  directionsLabel,
+  phone,
+  callLabel,
+  phoneHref,
+  headingId = "clinic-location-heading",
+  className,
+}: ClinicLocationProps) {
+  const derivedPhoneHref = phoneHref ?? `tel:${phone.replace(/\s/g, "")}`;
+
+  return (
+    <section aria-labelledby={headingId} className={cn("bg-bg py-12 sm:py-16 lg:py-20", className)}>
+      {/* Both the heading AND the map+contact grid use the hero-aligned
+       *  padding on the left, with a symmetric (same as left) padding on
+       *  the right so the section's right edge matches the WIP card's
+       *  right edge above. The whole block reads as a centred-feeling
+       *  column anchored at the hero's left edge. */}
+      <div className="pl-[clamp(48px,10vw,200px)] pr-[clamp(48px,10vw,200px)]">
+        <SectionHeading
+          {...(eyebrow ? { eyebrow } : {})}
+          title={title}
+          id={headingId}
+          align="start"
+        />
+
+        <div className="mt-8 grid gap-6 sm:mt-10 lg:mt-12 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-6">
+          <MapFrame embedSrc={embedSrc} title={mapTitle} aspect="wide" className="aspect-[2/1]" />
+
+          <div className="flex flex-col gap-4 sm:gap-5">
+            <ContactRow
+              href={directionsHref}
+              ariaLabel={directionsLabel}
+              icon={<MapPin />}
+              text={address}
+              external
+            />
+            <ContactRow
+              href={derivedPhoneHref}
+              ariaLabel={callLabel}
+              icon={<Phone />}
+              text={phone}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -4,6 +4,7 @@ import { createRoot } from "react-dom/client";
 import { ErrorBoundary } from "@/app/error-boundary";
 import { Providers } from "@/app/providers";
 import { routeTree } from "./routeTree.gen";
+import "overlayscrollbars/overlayscrollbars.css";
 import "./index.css";
 
 const router = createRouter({ routeTree });

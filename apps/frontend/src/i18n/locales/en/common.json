@@ -18,46 +18,34 @@
     "switch": "Language"
   },
   "book_cta": {
-    "label": "Book now",
+    "label": "Book a consultation",
     "aria_label": "Book a consultation by phone"
   },
   "home": {
     "hero": {
-      "title": "A modern dental practice for the whole family",
       "cta_primary": "Book a consultation",
       "cta_secondary": "See our services",
       "slides": {
         "calm": {
           "alt": "Calm treatment room with natural light",
-          "description": "Premium Smile combines clinical excellence with a calm, welcoming experience. Whatever brings you in, we make sure you leave feeling looked after."
+          "title": "A modern dental practice for the whole family"
         },
         "team": {
           "alt": "Friendly clinician greeting a patient at reception",
-          "description": "A team that takes the time to listen, plans every step in plain language, and treats your visit as more than a transaction."
+          "title": "A team that listens,\nin your language"
         },
         "result": {
           "alt": "Patient smiling confidently after treatment",
-          "description": "Cosmetic, restorative, and preventive care delivered with the craft of a luxury studio — for results that still look like you."
+          "title": "Treatments crafted like a luxury studio"
         }
       }
     },
-    "services": {
-      "title": "What we do",
-      "general": {
-        "title": "General dentistry",
-        "description": "Routine check-ups, cleanings, fillings, and preventive care."
-      },
-      "cosmetic": {
-        "title": "Cosmetic treatments",
-        "description": "Whitening, veneers, and personalised smile design."
-      },
-      "family": {
-        "title": "Family care",
-        "description": "Friendly, gentle dentistry for children and adults alike."
-      }
+    "wip": {
+      "label": "Work in progress"
     },
     "reviews": {
-      "title": "What our patients say",
+      "eyebrow": "Your voice matters",
+      "title": "More from our patients",
       "aria_label": "Patient reviews",
       "previous_label": "Previous review",
       "next_label": "Next review",
@@ -105,8 +93,46 @@
           "role": "Family patient",
           "title": "My kids actually ask to go",
           "text": "Two children, zero tantrums. The pediatric room and the staff make every visit feel like an adventure."
+        },
+        "bogdan": {
+          "name": "Bogdan Ene",
+          "role": "Root canal",
+          "title": "Painless, even the root canal",
+          "text": "Honestly, I expected the worst. They walked me through every minute, kept me numb, and I left without a single ache."
+        },
+        "diana": {
+          "name": "Diana Munteanu",
+          "role": "Cosmetic bonding",
+          "title": "A small fix that changed everything",
+          "text": "Just one chipped front tooth, but it bothered me for years. Twenty minutes here and I cannot tell which one was repaired."
+        },
+        "stefan": {
+          "name": "Stefan Radu",
+          "role": "Wisdom teeth",
+          "title": "Smooth, swift, friendly",
+          "text": "All four wisdom teeth in one morning. Clear instructions, gentle hands, and a follow-up call the next day to check on me."
+        },
+        "larisa": {
+          "name": "Larisa Toma",
+          "role": "Crown work",
+          "title": "Indistinguishable from my own",
+          "text": "The crown they fitted matches the rest of my teeth perfectly. Three months in and I still forget which side it is on."
+        },
+        "tudor": {
+          "name": "Tudor Albu",
+          "role": "Emergency visit",
+          "title": "They fit me in within an hour",
+          "text": "Cracked a molar on a Saturday. The receptionist arranged a slot before noon and I walked out with the tooth fully repaired."
         }
       }
+    },
+    "location": {
+      "eyebrow": "Find us",
+      "title": "Visit our clinic",
+      "address": "Strada Ana Ipătescu nr. 11, București",
+      "directions_label": "Get directions to {{address}}",
+      "call_label": "Call {{phone}}",
+      "map_title": "Map showing Premium Smile clinic location"
     }
   },
   "pricing": {
