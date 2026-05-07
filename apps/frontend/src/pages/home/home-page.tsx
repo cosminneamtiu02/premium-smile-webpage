@@ -1,5 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { ClinicLocation } from "@/shared/components/composite/clinic-location/clinic-location";
+import type { Doctor } from "@/shared/components/composite/doctor-showcase/doctor-card/doctor-card";
+import { DoctorShowcase } from "@/shared/components/composite/doctor-showcase/doctor-showcase";
 import { Hero, type HeroSlide } from "@/shared/components/composite/hero/hero";
 import type { Review } from "@/shared/components/composite/review-card/review-card";
 import { ReviewsCarousel } from "@/shared/components/composite/reviews-carousel/reviews-carousel";
@@ -12,6 +14,13 @@ const SLIDE_IMAGES: Record<"calm" | "team" | "result", string> = {
   result:
     "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1600",
 };
+
+const DOCTOR_IDS = ["elena", "andrei", "mihai"] as const;
+
+const portrait = (initials: string): { src: string; alt: string } => ({
+  src: `https://api.dicebear.com/7.x/initials/svg?seed=${initials}&backgroundColor=8377a3&textColor=ffffff`,
+  alt: `Portrait placeholder ${initials}`,
+});
 
 const REVIEW_KEYS = [
   "andreea",
@@ -77,6 +86,14 @@ export function HomePage() {
     rating: REVIEW_RATINGS[key],
   }));
 
+  const doctors: Doctor[] = DOCTOR_IDS.map((id) => ({
+    id,
+    name: t(`home.doctors.${id}.name`),
+    roles: t(`home.doctors.${id}.roles`, { returnObjects: true }) as unknown as string[],
+    photo: portrait(t(`home.doctors.${id}.initials`)),
+    bio: t(`home.doctors.${id}.bio`),
+  }));
+
   return (
     <>
       <Hero
@@ -93,17 +110,7 @@ export function HomePage() {
         }
       />
 
-      {/* Placeholder card sitting where the services grid used to live.
-       *  Symmetric `mx-[clamp(48px,10vw,200px)]` so the left edge lines up
-       *  with the Hero text block and the right edge mirrors the same
-       *  margin — equal breathing room on both sides. */}
-      <section className="py-12 sm:py-16">
-        <div className="mx-[clamp(48px,10vw,200px)] flex h-72 items-center justify-center rounded-2xl border border-border-subtle bg-bg-elevated text-fg-muted shadow-soft-sm">
-          <p className="text-lg font-medium uppercase tracking-[0.18em] sm:text-xl">
-            {t("home.wip.label")}
-          </p>
-        </div>
-      </section>
+      <DoctorShowcase doctors={doctors} sectionTitle={t("home.doctors.title")} />
 
       <ClinicLocation
         eyebrow={t("home.location.eyebrow")}

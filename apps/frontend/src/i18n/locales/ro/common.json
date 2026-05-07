@@ -8,7 +8,6 @@
     "home": "Acasă",
     "pricing": "Prețuri",
     "blog": "Blog",
-    "team": "Echipă",
     "open_menu": "Deschide meniul",
     "close_menu": "Închide meniul"
   },
@@ -133,6 +132,27 @@
       "directions_label": "Vezi direcțiile către {{address}}",
       "call_label": "Sună la {{phone}}",
       "map_title": "Hartă cu locația clinicii Premium Smile"
+    },
+    "doctors": {
+      "title": "Medicii noștri",
+      "elena": {
+        "name": "Dr. Elena Marin",
+        "initials": "EM",
+        "roles": ["Fondator", "Stomatologie Estetică"],
+        "bio": "Dr. Marin conduce clinica cu un angajament față de îngrijirea axată pe pacient. Fiecare plan începe de la ascultare, nu de la o listă de proceduri — iar tratamentul este modelat după persoana din fața ei."
+      },
+      "andrei": {
+        "name": "Dr. Andrei Popescu",
+        "initials": "AP",
+        "roles": ["Stomatologie Restaurativă"],
+        "bio": "Dr. Popescu construiește relații pe termen lung cu pacienții săi. Explică fiecare etapă înainte să se întâmple, astfel încât consimțământul să fie informat și încrederea să crească de-a lungul anilor, nu al programărilor."
+      },
+      "mihai": {
+        "name": "Dr. Mihai Stoica",
+        "initials": "MI",
+        "roles": ["Stomatologie Generală"],
+        "bio": "Dr. Stoica este cunoscut pentru abordarea sa calmă și metodică. Pacienții care au sosit emoționați pleacă de obicei relaxați — și revin."
+      }
     }
   },
   "pricing": {
@@ -193,51 +213,5 @@
     "message": "A apărut o eroare neașteptată.",
     "reload": "Reîncarcă"
   },
-  "loading": "Se încarcă...",
-  "team": {
-    "intro": {
-      "eyebrow": "Oamenii din spatele zâmbetului tău",
-      "title": "Echipa Premium Smile",
-      "dedication": "Medicii noștri sunt profund dedicați fiecărui pacient care intră pe ușa noastră. Conduc cu răbdare, atenție și o mână sigură — alegând fiecare plan cu gândul la persoana din fața lor, nu la o listă. Rezultatul este o îngrijire care se simte personală pentru că este."
-    },
-    "doctors": {
-      "title": "Medicii noștri",
-      "elena": {
-        "name": "Dr. Elena Marin",
-        "initials": "EM",
-        "roles": ["Fondator", "Stomatologie Estetică"],
-        "bio": "Dr. Marin conduce clinica cu un angajament față de îngrijirea axată pe pacient. Fiecare plan începe de la ascultare, nu de la o listă de proceduri — iar tratamentul este modelat după persoana din fața ei."
-      },
-      "andrei": {
-        "name": "Dr. Andrei Popescu",
-        "initials": "AP",
-        "roles": ["Stomatologie Restaurativă"],
-        "bio": "Dr. Popescu construiește relații pe termen lung cu pacienții săi. Explică fiecare etapă înainte să se întâmple, astfel încât consimțământul să fie informat și încrederea să crească de-a lungul anilor, nu al programărilor."
-      },
-      "mihai": {
-        "name": "Dr. Mihai Stoica",
-        "initials": "MI",
-        "roles": ["Stomatologie Generală"],
-        "bio": "Dr. Stoica este cunoscut pentru abordarea sa calmă și metodică. Pacienții care au sosit emoționați pleacă de obicei relaxați — și revin."
-      }
-    },
-    "helpingStaff": {
-      "title": "Echipa de sprijin",
-      "ana": {
-        "name": "Ana Georgescu",
-        "initials": "AG",
-        "roles": ["Asistentă Stomatologică", "Coordonator Pacienți"]
-      },
-      "raluca": {
-        "name": "Raluca Pop",
-        "initials": "RP",
-        "roles": ["Manager Cabinet"]
-      },
-      "ioana": {
-        "name": "Ioana Stan",
-        "initials": "IS",
-        "roles": ["Recepționer"]
-      }
-    }
-  }
+  "loading": "Se încarcă..."
 }
