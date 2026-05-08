@@ -30,7 +30,7 @@
     "react-dom": "^19.2.5",
     "react-i18next": "^17.0.6",
     "tailwind-merge": "^3.0.0",
-    "zustand": "^5.0.0"
+    "zustand": "^5.0.13"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.14",
