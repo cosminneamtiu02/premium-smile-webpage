@@ -9,7 +9,7 @@ export const Route = createRootRoute({
   component: RootLayout,
 });
 
-const NAV_KEYS = ["home", "pricing", "blog", "team"] as const;
+const NAV_KEYS = ["home", "pricing", "blog"] as const;
 type NavKey = (typeof NAV_KEYS)[number];
 
 function pathFor(key: NavKey, lang: string) {
@@ -20,8 +20,6 @@ function pathFor(key: NavKey, lang: string) {
       return `/${lang}/pricing`;
     case "blog":
       return `/${lang}/blog`;
-    case "team":
-      return `/${lang}/team`;
   }
 }
 
