@@ -18,6 +18,8 @@ type ReviewsCarouselProps = {
   navigateLabel?: string;
   slideLabel?: (info: { index: number; total: number }) => string;
   starsLabel?: (rating: number) => string;
+  /** Auto-advance interval in ms. Pass 0 to disable auto-advance. */
+  intervalMs?: number;
   className?: string;
 };
 
@@ -42,6 +44,8 @@ const SIDE_Y_ODD_DEFAULT = 15;
 const SIDE_Y_EVEN_DEFAULT = -15;
 const SIDE_TILT_DEG = 2.5;
 
+const DEFAULT_INTERVAL_MS = 6000;
+
 const DEFAULT_SLIDE_LABEL = ({ index, total }: { index: number; total: number }) =>
   `Review ${index + 1} of ${total}`;
 
@@ -57,6 +61,7 @@ export function ReviewsCarousel({
   navigateLabel = "Navigate Reviews",
   slideLabel = DEFAULT_SLIDE_LABEL,
   starsLabel,
+  intervalMs = DEFAULT_INTERVAL_MS,
   className,
 }: ReviewsCarouselProps) {
   const stageRef = useRef<HTMLDivElement>(null);
@@ -64,6 +69,14 @@ export function ReviewsCarousel({
 
   const [slots, setSlots] = useState<Slot[]>(() => buildSlots(reviews, 1));
   const [containerW, setContainerW] = useState(1200);
+  // Bumped on every USER navigation (button click / arrow key) so the
+  // auto-advance timer resets — keeps the next auto-advance a full
+  // interval away from the last manual interaction.
+  const [tickKey, setTickKey] = useState(0);
+  // Pauses auto-advance while the user is hovering or has keyboard focus
+  // somewhere inside the carousel — standard a11y pattern for any
+  // auto-rotating content.
+  const [paused, setPaused] = useState(false);
 
   // Re-sync if the `reviews` prop changes identity (Storybook controls, tests
   // re-rendering with new data). Production callers pass a stable array.
@@ -92,7 +105,7 @@ export function ReviewsCarousel({
     return () => ro.disconnect();
   }, []);
 
-  const move = useCallback((positions: number) => {
+  const advance = useCallback((positions: number) => {
     if (positions === 0) return;
     setSlots((prev) => {
       const n = prev.length;
@@ -114,6 +127,35 @@ export function ReviewsCarousel({
       return next;
     });
   }, []);
+
+  const move = useCallback(
+    (positions: number) => {
+      advance(positions);
+      // User-initiated nav resets the auto-advance timer.
+      setTickKey((k) => k + 1);
+    },
+    [advance],
+  );
+
+  // Auto-advance. Skipped when the carousel has fewer than 2 slides, when
+  // the user is hovering / focused inside (paused), when intervalMs is 0,
+  // or when the user prefers reduced motion.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: tickKey is a remount-key trigger so the timer resets on user nav
+  useEffect(() => {
+    const total = slots.length;
+    if (total < 2) return;
+    if (paused) return;
+    if (intervalMs <= 0) return;
+    if (
+      typeof window !== "undefined" &&
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+    const timerId = setInterval(() => advance(1), intervalMs);
+    return () => clearInterval(timerId);
+  }, [tickKey, paused, intervalMs, slots.length, advance]);
 
   const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "ArrowRight") {
@@ -161,6 +203,10 @@ export function ReviewsCarousel({
       // biome-ignore lint/a11y/noNoninteractiveTabindex: carousel pattern requires the region to receive keyboard focus for arrow-key navigation
       tabIndex={0}
       onKeyDown={onKeyDown}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
       className={cn(
         "w-full rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-ring",
         className,
